@@ -29,9 +29,6 @@ jobs:
         - name: copy static content (images, css, etc)
           run: sudo find slides \( -name "*.png" -or -name "*.svg" -or -name "*.css" -or -name "*.jpg" \) -exec sh -c 'mkdir -p web/"$(dirname "{}")"' \; -exec cp {} web/{} \; -exec cp {} web/{} \;
 
-        - name: copy index.html
-          run: sudo cp index.html web/index.html
-
         - name: Deploy 🚀
           uses: JamesIves/github-pages-deploy-action@v4
           with:
