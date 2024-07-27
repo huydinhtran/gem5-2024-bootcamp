@@ -7,7 +7,7 @@
  * @auto-scaling true
  * @size 16:9 1280px 720px
  * @size 4:3 960px 720px
- */div#\:\$p>svg>foreignObject>:where(section):not([root]){--gem5-gem5:#008EB0;--gem5-background:#F6F8FA;--gem5-light:#c8eaf3;--gem5-dark:#00627a;--code-line-height:calc(var(--marpit-root-font-size, 1rem) * 2);--code-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.4)}div#\:\$p>svg>foreignObject>section{color:black;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6);font-family:sans-serif;line-height:calc(var(--marpit-root-font-size, 1rem) * 2);padding:70px;background-color:var(--gem5-background);background-image:url("../themes/gem5ColorLong.svg");background-repeat:no-repeat;background-position-x:center;background-size:220px;background-position-y:97%}div#\:\$p>svg>foreignObject>section{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6)}div#\:\$p>svg>foreignObject>section li{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.2)}div#\:\$p>svg>foreignObject>section ul{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.5)}
+ */div#\:\$p>svg>foreignObject>:where(section):not([root]){--gem5-gem5:#008EB0;--gem5-background:#F6F8FA;--gem5-light:#c8eaf3;--gem5-dark:#00627a;--gem5-gray:#77787b;--code-line-height:calc(var(--marpit-root-font-size, 1rem) * 2);--code-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.4)}div#\:\$p>svg>foreignObject>section{color:black;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6);font-family:sans-serif;line-height:calc(var(--marpit-root-font-size, 1rem) * 2);padding:70px;background-color:var(--gem5-background);background-image:url("../themes/gem5ColorLong.svg");background-repeat:no-repeat;background-position-x:center;background-size:220px;background-position-y:97%}div#\:\$p>svg>foreignObject>section{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6)}div#\:\$p>svg>foreignObject>section li{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.2)}div#\:\$p>svg>foreignObject>section ul{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.5)}
 
 /* Move the title of the slide up a bit */div#\:\$p>svg>foreignObject>section>:first-child,div#\:\$p>svg>foreignObject>section>header:first-child+*{margin-top:0}
 
@@ -55,9 +55,10 @@
 /* For reducing size of code blocks */div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.33)}div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.5)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.48)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.6)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.65)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.7)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.8)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.8)}
 
 /****************************************************/
-/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff}
+/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff}
 
-/* Avoids setting font-size for <code> in headers */div#\:\$p>svg>foreignObject>section :not(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4)) code{font-size:var(--code-font-size)}
+/* Avoids setting font-size for <code> in headers */div#\:\$p>svg>foreignObject>section :not(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4)) code{font-size:var(--code-font-size)}div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}div#\:\$p>svg>foreignObject>section a:has(code){
+    /* Removes underlines from hyperlinks in code */text-decoration:none}
 
 /*!
   Theme: Default
@@ -338,6 +339,19 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <li>Give you a vocabulary for asking questions​</li>
 <li>Provide a reference for the future​</li>
 <li>Give you material to take back and teach your colleagues</li>
+</ul>
+<h3 id="other-likely-outcomes">Other likely outcomes</h3>
+<ul>
+<li>You will be overwhelmed by the amount of information and how large gem5 is
+<ul>
+<li>That's OK! You can take these materials with you and refer back to them</li>
+</ul>
+</li>
+<li>You will not understand everything
+<ul>
+<li>That's OK! You can ask questions as we go</li>
+</ul>
+</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="9">

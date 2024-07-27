@@ -7,7 +7,7 @@
  * @auto-scaling true
  * @size 16:9 1280px 720px
  * @size 4:3 960px 720px
- */div#\:\$p>svg>foreignObject>:where(section):not([root]){--gem5-gem5:#008EB0;--gem5-background:#F6F8FA;--gem5-light:#c8eaf3;--gem5-dark:#00627a;--code-line-height:calc(var(--marpit-root-font-size, 1rem) * 2);--code-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.4)}div#\:\$p>svg>foreignObject>section{color:black;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6);font-family:sans-serif;line-height:calc(var(--marpit-root-font-size, 1rem) * 2);padding:70px;background-color:var(--gem5-background);background-image:url("../themes/gem5ColorLong.svg");background-repeat:no-repeat;background-position-x:center;background-size:220px;background-position-y:97%}div#\:\$p>svg>foreignObject>section{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6)}div#\:\$p>svg>foreignObject>section li{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.2)}div#\:\$p>svg>foreignObject>section ul{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.5)}
+ */div#\:\$p>svg>foreignObject>:where(section):not([root]){--gem5-gem5:#008EB0;--gem5-background:#F6F8FA;--gem5-light:#c8eaf3;--gem5-dark:#00627a;--gem5-gray:#77787b;--code-line-height:calc(var(--marpit-root-font-size, 1rem) * 2);--code-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.4)}div#\:\$p>svg>foreignObject>section{color:black;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6);font-family:sans-serif;line-height:calc(var(--marpit-root-font-size, 1rem) * 2);padding:70px;background-color:var(--gem5-background);background-image:url("../themes/gem5ColorLong.svg");background-repeat:no-repeat;background-position-x:center;background-size:220px;background-position-y:97%}div#\:\$p>svg>foreignObject>section{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.6)}div#\:\$p>svg>foreignObject>section li{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.2)}div#\:\$p>svg>foreignObject>section ul{margin-bottom:calc(var(--marpit-root-font-size, 1rem) * 0.5)}
 
 /* Move the title of the slide up a bit */div#\:\$p>svg>foreignObject>section>:first-child,div#\:\$p>svg>foreignObject>section>header:first-child+*{margin-top:0}
 
@@ -55,9 +55,10 @@
 /* For reducing size of code blocks */div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.33)}div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.5)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.48)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.6)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.65)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.7)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.8)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.8)}
 
 /****************************************************/
-/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff}
+/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff}
 
-/* Avoids setting font-size for <code> in headers */div#\:\$p>svg>foreignObject>section :not(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4)) code{font-size:var(--code-font-size)}
+/* Avoids setting font-size for <code> in headers */div#\:\$p>svg>foreignObject>section :not(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4)) code{font-size:var(--code-font-size)}div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}div#\:\$p>svg>foreignObject>section a:has(code){
+    /* Removes underlines from hyperlinks in code */text-decoration:none}
 
 /*!
   Theme: Default
@@ -100,13 +101,8 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <h2 id="memory-system">Memory System</h2>
 <h3 id="gem5s-memory-system-consists-of-two-main-components">gem5's memory system consists of two main components</h3>
 <ol>
-<li>
-<p>Memory Controller</p>
-</li>
-<li>
-<p>Memory Interface(s)<br />
-<br /></p>
-</li>
+<li>Memory Controller</li>
+<li>Memory Interface(s)</li>
 </ol>
 <p><img src="06-memory-imgs/memory-system.drawio.svg" alt="Diagram of the gem5 memory system" /></p>
 </section>
@@ -114,26 +110,16 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <h2 id="memory-controller">Memory Controller</h2>
 <h3 id="when-memctrl-receives-packets">When <code>MemCtrl</code> receives packets...</h3>
 <ol>
-<li>
-<p>Packets enqueued into the read and/or write queues</p>
-</li>
-<li>
-<p>Applies <strong>scheduling algorithm</strong> (FCFS, FR-FCFS, ...) to issue read and write requests<br />
-<br /></p>
-</li>
+<li>Packets enqueued into the read and/or write queues</li>
+<li>Applies <strong>scheduling algorithm</strong> (FCFS, FR-FCFS, ...) to issue read and write requests</li>
 </ol>
 <p><img src="06-memory-imgs/memory-controller-queues.drawio.svg" alt="Diagram of the gem5 memory controller queues" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="4" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="27">
 <h2 id="memory-interface">Memory Interface</h2>
 <ul>
-<li>
-<p>The memory interface implements the <strong>architecture</strong> and <strong>timing parameters</strong> of the chosen memory type.</p>
-</li>
-<li>
-<p>It manages the <strong>media specific operations</strong> like activation, pre-charge, refresh and low-power modes, etc.<br />
-<br /></p>
-</li>
+<li>The memory interface implements the <strong>architecture</strong> and <strong>timing parameters</strong> of the chosen memory type.</li>
+<li>It manages the <strong>media specific operations</strong> like activation, pre-charge, refresh and low-power modes, etc.</li>
 </ul>
 <p><img src="06-memory-imgs/memory-interface.drawio.svg" alt="Diagram of the gem5 memory interface" /></p>
 </section>
@@ -218,8 +204,8 @@ system.mem_ctrls = [MemCtrl() <span class="hljs-keyword">for</span> i <span clas
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="11" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="27">
 <h2 id="memory-controllerinterface-example">Memory Controller/Interface Example</h2>
 <ul>
-<li>Open up <a href="../../materials/02-Using-gem5/06-memory/blank_memory.py"><code>materials/02-Using-gem5/06-memory/blank_memory.py</code></a></li>
-<li>Look for the comment <code> # insert memory controller and interface here</code></li>
+<li>Open <a href="../../materials/02-Using-gem5/06-memory/blank_memory.py"><code>materials/02-Using-gem5/06-memory/blank_memory.py</code></a></li>
+<li>Look for the comment <code># insert memory controller and interface here</code></li>
 <li>Copy and paste any of the code blocks from the 4 slides above or the one below</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># memory controller parameters</span>
@@ -237,9 +223,9 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="27">
 <h2 id="memory-controllerinterface-example-1">Memory Controller/Interface Example</h2>
-<ul>
-<li>Run with <code>/gem5/build/NULL/gem5.opt materials/02-Using-gem5/06-memory/blank_memory.py</code></li>
-</ul>
+<p>Run with</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">gem5 blank_memory.py
+</code></pre>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># memory controller parameters</span>
 system.mem_ctrl = MemCtrl()
 system.mem_ctrl.mem_sched_policy = <span class="hljs-string">&quot;fcfs&quot;</span>
@@ -316,17 +302,15 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 <li>If we wanted to add LPDDR2 as a new memory in the standard library, we first make sure there's a DRAM interface for it in the <a href="../../gem5/src/python/gem5/components/memory/dram_interfaces/lpddr2.py"><code>dram_interfaces</code> directory</a></li>
 <li>then we need to make sure we import it by adding</li>
 </ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Optional</span>
-
-<span class="hljs-keyword">from</span> gem5.components.memory.abstract_memory_system <span class="hljs-keyword">import</span> AbstractMemorySystem
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> gem5.components.memory.abstract_memory_system <span class="hljs-keyword">import</span> AbstractMemorySystem
 <span class="hljs-keyword">from</span> gem5.components.memory.dram_interfaces.lpddr2 <span class="hljs-keyword">import</span> LPDDR2_S4_1066_1x32
 <span class="hljs-keyword">from</span> gem5.components.memory.memory <span class="hljs-keyword">import</span> ChanneledMemory
 </code></pre>
-<p>to the top of lpddr2.py</p>
+<p>to the top of your <code>lpddr2.py</code></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="27">
 <h2 id="adding-a-new-channeled-memory-1">Adding a new channeled memory</h2>
-<p>Then add the following to the body of lpddr2.py</p>
+<p>Then add the following to the body of <code>lpddr2.py</code></p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">SingleChannelLPDDR2_S4_1066_1x32</span>(<span class="hljs-params">
     size: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">str</span>] = <span class="hljs-literal">None</span>,
 </span>) -&gt; AbstractMemorySystem:
@@ -350,7 +334,9 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 <p><img src="06-memory-imgs/comm-monitor-0.drawio.svg" alt="Simple system diagram" /></p>
 <h3 id="lets-simulate">Let's simulate:</h3>
 
-<p>Run <code>gem5/build/NULL/gem5.opt  materials/02-Using-gem5/06-memory/comm_monitor.py</code></p>
+<p>Run</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">gem5 comm_monitor.py
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="21" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="27">
 <h2 id="commmonitor-2">CommMonitor</h2>
@@ -367,21 +353,17 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 system.comm_monitor.cpu_side_port = system.l1cache.mem_side
 system.comm_monitor.mem_side_port = system.membus.cpu_side_ports
 </code></pre>
-<p>Run <code>gem5/build/NULL/gem5.opt  materials/02-Using-gem5/06-memory/comm_monitor.py</code></p>
+<p>Run</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">gem5 comm_monitor.py
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="23" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="27">
 <h2 id="address-interleaving">Address Interleaving</h2>
 <h3 id="idea-we-can-parallelize-memory-accesses">Idea: we can parallelize memory accesses</h3>
 <ul>
-<li>
-<p>For example, we can access multiple banks/channels/etc at the same time</p>
-</li>
-<li>
-<p>Use part of the address as a selector to choose which bank/channel to access</p>
-</li>
-<li>
-<p>Allows contiguous address ranges to interleave between banks/channels</p>
-</li>
+<li>For example, we can access multiple banks/channels/etc at the same time</li>
+<li>Use part of the address as a selector to choose which bank/channel to access</li>
+<li>Allows contiguous address ranges to interleave between banks/channels</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="24" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="27">
