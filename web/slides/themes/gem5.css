@@ -16,6 +16,7 @@
     --gem5-background: #F6F8FA;
     --gem5-light: #c8eaf3;
     --gem5-dark: #00627a;
+    --gem5-gray: #77787b;
 
     --code-line-height: 2rem;
     --code-font-size: 1.4rem;
@@ -28,7 +29,7 @@ section {
     line-height: 2rem;
     padding: 70px;
     background-color: var(--gem5-background);
-    background-image: url("../themes/gem5Long.png");
+    background-image: url("../themes/gem5ColorLong.svg");
     background-repeat: no-repeat;
     background-position-x: center;
     background-size: 220px;
@@ -148,10 +149,10 @@ section.title h2 {
 
 /* gem5 logo on the right */
 section.title {
-    background-image: url("../../slides/themes/gem5ColorVert.png");
+    background-image: url("../../slides/themes/gem5ColorVert.svg");
     background-repeat: no-repeat;
-    background-position: right;
-    background-size: contain;
+    background-position: 86% 50%;
+    background-size: 440px;
 }
 
 /* title on the left */
@@ -292,12 +293,29 @@ pre {
     border-radius: 5px;
     line-height: var(--code-line-height);
     background-color: #ffffff;
+    box-shadow: 1px 2px 4px var(--gem5-gray);
 }
 
 code {
     font-family: "Roboto Mono", monospace;
-    font-size: var(--code-font-size);
     background-color: #ffffff;
+}
+
+/* Avoids setting font-size for <code> in headers */
+:not(h1, h2, h3, h4) code {
+    font-size: var(--code-font-size);
+}
+
+:not(pre) > code {
+    font-size: calc(var(--code-font-size) * 0.9);
+    padding: 2px 6px;
+    border: 1px solid var(--gem5-gray);
+    border-radius: 5px;
+}
+
+a:has(code) {
+    /* Removes underlines from hyperlinks in code */
+    text-decoration: none;
 }
 
 /*!

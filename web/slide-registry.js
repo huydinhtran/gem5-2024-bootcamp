@@ -10,7 +10,51 @@ window.get_slide_registry = function() {
         },
         {
             "name": "02-Using-gem5",
-            "slides": []
+            "slides": [
+                "01-stdlib",
+                "02-gem5-resources",
+                "03-running-in-gem5",
+                "04-cores",
+                "05-cache-hierarchies",
+                "06-memory",
+                "07-full-system",
+                "08-accelerating-simulation",
+                "09-sampling",
+                "11-multisim"
+            ]
+        },
+        {
+            "name": "03-Developing-gem5-models",
+            "slides": [
+                "01-sim-objects-intro",
+                "02-debugging-gem5",
+                "03-event-driven-simulation",
+                "04-ports",
+                "05-modeling-cores",
+                "06-modeling-cache-coherence",
+                "07-chi-protocol",
+                "08-ruby-network",
+                "09-extending-gem5-models"
+            ],
+        },
+        {
+            "name": "04-GPU-model",
+            "slides": [
+                "01-GPU-model"
+            ]
+        },
+        {
+            "name": "05-Other-simulators",
+            "slides": [
+
+            ]
+        },
+        {
+            "name": "06-Contributing",
+            "slides": [
+                "01-contributing",
+                "02-testing"
+            ]
         }
     ];
 }

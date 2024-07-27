@@ -35,6 +35,7 @@ function route(url, push=true) {
     /* Set iframe src */
     let full_url = slide_url_base + url.substring(1) + slide_url_ext;
     document.querySelector('#slideFrame').src = full_url;
+    document.querySelector('#slideFrame').title = url;
     /* Find slide id number */
     slide_id = -1;
     for (const slide of slide_list) {
