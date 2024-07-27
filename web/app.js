@@ -1,5 +1,5 @@
 /* Constant parameters */
-const slide_url_base = './web/slides/'
+const slide_url_base = './slides/'
 const slide_url_ext = '.html'
 const slide_link_height = 25;
 
