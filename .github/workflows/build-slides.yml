@@ -10,32 +10,32 @@ jobs:
           uses: actions/checkout@v3
 
         - name: Ensure build dir exists
-          run: mkdir -p build
+          run: mkdir -p web
 
         - name: Build html slides
           uses: docker://marpteam/marp-cli:v3.4.0
           with:
-            args: --html -o build/slides/ -I slides -c .vscode/settings.json
+            args: --html -o web/slides/ -I slides -c .vscode/settings.json
           env:
             MARP_USER: root:root
 
         - name: Build pdf slides
           uses: docker://marpteam/marp-cli:v3.4.0
           with:
-            args: --pdf --allow-local-files -o build/pdf/ -I slides -c .vscode/settings.json
+            args: --pdf --allow-local-files -o web/pdf/ -I slides -c .vscode/settings.json
           env:
             MARP_USER: root:root
 
         - name: copy static content (images, css, etc)
-          run: sudo find slides \( -name "*.png" -or -name "*.svg" -or -name "*.css" -or -name "*.jpg" \) -exec sh -c 'mkdir -p build/"$(dirname "{}")"' \; -exec cp {} build/{} \; -exec cp {} build/{} \;
+          run: sudo find slides \( -name "*.png" -or -name "*.svg" -or -name "*.css" -or -name "*.jpg" \) -exec sh -c 'mkdir -p web/"$(dirname "{}")"' \; -exec cp {} web/{} \; -exec cp {} web/{} \;
 
         - name: copy index.html
-          run: sudo cp index.html build/index.html
+          run: sudo cp index.html web/index.html
 
         - name: Deploy 🚀
           uses: JamesIves/github-pages-deploy-action@v4
           with:
             branch: gh-pages
-            folder: build # The folder the action should deploy.
+            folder: web # The folder the action should deploy.
 
 
