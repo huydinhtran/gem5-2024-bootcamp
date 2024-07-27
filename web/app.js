@@ -50,6 +50,8 @@ function route(url, push=true) {
     } else {
         home.classList.add('hidden');
     }
+    /* Set slide name */
+    document.querySelector('#slideName').textContent = url.substring(1);
     /* Configure buttons */
     let prev = document.querySelector('#prevSlide');
     let next = document.querySelector('#nextSlide');
