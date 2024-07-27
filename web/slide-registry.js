@@ -3,6 +3,7 @@ window.get_slide_registry = function() {
         {
             "name": "01-Introduction",
             "slides": [
+                "00-introduction-to-bootcamp",
                 "01-simulation-background",
                 "02-getting-started",
                 "03-python-background"
@@ -28,7 +29,7 @@ window.get_slide_registry = function() {
             "slides": [
                 "01-sim-objects-intro",
                 "02-debugging-gem5",
-                "03-event-driven-simulation",
+                "03-event-driven-sim",
                 "04-ports",
                 "05-modeling-cores",
                 "06-modeling-cache-coherence",

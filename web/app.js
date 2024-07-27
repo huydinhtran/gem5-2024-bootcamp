@@ -47,6 +47,8 @@ function route(url, push=true) {
     if (slide_id < 0) {
         /* Slide not found, just bring up splash page to hide the mess */
         home.classList.remove('hidden');
+    } else {
+        home.classList.add('hidden');
     }
     /* Configure buttons */
     let prev = document.querySelector('#prevSlide');
