@@ -105,8 +105,6 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="2" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="55">
 <h2 id="what-if-the-roi-is-large">What if the ROI is large</h2>
 <h3 id="we-now-know-how-to-skip-the-unimportant-part-of-the-simulation-but-what-if-the-important-part-of-the-simulation-is-too-large">We now know how to skip the &quot;unimportant&quot; part of the simulation, but what if the important part of the simulation is too large?</h3>
-<h3 id="we-now-know-how-to-skip-the-unimportant-part-of-the-simulation-but-what-if-the-important-part-of-the-simulation-is-too-large-1">We now know how to skip the &quot;unimportant&quot; part of the simulation, but what if the important part of the simulation is too large?</h3>
-<p>What if we are not facing this</p>
 <p>What if we are not facing this</p>
 <p><img src="08-accelerating-simulation-img/skipable-experiment.drawio.svg" alt="" /></p>
 <p>but actually facing this</p>
@@ -192,7 +190,7 @@ Note that LoopPoint analysis support is not currently supported in gem5 v24.0 bu
 <ol>
 <li>Analysis</li>
 <li>Taking checkpoints</li>
-<li>Run the regions</li>
+<li>Running the regions</li>
 </ol>
 <p>There are two key files related to using SimPoint in gem5:</p>
 <ol>
@@ -227,7 +225,7 @@ We will only work with <a href="../../materials/02-Using-gem5/09-sampling/01-sim
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="17" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="55">
 <h2 id="01-simpoint-1">01-simpoint</h2>
-<p>Because the profiling and getting the baseline performance might take a while, we will run the simulation first with the following command.</p>
+<p>Because the profiling and getting the baseline performance might take a while, we will first run the simulation  with the following command.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">gem5 -re --outdir=full-detailed-run-m5out full-detailed-run.py
 gem5 -re --outdir=simpoint-analysis-m5out simpoint-analysis.py
 </code></pre>
@@ -239,7 +237,6 @@ We can expect the program behavior of this workload to be really repetitive.</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="55">
 <h2 id="01-simpoint-2">01-simpoint</h2>
 <p>The script <a href="../../materials/02-Using-gem5/09-sampling/01-simpoint/simpoint-analysis.py">materials/02-Using-gem5/09-sampling/01-simpoint/simpoint-analysis.py</a> uses the <code>SimPoint</code> probe listener object that we introduced earlier to collect basic block information for this simple workload.<br />
-The script <a href="../../materials/02-Using-gem5/09-sampling/01-simpoint/simpoint-analysis.py">materials/02-Using-gem5/09-sampling/01-simpoint/simpoint-analysis.py</a> uses the <code>SimPoint</code> probe listener object that we introduced earlier to collect basic block information for this simple workload.<br />
 It connects the ATOMIC CPU core to the <code>SimPoint</code> probe listener using</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">processor.get_cores()[<span class="hljs-number">0</span>].core.addSimPointProbe(<span class="hljs-number">1_000_000</span>)
 </code></pre>
@@ -326,7 +323,7 @@ We will not be modifying any scripts.</p>
 <ul>
 <li>Use the output file from the SimPoint3.2 tool to create checkpoints for all 3 SimPoints</li>
 </ul>
-<p>Because it might take some time to take the checkpoints, let's start taking checkpoints with the following command:</p>
+<p>Because it might take some time to take the checkpoints, let's start by taking checkpoints with the following command:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">gem5 -re --outdir=simpoint-checkpoint-m5out simpoint-checkpoint.py
 </code></pre>
 </section>
@@ -655,7 +652,9 @@ ideal_W = <span class="hljs-number">2</span> * ideal_U
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="51" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="55">
 <h2 id="03-smarts-3">03-SMARTS</h2>
 <p>This SMARTS exit generator only works with SwitchableProcessor.<br />
-When it reaches to the start of the detailed warmup part, it resets the stats; then it switches the core type and schedule for the end of the warmup part and the end of the interval. When it reaches to the end of the detailed warmup part, it resets the stats. When it reaches to the end of the detailed simulation, it dumps the stats; then it switches the core type and schedule for the start of the next detailed warmup part.</p>
+When it reaches the start of the detailed warmup part, it resets the stats; then it switches the core type and schedules for the end of the warmup part and the end of the interval.</p>
+<p>When it reaches the end of the detailed warmup part, it resets the stats.</p>
+<p>When it reaches the end of the detailed simulation, it dumps the stats; then it switches the core type and schedules for the start of the next detailed warmup part.</p>
 <p><img src="09-sampling-img/smarts-generator-model.drawio.svg" alt="" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="52" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="55">
