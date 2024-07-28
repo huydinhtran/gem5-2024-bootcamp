@@ -46,7 +46,7 @@
 /****************************************************/
 /* For title cards at the beginning of a section, e.g. Intro to ..., etc.
    Has a blue gradient. From Erin and Mysore
-*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2):before{border:none}
 
 /****************************************************/
 /* For 5 column/full outline */div#\:\$p>svg>foreignObject>section.outline :is(h2,marp-h2){column-span:all}div#\:\$p>svg>foreignObject>section.outline{column-count:5;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3);line-height:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline ul{list-style-type:none;padding:0;margin:0;padding-bottom:10px}div#\:\$p>svg>foreignObject>section.outline li{margin:0;padding-bottom:5px}div#\:\$p>svg>foreignObject>section.outline ul ul{list-style-type:"- ";padding-left:20px}div#\:\$p>svg>foreignObject>section.outline ul ul ul{display:none}div#\:\$p>svg>foreignObject>section.outline :is(h3,marp-h3){break-before:column}
@@ -125,6 +125,10 @@ If we use the debug flag <code>SyscallAll</code> with it, we will able to see wh
 We can do it with the following command:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">gem5 -re --debug-flags=SyscallAll 00-SE-hello-world.py
 </code></pre>
+<blockquote>
+<p><code>-re</code> is an alias for <code>--stdout-file</code> and <code>--stderr-file</code> to redirect the output to a file.<br />
+The default output is in <code>m5out/simout.txt</code> and m5out/simerr.txt`.</p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="00-se-hello-world-1">00-SE-hello-world</h2>
@@ -135,6 +139,9 @@ Hello, World!
 </code></pre>
 <p>On the left, it is the timestamp for the simulation.<br />
 As the timestamp suggests, <strong>SE simulation DOES NOT record the time for the syscall</strong>.</p>
+<blockquote>
+<p>Note that in the <code>simout.txt</code> file the standard out from the <em>simulator</em> and the <em>guest</em> are mixed together.</p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-class="start" data-theme="gem5" lang="en-US" class="start" data-marpit-pagination="7" style="--paginate:true;--class:start;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="m5ops">m5ops</h2>
@@ -160,7 +167,7 @@ As the timestamp suggests, <strong>SE simulation DOES NOT record the time for th
 <h2 id="important">IMPORTANT</h2>
 <ul>
 <li><strong><em>Not all of the ops do what they say automatically</em></strong></li>
-<li>Most of these just only exit the simulation</li>
+<li>Most of these only exit the simulation</li>
 <li>For example:
 <ul>
 <li>exit: Actually exits</li>
@@ -180,9 +187,9 @@ As the timestamp suggests, <strong>SE simulation DOES NOT record the time for th
 <h2 id="more-about-m5ops">More about m5ops</h2>
 <p>There are three versions of m5ops:</p>
 <ol>
-<li>Instruction mode: it only works with native CPU models</li>
-<li>Address mode: it works with native CPU models and KVM CPU (only supports Arm and X86)</li>
-<li>Semihosting: it works with native CPU models and Fast Model</li>
+<li>Instruction mode: it only works with simulated CPU models</li>
+<li>Address mode: it works with simulated CPU models and KVM CPU (only supports Arm and X86)</li>
+<li>Semihosting: it works with simulated CPU models and Fast Model</li>
 </ol>
 <p>Different modes should be used depending on the CPU type and ISA.</p>
 <p>The address mode m5ops will be covered in <a href="07-full-system.md">07-full-system</a> as gem5-bridge and <a href="08-accelerating-simulation.md">08-accelerating-simulation</a> after the KVM CPU is introduced.<br />
@@ -236,6 +243,10 @@ In order to build the m5ops library,</p>
 scons build/x86/out/m5
 scons arm64.CROSS_COMPILE=aarch64-linux-gnu- build/arm64/out/m5
 </code></pre>
+<blockquote>
+<p>Note: while building these uses scons, it's a different environment from building gem5 with different targets and options.<br />
+Don't expect things to be similar (e.g., use <code>arm64</code> instead of <code>ARM</code>).</p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="linking-the-m5ops-library-to-cc-code%E2%80%8B">Linking the m5ops library to C/C++ code​</h2>
@@ -414,7 +425,7 @@ Simulation Done
     checkpoint: <span class="hljs-type">Optional</span>[<span class="hljs-type">Union</span>[Path, CheckpointResource]] = <span class="hljs-literal">None</span>,
 </span>) -&gt; <span class="hljs-literal">None</span>:
 </code></pre>
-<p>For more information, we can look at <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/components/boards/se_binary_workload.py#L71">src/python/gem5/components/boards/se_binary_workload.p</a>.</p>
+<p>For more information, we can look at <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/components/boards/se_binary_workload.py#L71">src/python/gem5/components/boards/se_binary_workload.py</a>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-class="start" data-theme="gem5" lang="en-US" class="start" data-marpit-pagination="27" style="--paginate:true;--class:start;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="cross-compiling">Cross-compiling</h2>
