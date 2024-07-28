@@ -163,7 +163,7 @@ The last two numbers are for</p>
 <h2 id="using-codespaces-2">Using codespaces 2</h2>
 <p><strong>AFTER</strong> joining the classroom, you can go to the repository and click on the green &quot;Code&quot; button.<br />
 Again, note that this is the repo where the slides are.</p>
-<p><a href="https://github.com/gem5bootcamp-2024/">https://github.com/gem5bootcamp-2024/</a></p>
+<p><a href="https://github.com/gem5bootcamp/2024/">https://github.com/gem5bootcamp/2024/</a></p>
 <p><img src="02-getting-started-imgs/codespaces-screenshot-1.drawio.png" alt="Screenshot of starting a codespace" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="18">
@@ -171,7 +171,9 @@ Again, note that this is the repo where the slides are.</p>
 <blockquote>
 <p><strong>Step 3:</strong> Wait for the environment to load.</p>
 </blockquote>
-<p><img src="test.drawio.png" alt="Screenshot" /></p>
+<p>You can also open it in your local VS Code if you install the codespaces extension.<br />
+(If you do this, the extensions will not be installed automatically on your local VS Code.)</p>
+<p><img src="02-getting-started-imgs/codespaces-screenshot-2.drawio.png" alt="Screenshot of the codespace loaded and ready to use" style="width:1100px;" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="18">
 <h2 id="navigating-the-repository">Navigating the repository</h2>
@@ -237,13 +239,13 @@ Open the <a href="../../materials/01-Introduction/02-getting-started/basic.py"><
 <p>Links to the code are available in the slides if you're using VS Code.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="18">
-<h2 id="lets-be-lazy-and-use-a-prebuild-board">Let’s be lazy and use a prebuild board</h2>
+<h2 id="lets-be-lazy-and-use-a-prebuilt-board">Let’s be lazy and use a prebuilt board</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board = X86DemoBoard()
 </code></pre>
 <p>The X86DemoBoard has the following properties:</p>
 <ul>
 <li>Single Channel DDR3, 2GB Memory.</li>
-<li>A 4 core 3GHz processor (using gem5’s ‘timing’ model).</li>
+<li>A 4 core 3GHz processor (using gem5’s &quot;timing&quot; model).</li>
 <li>A MESI Two Level Cache Hierarchy, with 32kB data and instruction case and a 1MB L2 Cache.</li>
 <li>Will be run as a Full-System simulation.</li>
 </ul>
