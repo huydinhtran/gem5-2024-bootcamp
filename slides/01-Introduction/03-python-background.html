@@ -17,7 +17,7 @@
 
 /* Add an image to the bottom center of the page */div#\:\$p>svg>foreignObject>section footer{position:fixed;left:0;right:0;bottom:60px;height:100px;margin-bottom:-80px}div#\:\$p>svg>foreignObject>section footer img{height:60px;display:block;margin:0 auto}
 
-/* For the page number */div#\:\$p>svg>foreignObject>section:after{right:-50px;bottom:-50px;font-size:80%}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#\:\$p>svg>foreignObject>section a{color:var(--gem5-gem5)}div#\:\$p>svg>foreignObject>section blockquote{position:relative;margin:calc(var(--marpit-root-font-size, 1rem) * 0.6) 0;padding:0 calc(var(--marpit-root-font-size, 1rem) * 1.2);border-left:4px solid var(--gem5-gem5);background-color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section blockquote a{color:var(--gem5-dark)}
+/* For the page number */div#\:\$p>svg>foreignObject>section:after{right:-50px;bottom:-55px;font-size:80%;color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#\:\$p>svg>foreignObject>section a{color:var(--gem5-gem5)}div#\:\$p>svg>foreignObject>section blockquote{position:relative;margin:calc(var(--marpit-root-font-size, 1rem) * 0.6) 0;padding:0 calc(var(--marpit-root-font-size, 1rem) * 1.2);border-left:4px solid var(--gem5-gem5);background-color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section blockquote a{color:var(--gem5-dark)}
 
 /****************************************************/
 /* For title page */
@@ -46,7 +46,9 @@
 /****************************************************/
 /* For title cards at the beginning of a section, e.g. Intro to ..., etc.
    Has a blue gradient. From Erin and Mysore
-*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2):before{border:none}
+*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* Remove the triangle */div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2):before{border:none}
 
 /****************************************************/
 /* For 5 column/full outline */div#\:\$p>svg>foreignObject>section.outline :is(h2,marp-h2){column-span:all}div#\:\$p>svg>foreignObject>section.outline{column-count:5;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3);line-height:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline ul{list-style-type:none;padding:0;margin:0;padding-bottom:10px}div#\:\$p>svg>foreignObject>section.outline li{margin:0;padding-bottom:5px}div#\:\$p>svg>foreignObject>section.outline ul ul{list-style-type:"- ";padding-left:20px}div#\:\$p>svg>foreignObject>section.outline ul ul ul{display:none}div#\:\$p>svg>foreignObject>section.outline :is(h3,marp-h3){break-before:column}
@@ -55,10 +57,14 @@
 /* For reducing size of code blocks */div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.33)}div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.5)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.48)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.6)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.65)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.7)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.8)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.8)}
 
 /****************************************************/
-/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff}
+/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff;font-size:var(--code-font-size)}
 
-/* Avoids setting font-size for <code> in headers */div#\:\$p>svg>foreignObject>section :not(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4)) code{font-size:var(--code-font-size)}div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}div#\:\$p>svg>foreignObject>section a:has(code){
-    /* Removes underlines from hyperlinks in code */text-decoration:none}
+/* Forces inherited height for code in headers */div#\:\$p>svg>foreignObject>section :is(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4),:is(h5,marp-h5),:is(h6,marp-h6)) code{font-size:inherit!important}
+
+/* Targets only inline code */div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}
+
+/* Targets hyperlinks that contain code */div#\:\$p>svg>foreignObject>section a:has(code){
+    /* Removes underlines */text-decoration:none}
 
 /*!
   Theme: Default
@@ -137,7 +143,7 @@ The most important distinction is that the gem5 binary gives the script the <cod
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="exercise-literally-hello-world-in-gem5">Exercise: Literally &quot;Hello world&quot; in gem5</h2>
 <p>For all coding examples, we will be in the <code>materials</code> directory.</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh"><span class="hljs-built_in">cd</span> materials/01-Introduction/03-python-background
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh"><span class="hljs-built_in">cd</span> /workspaces/2024/materials/01-Introduction/03-python-background
 </code></pre>
 <ol>
 <li>Create a file called &quot;mysim.py&quot; and add the following:</li>
@@ -167,7 +173,7 @@ All other data types are built on top of these.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="primitive-integers">Primitive: Integers</h2>
-<p><a href="/materials/01-Introduction/03-python-background/02-primitives-int.py">materials/01-Introduction/03-python-background/02-primitives-int.py</a> can be used as a reference for basic integer usage.<br />
+<p><a href="../../materials/01-Introduction/03-python-background/02-primitives-int.py"><code>materials/01-Introduction/03-python-background/02-primitives-int.py</code></a> can be used as a reference for basic integer usage.<br />
 This tutorial will cover the basics.</p>
 <h3 id="declaring-integers">Declaring Integers</h3>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">x = <span class="hljs-number">1</span>
@@ -190,7 +196,7 @@ We're jumping ahead a bit here but they are very useful and we recommend using t
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="primitive-floats">Primitive: Floats</h2>
-<p><a href="/materials/01-Introduction/03-python-background/03-primitives-float.py">materials/01-Introduction/03-python-background/03-primitives-float.py</a> can be used as a reference for basic float usage.</p>
+<p><a href="../../materials/01-Introduction/03-python-background/03-primitives-float.py"><code>materials/01-Introduction/03-python-background/03-primitives-float.py</code></a> can be used as a reference for basic float usage.</p>
 <h3 id="declaring-floats">Declaring Floats</h3>
 <p>Floats are a primitive data type in Python. They are &quot;real numbers&quot; and are<br />
 declared like so. Here we declare a variable <code>x</code> and assign it the literal value <code>1.5</code>.</p>
@@ -224,7 +230,7 @@ div_xy = y / x
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="primitive-strings">Primitive: Strings</h2>
-<p><a href="/materials/01-Introduction/03-python-background/04-primitives-string.py">materials/01-Introduction/03-python-background/04-primitives-string.py</a> can be used as a reference for basic string usage.</p>
+<p><a href="../../materials/01-Introduction/03-python-background/04-primitives-string.py"><code>materials/01-Introduction/03-python-background/04-primitives-string.py</code></a> can be used as a reference for basic string usage.</p>
 <p>Strings are a primitive data type in Python. They are sequences of characters<br />
 and are declared like so. Here we declare a variable <code>x</code> and assign it the<br />
 literal value <code>&quot;Hello World!&quot;</code>.</p>
@@ -250,7 +256,7 @@ In the following we concatenate x with &quot; GoodBye &quot; and the value of x 
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-class="two-col" data-theme="gem5" lang="en-US" class="two-col" data-marpit-pagination="15" style="--paginate:true;--class:two-col;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="primitive-booleans">Primitive: Booleans</h2>
-<p><a href="/materials/01-Introduction/03-python-background/05-primitives-bool.py">materials/01-Introduction/03-python-background/05-primitives-bool.py</a> can be used as a reference for basic boolean usage.</p>
+<p><a href="../../materials/01-Introduction/03-python-background/05-primitives-bool.py"><code>materials/01-Introduction/03-python-background/05-primitives-bool.py</code></a> can be used as a reference for basic boolean usage.</p>
 <p>Bools are a primitive data type in Python. They are &quot;True&quot; or &quot;False&quot; and are<br />
 declared like so. Here we declare a variable <code>x</code> and assign it the literal<br />
 value <code>True</code>.</p>
@@ -307,13 +313,13 @@ variables within the single collection variable</p>
 The are set in square brackets.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">a_list = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
 </code></pre>
-<p>More on lists can be found at <a href="/materials/01-Introduction/03-python-background/06-collections-list.py">materials/01-Introduction/03-python-background/06-collections-list.py</a></p>
+<p>More on lists can be found at <a href="../../materials/01-Introduction/03-python-background/06-collections-list.py"><code>materials/01-Introduction/03-python-background/06-collections-list.py</code></a></p>
 <h3 id="sets">Sets</h3>
 <p>Sets are unordered collections of variables. Duplicates are not allowed.<br />
 They are set in curly braces.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">a_set = {<span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>, <span class="hljs-string">&quot;three&quot;</span>, <span class="hljs-string">&quot;four&quot;</span>, <span class="hljs-string">&quot;five&quot;</span>}
 </code></pre>
-<p>More on examples with sets can be found at <a href="/materials/01-Introduction/03-python-background/07-collections-set.py">materials/01-Introduction/03-python-background/07-collections-set.py</a>.</p>
+<p>More on examples with sets can be found at <a href="../../materials/01-Introduction/03-python-background/07-collections-set.py"><code>materials/01-Introduction/03-python-background/07-collections-set.py</code></a>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="dictionaries">Dictionaries</h2>
@@ -322,10 +328,10 @@ with each value in the set (the 'key') mapping to another variable (the<br />
 'value'). Duplication of keys is not allowed (but duplication of values is).</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">a_dict = {<span class="hljs-number">1</span>: <span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&quot;two&quot;</span>}
 </code></pre>
-<p>More on examples with dictionaries can be found at <a href="/materials/01-Introduction/03-python-background/08-collections-dict.py">materials/01-Introduction/03-python-background/08-collections-dict.py</a>.</p>
+<p>More on examples with dictionaries can be found at <a href="../../materials/01-Introduction/03-python-background/08-collections-dict.py"><code>materials/01-Introduction/03-python-background/08-collections-dict.py</code></a>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
-<h2 id="python-collections-usage">Python collections usage</h2>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="19" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="57">
+<h3 id="python-collections-usage">Python collections usage</h3>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># The collections examples from the past few slides</span>
 a_list = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
 a_set = {<span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>, <span class="hljs-string">&quot;three&quot;</span>, <span class="hljs-string">&quot;four&quot;</span>, <span class="hljs-string">&quot;five&quot;</span>}
@@ -410,7 +416,7 @@ The inner loop iterates over each item in the sublist.</p>
 <span class="hljs-keyword">else</span>:
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The condition is False&quot;</span>)
 </code></pre>
-<p><a href="/materials/01-Introduction/03-python-background/09-if-statements.py">materials/01-Introduction/03-python-background/09-if-statements.py</a> can be used as a reference for basic <code>if</code> usage.</p>
+<p><a href="../../materials/01-Introduction/03-python-background/09-if-statements.py"><code>materials/01-Introduction/03-python-background/09-if-statements.py</code></a> can be used as a reference for basic <code>if</code> usage.</p>
 <ul>
 <li>Python doesn't use braces to define blocks of code. Instead it uses indentation.</li>
 <li>The <code>print</code> statements are indented to show that they are part of the <code>if</code> block (for example, &quot;The condition is True&quot; <code>print</code> will only be execute if <code>condition</code> is <code>True</code>).</li>
@@ -425,7 +431,7 @@ The inner loop iterates over each item in the sublist.</p>
     <span class="hljs-built_in">print</span>(value)
 </code></pre>
 <p>Again, the <code>print</code> statement is indented to show that it is part of the <code>for</code>.</p>
-<p><a href="/materials/01-Introduction/03-python-background/10-for-loops.py">materials/01-Introduction/03-python-background/10-for-loops.py</a> can be used as a reference for basic <code>for</code> usage.</p>
+<p><a href="../../materials/01-Introduction/03-python-background/10-for-loops.py"><code>materials/01-Introduction/03-python-background/10-for-loops.py</code></a> can be used as a reference for basic <code>for</code> usage.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="26" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="python-while">Python <code>while</code></h2>
@@ -435,10 +441,12 @@ The inner loop iterates over each item in the sublist.</p>
     <span class="hljs-built_in">print</span>(counter)
     counter += <span class="hljs-number">1</span>
 </code></pre>
-<p><a href="/materials/01-Introduction/03-python-background/11-while-loop.py">materials/01-Introduction/03-python-background/11-while-loop.py</a> can be used as a reference for basic <code>while</code> usage.</p>
+<p><a href="../../materials/01-Introduction/03-python-background/11-while-loop.py"><code>materials/01-Introduction/03-python-background/11-while-loop.py</code></a> can be used as a reference for basic <code>while</code> usage.</p>
+<blockquote>
 <p><strong>Note:</strong> The <code>counter += 1</code> line is shorthand for <code>counter = counter + 1</code>.<br />
 This sets the counter value to the current counter value plus 1. E.g.,<br />
 if the counter is 0, <code>counter += 1</code> will set the <code>counter</code> variable to 1.</p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="27" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="python-functions">Python functions</h2>
@@ -457,7 +465,7 @@ result = my_function(<span class="hljs-number">1</span>, <span class="hljs-numbe
     <span class="hljs-keyword">return</span> arg1 + arg2
 </code></pre>
 <p>We strongly recommend using typing hints in your functions. This improves code readability and helps catch errors.</p>
-<p><a href="/materials/01-Introduction/03-python-background/12-function.py">materials/01-Introduction/03-python-background/12-function.py</a> can be used as a reference for basic function usage.</p>
+<p><a href="../../materials/01-Introduction/03-python-background/12-function.py"><code>materials/01-Introduction/03-python-background/12-function.py</code></a> can be used as a reference for basic function usage.</p>
 <blockquote>
 <p>The examples in the slides, and much of the materials, don't use type hinting to save space. This is not recommended practice.</p>
 </blockquote>
@@ -486,7 +494,7 @@ result = my_function(<span class="hljs-number">1</span>, <span class="hljs-numbe
 <p>If <code>math_funcs.py</code> is in a directory, say &quot;math_dir&quot; we can use:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> math_dir.math_funcs <span class="hljs-keyword">import</span> add, subtract, multiply
 </code></pre>
-<p>A completed and extended example can be found at <a href="/materials/01-Introduction/03-python-background/13-importing-code.py">13-importing-code.py</a>.</p>
+<p>A completed and extended example can be found at <a href="../../materials/01-Introduction/03-python-background/13-importing-code.py"><code>13-importing-code.py</code></a>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="python-generators">Python Generators</h2>
@@ -525,7 +533,7 @@ Though each object of the class <code>Car</code> will have the same attributes a
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="33" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="basic-object-oriented-design-in-python">Basic object-oriented design in Python</h2>
-<p>Code for this example can be found at <a href="/materials/01-Introduction/03-python-background/14-basic-class-and-object.py">materials/01-Introduction/03-python-background/14-basic-class-and-object.py</a>.</p>
+<p>Code for this example can be found at <a href="../../materials/01-Introduction/03-python-background/14-basic-class-and-object.py"><code>materials/01-Introduction/03-python-background/14-basic-class-and-object.py</code></a>.</p>
 <p>Let's create a simple class with some object instantiations.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Animal</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, age</span>):
@@ -593,7 +601,7 @@ feed_animal(cat)
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="inheritance-example">Inheritance example</h2>
-<p>The code for this section can be found at <a href="/materials/01-Introduction/03-python-background/15-inheritance.py">materials/01-Introduction/03-python-background/15-inheritance.py</a></p>
+<p>The code for this section can be found at <a href="../../materials/01-Introduction/03-python-background/15-inheritance.py"><code>materials/01-Introduction/03-python-background/15-inheritance.py</code></a></p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Elephant</span>(<span class="hljs-title class_ inherited__">Animal</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, age, trunk_length</span>):
         <span class="hljs-comment"># Call the constructor of the parent class</span>
@@ -664,9 +672,9 @@ This means a function which expects a base class object can execute completely d
 <p>The <code>abc</code> module in Python provides the <code>ABC</code> class that can be inherited from to create an Abstract Base Class.<br />
 Methods do not have to be implemented in the Abstract Base Class, but they can be. This is useful for cases where you wish to enforce that a method is defined in the subclass.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="43" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="43" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="abstract-classes-example">Abstract Classes example</h2>
-<p>The code for this section can be found at <a href="/materials/01-Introduction/03-python-background/16-inheritance-with-abstract-base.py">materials/01-Introduction/03-python-background/16-inheritance-with-abstract-base.py</a></p>
+<p>The code for this section can be found at <a href="../..//materials/01-Introduction/03-python-background/16-inheritance-with-abstract-base.py"><code>materials/01-Introduction/03-python-background/16-inheritance-with-abstract-base.py</code></a></p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABC, abstractmethod
 
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">Animal</span>(<span class="hljs-title class_ inherited__">ABC</span>):
@@ -760,9 +768,9 @@ Modifying gem5 code directly can be difficult to maintain and can lead to<br />
 merge conflicts when updating to new versions of gem5.</p>
 <p>The following shows an example of of specializing a gem5 SimObject to create an abstract<br />
 L1 cache. This is then used as a base class for L1 instruction cache.</p>
-<p>The code for the following example can also be found at <a href="/materials/01-Introduction/03-python-background/17-inheriting-from-a-simobject.py">materials/01-Introduction/03-python-background/17-inheriting-from-a-simobject.py</a></p>
+<p>The code for the following example can also be found at <a href="../../materials/01-Introduction/03-python-background/17-inheriting-from-a-simobject.py"><code>materials/01-Introduction/03-python-background/17-inheriting-from-a-simobject.py</code></a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="49" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="57">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="49" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="57">
 <h2 id="a-simobject-oo-design-example-1">A SimObject OO Design example</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> m5.objects <span class="hljs-keyword">import</span> Cache
 <span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABC

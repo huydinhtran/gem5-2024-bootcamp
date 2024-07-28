@@ -17,7 +17,7 @@
 
 /* Add an image to the bottom center of the page */div#\:\$p>svg>foreignObject>section footer{position:fixed;left:0;right:0;bottom:60px;height:100px;margin-bottom:-80px}div#\:\$p>svg>foreignObject>section footer img{height:60px;display:block;margin:0 auto}
 
-/* For the page number */div#\:\$p>svg>foreignObject>section:after{right:-50px;bottom:-50px;font-size:80%}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#\:\$p>svg>foreignObject>section a{color:var(--gem5-gem5)}div#\:\$p>svg>foreignObject>section blockquote{position:relative;margin:calc(var(--marpit-root-font-size, 1rem) * 0.6) 0;padding:0 calc(var(--marpit-root-font-size, 1rem) * 1.2);border-left:4px solid var(--gem5-gem5);background-color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section blockquote a{color:var(--gem5-dark)}
+/* For the page number */div#\:\$p>svg>foreignObject>section:after{right:-50px;bottom:-55px;font-size:80%;color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#\:\$p>svg>foreignObject>section a{color:var(--gem5-gem5)}div#\:\$p>svg>foreignObject>section blockquote{position:relative;margin:calc(var(--marpit-root-font-size, 1rem) * 0.6) 0;padding:0 calc(var(--marpit-root-font-size, 1rem) * 1.2);border-left:4px solid var(--gem5-gem5);background-color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section blockquote a{color:var(--gem5-dark)}
 
 /****************************************************/
 /* For title page */
@@ -46,7 +46,9 @@
 /****************************************************/
 /* For title cards at the beginning of a section, e.g. Intro to ..., etc.
    Has a blue gradient. From Erin and Mysore
-*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2):before{border:none}
+*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* Remove the triangle */div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2):before{border:none}
 
 /****************************************************/
 /* For 5 column/full outline */div#\:\$p>svg>foreignObject>section.outline :is(h2,marp-h2){column-span:all}div#\:\$p>svg>foreignObject>section.outline{column-count:5;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3);line-height:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline ul{list-style-type:none;padding:0;margin:0;padding-bottom:10px}div#\:\$p>svg>foreignObject>section.outline li{margin:0;padding-bottom:5px}div#\:\$p>svg>foreignObject>section.outline ul ul{list-style-type:"- ";padding-left:20px}div#\:\$p>svg>foreignObject>section.outline ul ul ul{display:none}div#\:\$p>svg>foreignObject>section.outline :is(h3,marp-h3){break-before:column}
@@ -55,10 +57,14 @@
 /* For reducing size of code blocks */div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.33)}div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.5)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.48)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.6)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.65)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.7)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.8)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.8)}
 
 /****************************************************/
-/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff}
+/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff;font-size:var(--code-font-size)}
 
-/* Avoids setting font-size for <code> in headers */div#\:\$p>svg>foreignObject>section :not(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4)) code{font-size:var(--code-font-size)}div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}div#\:\$p>svg>foreignObject>section a:has(code){
-    /* Removes underlines from hyperlinks in code */text-decoration:none}
+/* Forces inherited height for code in headers */div#\:\$p>svg>foreignObject>section :is(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4),:is(h5,marp-h5),:is(h6,marp-h6)) code{font-size:inherit!important}
+
+/* Targets only inline code */div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}
+
+/* Targets hyperlinks that contain code */div#\:\$p>svg>foreignObject>section a:has(code){
+    /* Removes underlines */text-decoration:none}
 
 /*!
   Theme: Default
@@ -95,7 +101,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 
 /* Misc effects */div#\:\$p>svg>foreignObject>section .hljs-emphasis{font-style:italic}div#\:\$p>svg>foreignObject>section .hljs-strong{font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure>figcaption{position:absolute;border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content],div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#\:\$p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="title" data-theme="gem5" lang="en-US" class="title" data-marpit-pagination="1" style="--paginate:true;--class:title;--theme:gem5;" data-marpit-pagination-total="25">
 <h2 id="modeling-memory-in-gem5">Modeling Memory in gem5</h2>
-<p>DRAM and other memory devices, too!</p>
+<p>DRAM and other memory devices!</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="2" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="25">
 <h2 id="memory-system">Memory System</h2>
@@ -238,7 +244,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
     <span class="hljs-keyword">return</span> ChanneledMemory(DDR4_2400_8x8, <span class="hljs-number">1</span>, <span class="hljs-number">64</span>, size=size)
 </code></pre>
 <ul>
-<li>We see the DRAMInterface=DDR4_2400_8x8, the number of channels=1, interleaving_size=64, and the size.</li>
+<li>We see the <code>DRAMInterface=DDR4_2400_8x8</code>, the number of channels=1, interleaving_size=64, and the size.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="25">
@@ -302,23 +308,22 @@ Also as expected, the bandwidth is lower than the SimpleMemory (only about 75% u
 <ul>
 <li>Open <a href="../../materials/02-Using-gem5/06-memory/lpddr2.py"><code>materials/02-Using-gem5/06-memory/lpddr2.py</code></a></li>
 <li>If we wanted to add LPDDR2 as a new memory in the standard library, we first make sure there's a DRAM interface for it in the <a href="../../gem5/src/python/gem5/components/memory/dram_interfaces/lpddr2.py"><code>dram_interfaces</code> directory</a></li>
-<li>then we need to make sure we import it by adding</li>
+<li>Then we need to make sure we import it by adding the following to the top of your <code>lpddr2.py</code>:</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> gem5.components.memory.abstract_memory_system <span class="hljs-keyword">import</span> AbstractMemorySystem
 <span class="hljs-keyword">from</span> gem5.components.memory.dram_interfaces.lpddr2 <span class="hljs-keyword">import</span> LPDDR2_S4_1066_1x32
 <span class="hljs-keyword">from</span> gem5.components.memory.memory <span class="hljs-keyword">import</span> ChanneledMemory
 </code></pre>
-<p>to the top of your <code>lpddr2.py</code></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="25">
 <h2 id="adding-a-new-channeled-memory-1">Adding a new channeled memory</h2>
-<p>Then add the following to the body of <code>lpddr2.py</code></p>
+<p>Then add the following to the body of <code>lpddr2.py</code>:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">SingleChannelLPDDR2</span>(<span class="hljs-params">
     size: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">str</span>] = <span class="hljs-literal">None</span>,
 </span>) -&gt; AbstractMemorySystem:
     <span class="hljs-keyword">return</span> ChanneledMemory(LPDDR2_S4_1066_1x32, <span class="hljs-number">1</span>, <span class="hljs-number">64</span>, size=size)
 </code></pre>
-<p>then we import this new class to our script with</p>
+<p>Then we import this new class to our script with:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> lpddr2 <span class="hljs-keyword">import</span> SingleChannelLPDDR2
 </code></pre>
 <h3 id="lets-test-this-again">Let's test this again!</h3>
@@ -357,7 +362,7 @@ Also as expected, the bandwidth is lower than the SimpleMemory (only about 75% u
 <ul>
 <li>SimObject monitoring communication happening between two ports</li>
 <li>Does not have any effect on timing</li>
-<li><code>gem5/src/mem/CommMonitor.py</code></li>
+<li><a href="../../gem5/src/mem/CommMonitor.py"><code>gem5/src/mem/CommMonitor.py</code></a></li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="18" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="25">
@@ -378,14 +383,20 @@ Also as expected, the bandwidth is lower than the SimpleMemory (only about 75% u
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="25">
 <h2 id="commmonitor-3">CommMonitor</h2>
 <ul>
-<li>Remove the line <code>system.l1cache.mem_side = system.membus.cpu_side_ports</code></li>
-<li>Add the following block under the comment <code> # Insert CommMonitor here</code></li>
+<li>Remove the line:</li>
+</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">system.l1cache.mem_side = system.membus.cpu_side_ports
+</code></pre>
+<ul>
+<li>Add the following block under the comment <code># Insert CommMonitor here</code>:</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">system.comm_monitor = CommMonitor()
 system.comm_monitor.cpu_side_port = system.l1cache.mem_side
 system.comm_monitor.mem_side_port = system.membus.cpu_side_ports
 </code></pre>
-<p>Run</p>
+<ul>
+<li>Run:</li>
+</ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">gem5 comm_monitor.py
 </code></pre>
 </section>

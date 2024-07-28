@@ -17,7 +17,7 @@
 
 /* Add an image to the bottom center of the page */div#\:\$p>svg>foreignObject>section footer{position:fixed;left:0;right:0;bottom:60px;height:100px;margin-bottom:-80px}div#\:\$p>svg>foreignObject>section footer img{height:60px;display:block;margin:0 auto}
 
-/* For the page number */div#\:\$p>svg>foreignObject>section:after{right:-50px;bottom:-50px;font-size:80%}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#\:\$p>svg>foreignObject>section a{color:var(--gem5-gem5)}div#\:\$p>svg>foreignObject>section blockquote{position:relative;margin:calc(var(--marpit-root-font-size, 1rem) * 0.6) 0;padding:0 calc(var(--marpit-root-font-size, 1rem) * 1.2);border-left:4px solid var(--gem5-gem5);background-color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section blockquote a{color:var(--gem5-dark)}
+/* For the page number */div#\:\$p>svg>foreignObject>section:after{right:-50px;bottom:-55px;font-size:80%;color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#\:\$p>svg>foreignObject>section a{color:var(--gem5-gem5)}div#\:\$p>svg>foreignObject>section blockquote{position:relative;margin:calc(var(--marpit-root-font-size, 1rem) * 0.6) 0;padding:0 calc(var(--marpit-root-font-size, 1rem) * 1.2);border-left:4px solid var(--gem5-gem5);background-color:var(--gem5-light)}div#\:\$p>svg>foreignObject>section blockquote a{color:var(--gem5-dark)}
 
 /****************************************************/
 /* For title page */
@@ -46,7 +46,9 @@
 /****************************************************/
 /* For title cards at the beginning of a section, e.g. Intro to ..., etc.
    Has a blue gradient. From Erin and Mysore
-*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2):before{border:none}
+*/div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2){display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;font-size:calc(var(--marpit-root-font-size, 1rem) * 4);font-weight:bold;line-height:75px;background:linear-gradient(to right,rgb(67,124,205),rgb(69,214,202));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* Remove the triangle */div#\:\$p>svg>foreignObject>section.start :is(h2,marp-h2):before{border:none}
 
 /****************************************************/
 /* For 5 column/full outline */div#\:\$p>svg>foreignObject>section.outline :is(h2,marp-h2){column-span:all}div#\:\$p>svg>foreignObject>section.outline{column-count:5;font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3);line-height:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline{--marpit-root-font-size:calc(var(--marpit-root-font-size, 1rem) * 1.3)}div#\:\$p>svg>foreignObject>section.outline ul{list-style-type:none;padding:0;margin:0;padding-bottom:10px}div#\:\$p>svg>foreignObject>section.outline li{margin:0;padding-bottom:5px}div#\:\$p>svg>foreignObject>section.outline ul ul{list-style-type:"- ";padding-left:20px}div#\:\$p>svg>foreignObject>section.outline ul ul ul{display:none}div#\:\$p>svg>foreignObject>section.outline :is(h3,marp-h3){break-before:column}
@@ -55,10 +57,14 @@
 /* For reducing size of code blocks */div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.33)}div#\:\$p>svg>foreignObject>section.code-50-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.5)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.48)}div#\:\$p>svg>foreignObject>section.code-60-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.6)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.65)}div#\:\$p>svg>foreignObject>section.code-70-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.7)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre){line-height:calc(var(--code-line-height) * 0.8)}div#\:\$p>svg>foreignObject>section.code-80-percent :is(pre,marp-pre) code{font-size:calc(var(--code-font-size) * 0.8)}
 
 /****************************************************/
-/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff}
+/* For code block */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){padding:10px;border-radius:5px;line-height:var(--code-line-height);background-color:#ffffff;box-shadow:1px 2px 4px var(--gem5-gray)}div#\:\$p>svg>foreignObject>section code{font-family:"Roboto Mono",monospace;background-color:#ffffff;font-size:var(--code-font-size)}
 
-/* Avoids setting font-size for <code> in headers */div#\:\$p>svg>foreignObject>section :not(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4)) code{font-size:var(--code-font-size)}div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}div#\:\$p>svg>foreignObject>section a:has(code){
-    /* Removes underlines from hyperlinks in code */text-decoration:none}
+/* Forces inherited height for code in headers */div#\:\$p>svg>foreignObject>section :is(:is(h1,marp-h1),:is(h2,marp-h2),:is(h3,marp-h3),:is(h4,marp-h4),:is(h5,marp-h5),:is(h6,marp-h6)) code{font-size:inherit!important}
+
+/* Targets only inline code */div#\:\$p>svg>foreignObject>section :not(:is(pre,marp-pre))>code{font-size:calc(var(--code-font-size) * 0.9);padding:2px 6px;border:1px solid var(--gem5-gray);border-radius:5px}
+
+/* Targets hyperlinks that contain code */div#\:\$p>svg>foreignObject>section a:has(code){
+    /* Removes underlines */text-decoration:none}
 
 /*!
   Theme: Default
@@ -211,7 +217,7 @@ gem5 01-hello-example.py
 <span class="hljs-built_in">print</span>(getting_started_suite.get_input_groups())
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="17">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="12" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="17">
 <h2 id="running-a-workload-from-the-suite-single-code-block">Running a workload from the suite (single code block)</h2>
 <p>Let's run the NPB IS benchmark in this suite.</p>
 <p>First, we need to filter the suite to get this workload. We can do this by filtering to get all workloads that have the input tag <code>&quot;is&quot;</code>.</p>
