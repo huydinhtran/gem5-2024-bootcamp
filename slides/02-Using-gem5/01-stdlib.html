@@ -402,11 +402,7 @@ gem5/src/python/gem5/prebuilt
 <h2 id="more-on-processors">More on processors</h2>
 <ul>
 <li>Processors are made up of cores</li>
-<li>Cores have a &quot;BaseCPU&quot; as a member
-<ul>
-<li>This is the actual CPU model</li>
-</ul>
-</li>
+<li>Cores have a &quot;BaseCPU&quot; as a member. This is the actual CPU model</li>
 <li><code>Processor</code> is what interfaces with <code>CacheHierarchy</code> and <code>Board</code></li>
 <li>Processors are organized, structured, sets of cores, definining how they connect together and with outside components and the board though standard interface.</li>
 </ul>
@@ -454,31 +450,31 @@ Let's create more complex example, incorporating more features delivered by the 
 <p>In addition, we can acccess host resources such as files of liberies to dynamically link in.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="25" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-stdlib-imgs/fs-mode.png&quot;);background-size:25%;"><figcaption>FS mode</figcaption></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="25" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="content">
-<h4 id="fs-mode">FS mode</h4>
+<h2 id="fs-mode">FS mode</h2>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="25" style="" data-marpit-pagination-total="51" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="26" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-stdlib-imgs/se-mode.png&quot;);background-size:45%;"><figcaption>SE mode</figcaption></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="26" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="content">
-<h4 id="se-mode">SE mode</h4>
+<h2 id="se-mode">SE mode</h2>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="26" style="" data-marpit-pagination-total="51" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="27" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h4 id="fs-and-se-mode-common-pitfalls">FS and SE mode: Common pitfalls</h4>
+<h2 id="fs-and-se-mode-common-pitfalls">FS and SE mode: Common pitfalls</h2>
 <ul>
-<li><strong>Don't treat SE mode as &quot;FS  but faster&quot;</strong>: You must understand what you're simulating and whether it'll impact results.</li>
-<li><strong>Syscalls not being implement is 'you probelm'</strong>: We'd love thave all the syscalls implement but it's too much work. We try to over the majory of use-cases but we can't cover everything. If a Syscall is missing, you can implement it yourself or use FS mode.</li>
-<li><strong>Sorry, binaries with elevated privilages will never work in SE mode</strong>: If you're running a binary that requires elevated privilages, you'll need to run it FS mode. There's no way around this.</li>
+<li><strong>Don't treat SE mode as &quot;FS  but faster&quot;</strong>: You must understand what you're simulating and whether it will impact results.</li>
+<li><strong>Not all syscalls will ever be implemented</strong>: We'd love to have all the syscalls implement but Linux changes rapidly. We try to cover common use-cases but we can't cover everything. If a Syscall is missing, you can implement it, ignore it, or use FS mode.</li>
+<li><strong>Binaries with elevated privileges do not work in SE mode</strong>: If you're running a binary that requires elevated privileges, you'll need to run it FS mode.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h4 id="se-mode-if-in-doubt-use-fs-mode">SE mode: If in doubt, use FS mode</h4>
-<p>FS ode does everything SE mod does (and more!) but much slower due having simulate the OS.</p>
-<p>However as SE mode doesn't simulate the OS, you risk missing important events triggered via syscalls which may mean your simulated system doesn't properly reflect the real system.</p>
+<h2 id="se-mode-if-in-doubt-use-fs-mode">SE mode: If in doubt, use FS mode</h2>
+<p>FS mode does everything SE mod does (and more!) but can take longer to get to the region of interest. You have to wait for the OS to boot each time (unless you <a href="08-accelerating-simulation.md">accelerate the simulation</a>).</p>
+<p>However, as SE mode doesn't simulate the OS, you risk missing important events triggered via syscalls, I/O, or the operating system, which may mean your simulated system doesn't properly reflect the real system.</p>
 <p><strong>Think through what SE mode is doing and if it's right for your use-case.</strong> If in doubt, use FS mode. It's (generally) not worth the risk using SE mode if you're not sure.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="29" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h3 id="how-to-specify-fs-mode-using-the-standard-library">How to specify FS mode using the standard library</h3>
+<h2 id="how-to-specify-fs-mode-using-the-standard-library">How to specify FS mode using the standard library</h2>
 <p>Go to <a href="../../materials/02-Using-gem5/01-stdlib/01-02-fs-mode.py"><code>materials/02-Using-gem5/01-stdlib/01-02-fs-mode.py</code></a> and and work on this example.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<p>The following is provided for you:</p>
+<h2 id="template-code-imports">Template code (imports)</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> gem5.components.boards.x86_board <span class="hljs-keyword">import</span> X86Board
 <span class="hljs-keyword">from</span> gem5.components.cachehierarchies.ruby.mesi_two_level_cache_hierarchy <span class="hljs-keyword">import</span> (
     MESITwoLevelCacheHierarchy,
@@ -495,6 +491,8 @@ Let's create more complex example, incorporating more features delivered by the 
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="31" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
+<h2 id="more-template-code">More template code</h2>
+<p>This adds a two-level cache hierarchy and a memory system.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">cache_hierarchy = MESITwoLevelCacheHierarchy(
     l1d_size=<span class="hljs-string">&quot;16kB&quot;</span>,
     l1d_assoc=<span class="hljs-number">8</span>,
@@ -510,7 +508,7 @@ memory = SingleChannelDDR3_1600(size=<span class="hljs-string">&quot;3GB&quot;</
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="32" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="lets-add-a-simpleswitchableprocessor">Let's add a SimpleSwitchableProcessor</h2>
-<p>Here we setup the processor. This is a special switchable processor in which a starting core type and a switch core type must be specified. Once a configuration is instantiated a user may call <code>processor.switch()</code> to switchfrom the starting core types to the switch core types. In this simulation we start with Timing cores to simulate the OS boot, then switch to the Out-of-order (O3) cores for the command we wish to run after boot.</p>
+<p>Here we setup the processor. This is a special switchable processor in which a starting core type and a switch core type must be specified. Once a configuration is instantiated a user may call <code>processor.switch()</code> to switch from the starting core types to the switch core types. In this simulation we start with Timing cores to simulate the OS boot, then switch to the Out-of-order (O3) cores for the command we wish to run after boot.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">processor = SimpleSwitchableProcessor(
     starting_core_type=CPUTypes.TIMING,
     switch_core_type=CPUTypes.O3,
@@ -520,8 +518,9 @@ memory = SingleChannelDDR3_1600(size=<span class="hljs-string">&quot;3GB&quot;</
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="33" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># Here we setup the board. The X86Board allows for Full-System X86 simulations.</span>
-board = X86Board(
+<h2 id="next-plug-components-into-the-board-1">Next, plug components into the board</h2>
+<p>Here we setup the board. The X86Board allows for Full-System X86 simulations.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board = X86Board(
     clk_freq=<span class="hljs-string">&quot;3GHz&quot;</span>,
     processor=processor,
     memory=memory,
@@ -530,17 +529,11 @@ board = X86Board(
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="34" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># Here we set the Full System workload.</span>
-<span class="hljs-comment"># The `set_kernel_disk_workload` function for the X86Board takes a kernel, a</span>
-<span class="hljs-comment"># disk image, and, optionally, a command to run.</span>
-
-<span class="hljs-comment"># This is the command to run after the system has booted. The first `m5 exit`</span>
-<span class="hljs-comment"># will stop the simulation so we can switch the CPU cores from KVM to timing</span>
-<span class="hljs-comment"># and continue the simulation to run the echo command, sleep for a second,</span>
-<span class="hljs-comment"># then, again, call `m5 exit` to terminate the simulation. After simulation</span>
-<span class="hljs-comment"># has ended you may inspect `m5out/system.pc.com_1.device` to see the echo</span>
-<span class="hljs-comment"># output.</span>
-command = (
+<h2 id="what-to-do-when-linux-boots">What to do when Linux boots</h2>
+<p>Here we set the Full System workload.<br />
+The <code>set_kernel_disk_workload</code> function for the X86Board takes a kernel, a disk image, and, optionally, a command to run.</p>
+<p>This is the command to run after the system has booted. The first <code>m5 exit</code> will stop the simulation so we can switch the CPU cores from KVM to timing and continue the simulation to run the echo command, sleep for a second, then, again, call <code>m5 exit</code> to terminate the simulation. After simulation has ended you may inspect <code>m5out/system.pc.com_1.device</code> to see the echo output.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">command = (
     <span class="hljs-string">&quot;m5 exit;&quot;</span>
     + <span class="hljs-string">&quot;echo &#x27;This is running on O3 CPU cores.&#x27;;&quot;</span>
     + <span class="hljs-string">&quot;sleep 1;&quot;</span>
@@ -549,10 +542,10 @@ command = (
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="35" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># This a slightly more convoluted way of specifying a workload.</span>
-<span class="hljs-comment"># Here we specifying the kernel, disk image, and the command to run after</span>
-<span class="hljs-comment"># booting the system.</span>
-board.set_kernel_disk_workload(
+<h2 id="setting-the-workload">Setting the workload</h2>
+<p>This a slightly more convoluted way of specifying a workload.<br />
+Here we specifying the kernel, disk image, and the command to run after booting the system.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board.set_kernel_disk_workload(
     kernel=obtain_resource(<span class="hljs-string">&quot;x86-linux-kernel-4.4.186&quot;</span>),
     disk_image=obtain_resource(<span class="hljs-string">&quot;x86-ubuntu-18.04-img&quot;</span>),
     readfile_contents=command,
@@ -560,15 +553,10 @@ board.set_kernel_disk_workload(
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="36" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># Here we setup the simulator. We pass the board to the simulator and run it</span>
-<span class="hljs-comment"># but also specify what to do when the simulation exits with the `EXIT` exit</span>
-<span class="hljs-comment"># event. In this case we call the `processor.switch` function on the first</span>
-<span class="hljs-comment"># exit event. For the 2nd the default action will be triggered which exists</span>
-<span class="hljs-comment"># the simulator.</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># Warning: This is using a generator expression to create a tuple of functions</span>
-<span class="hljs-comment"># to call.</span>
-simulator = Simulator(
+<h2 id="create-the-simulator-object">Create the simulator object</h2>
+<p>Here we setup the simulator. We pass the board to the simulator and run it but also specify what to do when the simulation exits with the <code>EXIT</code> exit event. In this case we call the <code>processor.switch</code> function on the first exit event. For the 2nd the default action will be triggered which exists the simulator.</p>
+<p>Warning: This is using a generator expression to create a tuple of functions to call.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">simulator = Simulator(
     board=board,
     on_exit_event={ExitEvent.EXIT: (func() <span class="hljs-keyword">for</span> func <span class="hljs-keyword">in</span> [processor.switch])},
 )
@@ -577,8 +565,8 @@ simulator.run()
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="37" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h3 id="what-does-this-do">What does this do?</h3>
-<p>An equivalent to this would be run the folliwing commands:</p>
+<h2 id="what-does-the-exit-event-generator-do">What does the exit event generator do?</h2>
+<p>An equivalent to this would be run the following commands:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">simulator = Simulator(board=board)
 
 simulator.run()
@@ -586,10 +574,12 @@ processor.switch()
 simulator.run()
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-stdlib-imgs/simulation-loop.png&quot;);background-size:90%;"><figcaption>Simulation Loop</figcaption></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="content"></section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-stdlib-imgs/simulation-loop.png&quot;);background-size:90%;"><figcaption>Simulation Loop</figcaption></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="content">
+<h2 id="the-simulation-loop">The simulation loop</h2>
+</section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="" data-marpit-pagination-total="51" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="39" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h3 id="exit-events">Exit Events</h3>
-<p>Going back to what we implementeed:</p>
+<h2 id="exit-events">Exit Events</h2>
+<p>Going back to what we implemented:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">simulator = Simulator(
     board=board,
     on_exit_event={ExitEvent.EXIT: (func() <span class="hljs-keyword">for</span> func <span class="hljs-keyword">in</span> [processor.switch])},
@@ -597,11 +587,11 @@ simulator.run()
 
 simulator.run()
 </code></pre>
-<p>We passed tupes to specify exactly what to do on each exit event type via Python generators generator expression. In this case the generator yields <code>processor.switch</code> which is called when the exit event <code>ExitEvent.EXIT</code> is triggered.<br />
-When the 2nd is triggered the default action is triggered as there is nothing left to yield. The default action is to exit the simulation loop</p>
+<p>We passed objects to specify exactly what to do on each exit event type via Python generators generator expression. In this case the generator yields <code>processor.switch</code> which is called when the exit event <code>ExitEvent.EXIT</code> is triggered.<br />
+When the 2nd exit is triggered the default action is triggered as there is nothing left to yield. The default action is to exit the simulation loop</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="40" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h4 id="exit-event-types">Exit event types</h4>
+<h2 id="exit-event-types">Exit event types</h2>
 <ul>
 <li>ExitEvent.EXIT</li>
 <li>ExitEvent.CHECKPOINT</li>
@@ -627,7 +617,7 @@ When the 2nd is triggered the default action is triggered as there is nothing le
 <p>We'll see more about this in <a href="08-accelerating-simulation.md">Accelerating Simulation</a>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="42" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h3 id="simulator-parameters">Simulator parameters</h3>
+<h2 id="simulator-parameters">Simulator parameters</h2>
 <ul>
 <li><strong><code>board</code></strong>: The <code>Board</code> to simulate (required)</li>
 <li><strong><code>full_system</code></strong>: Whether to simulate a full system (default: <code>False</code>, can be infered from the board, not needed specified in most cases)</li>
@@ -706,7 +696,7 @@ And <a href="../../gem5/src/cpu/o3/BaseO3CPU.py"><code>src/cpu/o3/BaseO3CPU.py</
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="48" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h2 id="now-the-muoutoforderprocessor">Now the <code>MuOutOfOrderProcessor</code></h2>
+<h2 id="now-the-myoutoforderprocessor">Now the <code>MyOutOfOrderProcessor</code></h2>
 <p>The <code>BaseCPUProcessor</code> assumes a list of cores that are <code>BaseCPUCores</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyOutOfOrderProcessor</span>(<span class="hljs-title class_ inherited__">BaseCPUProcessor</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, width, rob_size, num_int_regs, num_fp_regs</span>):
@@ -740,8 +730,7 @@ board.processor.cores.core.ipc               1.055705
 <h3 id="host-seconds-1709-vs-4339">Host seconds: <code>17.09</code> vs <code>43.39</code></h3>
 <p>O3 CPU takes more than 2x longer to simulate. More fidelity costs more time.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-class="start" data-theme="gem5" lang="en-US" class="start" data-marpit-pagination="51" style="--paginate:true;--class:start;--theme:gem5;" data-marpit-pagination-total="51">
-<h1 id="-5"></h1>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="51" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="summary">Summary</h2>
 <ul>
 <li>gem5's standard library is a set of components that can be used to build a simulation that does the majority of the work for you.</li>
