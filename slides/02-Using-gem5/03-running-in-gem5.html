@@ -631,7 +631,7 @@ board.redirect_paths = [RedirectPath(app_path=<span class="hljs-string">f&quot;/
 <h3 id="06-traffic-gen">06-traffic-gen</h3>
 <h3 id="lets-run-an-example-on-how-to-use-the-traffic-generator">Let's run an example on how to use the traffic generator</h3>
 <p>Open the following file.<br />
-<a href="../../materials/02-Using-gem5/03-running-in-gem5/06-traffic-gen/simple-traffic-generators.py">materials/02-Using-gem5/03-running-in-gem5/06-traffic-gen/simple-traffic-generators.py</a></p>
+<a href="../../materials/02-Using-gem5/03-running-in-gem5/06-traffic-gen/simple-traffic-generators.py"><code>materials/02-Using-gem5/03-running-in-gem5/06-traffic-gen/simple-traffic-generators.py</code></a></p>
 <p>Steps:</p>
 <ol>
 <li>Run with a Linear Traffic Generator.</li>
@@ -641,7 +641,7 @@ board.redirect_paths = [RedirectPath(app_path=<span class="hljs-string">f&quot;/
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-class="two-col" data-theme="gem5" lang="en-US" class="two-col" data-marpit-pagination="41" style="--paginate:true;--class:two-col;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="06-traffic-gen-lineargenerator-looking-at-the-code">06-traffic-gen: LinearGenerator: Looking at the Code</h2>
 <p>Go to this section of the code on the right.</p>
-<p>Right now, we have set up a board with a Private L1 Shared L2 Cache Hierarchy (go <a href="../../materials/02-Using-gem5/03-running-in-gem5/06-traffic-gen/components/cache_hierarchy.py">here</a> to see how it's constructed), and a Single Channel memory system.</p>
+<p>Right now, we have set up a board with a Private L1 Shared L2 Cache Hierarchy (go to <a href="../../materials/02-Using-gem5/03-running-in-gem5/06-traffic-gen/components/cache_hierarchy.py"><code>materials/02-Using-gem5/03-running-in-gem5/06-traffic-gen/components/cache_hierarchy.py</code></a> to see how it's constructed), and a Single Channel memory system.</p>
 <p>Add a traffic generator right below<br />
 <code>memory = SingleChannelDDR3_1600()</code> with the following lines.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">generator = LinearGenerator(num_cores=<span class="hljs-number">1</span>, rate=<span class="hljs-string">&quot;1GB/s&quot;</span>)
@@ -726,7 +726,8 @@ simple-traffic-generators.py
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="47" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="detailed-look-on-some-components">Detailed Look on Some Components</h2>
 <ul>
-<li>Looking at <code>AbstractGenerator.__init__</code>, you'll see that this class takes a list of <code>AbstractGeneratorCore</code> as the input. Example classes that inherit from <code>AbstractGenerator</code> are <code>LinearGenerator</code> and <code>RandomGenerator</code>.</li>
+<li>You can find all generator related standard library components under <a href="https://github.com/gem5/gem5/tree/stable/src/python/gem5/components/processors"><code>src/python/gem5/components/processors</code></a>.</li>
+<li>Looking at <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/components/processors/abstract_generator.py#L53"><code>AbstractGenerator.__init__</code></a>, you'll see that this class takes a list of <code>AbstractGeneratorCore</code> as the input. Example classes that inherit from <code>AbstractGenerator</code> are <code>LinearGenerator</code> and <code>RandomGenerator</code>.</li>
 <li>We will look at classes that extend <code>AbstractGeneratorCore</code> that will will create <strong>synthetic traffic</strong> by using a <code>SimObject</code> called <code>PyTrafficGen</code>, for more information you can look at <code>src/cpu/testers/traffic_gen</code>.</li>
 <li><code>LinearGenerator</code> can have multiple <code>LinearGeneratorCores</code> and <code>RandomGenerator</code> can have multiple <code>RandomGeneratorCores</code>.</li>
 </ul>
@@ -743,10 +744,9 @@ simple-traffic-generators.py
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="49" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="06-traffic-gen-hybridgenerator-a-quick-side-note-about-lineargeneratorcores">06-traffic-gen: HybridGenerator: A Quick Side Note about LinearGeneratorCores</h2>
 <p><code>LinearGeneratorCores</code> simulate linear traffic.</p>
-<p>When we have multiple <code>LinearGeneratorCores</code>, we should not configure each one to have the same <code>min_addr</code> and <code>max_addr</code>.</p>
-<p>If we do that, each one will start simulating memory accesses at the same <code>min_addr</code> and go up to the same <code>max_addr</code>. They will be accessing the same addresses at the same time.</p>
-<p>We want <code>LinearGeneratorCore</code> to simulate accesses to different areas of memory.</p>
-<p>Therefore, we have to split up memory into equal-sized chunks and configure each <code>LinearGeneratorCore</code> to simulate accesses to one of these chunks.</p>
+<p>When we have multiple <code>LinearGeneratorCores</code>, if we configure each one to have the same <code>min_addr</code> and <code>max_addr</code>, each one will start simulating memory accesses at the same <code>min_addr</code> and go up to the same <code>max_addr</code>. They will be accessing the same addresses at the same time.</p>
+<p>We want <code>LinearGeneratorCore</code> to simulate a more reasonable accesses pattern.</p>
+<p>Therefore, we will have each <code>LinearGeneratorCore</code> simulate accesses to a different chunk of memory. To do this, we will have to split up memory into equal-sized chunks and configure each <code>LinearGeneratorCore</code> to simulate accesses to one of these chunks.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="50" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="06-traffic-gen-hybridgenerator-a-quick-side-note-about-lineargeneratorcores-cont">06-traffic-gen: HybridGenerator: A Quick Side Note about LinearGeneratorCores Cont.</h2>
@@ -837,7 +837,7 @@ simple-traffic-generators.py
 <p>Add the following lines under the comment labeled <code>(1)</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">core_list = []
 
-num_linear_cores = biggest_power_of_two_smaller_than(num_cores)
+num_linear_cores = get_num_linear_cores(num_cores)
 num_random_cores = num_cores - num_linear_cores
 </code></pre>
 </section>
