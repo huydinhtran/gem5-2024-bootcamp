@@ -608,10 +608,10 @@ When the 2nd exit is triggered the default action is triggered as there is nothi
 <h2 id="key-idea-the-simulator-object-controls-simulation">Key idea: The <code>Simulator</code> object controls simulation</h2>
 <p>To place our idea of gem5:</p>
 <ul>
-<li>*models (or <em>SimObjects</em>) are the fine-grained objects that are conencted together in Pyton scripts to form a simulation.</li>
-<li><em>components</em> are the coarse-grained objects that are connected defined as a set of configured models in Python scripts to form and delivered as part of the Stanard Libraryu</li>
-<li>The standard libary allows users to specify a board and specify the properties of the board by specify the components that are connected to it.</li>
-<li>The Simulator takes a board and lauches the simulation and gives an api which allows for control of the simulation: specifying the simulation stopping and restarting conditon; replacing components &quot;on the fly&quot;; defining when the simulation is stop and start; etc.</li>
+<li>*models (or <em>SimObjects</em>) are the fine-grained objects that are connected together in Python scripts to form a simulation.</li>
+<li><em>components</em> are the coarse-grained objects that are connected defined as a set of configured models in Python scripts to form and delivered as part of the Standard Library</li>
+<li>The standard library allows users to specify a board and specify the properties of the board by specify the components that are connected to it.</li>
+<li>The Simulator takes a board and launches the simulation and gives an api which allows for control of the simulation: specifying the simulation stopping and restarting condition; replacing components &quot;on the fly&quot;; defining when the simulation is stop and start; etc.</li>
 </ul>
 <p>See <a href="../../gem5/src/python/gem5/simulate/simulator.py"><code>src/python/gem5/simulate/simulator.py</code></a> for the Simulator source.</p>
 <p>We'll see more about this in <a href="08-accelerating-simulation.md">Accelerating Simulation</a>.</p>
@@ -620,7 +620,7 @@ When the 2nd exit is triggered the default action is triggered as there is nothi
 <h2 id="simulator-parameters">Simulator parameters</h2>
 <ul>
 <li><strong><code>board</code></strong>: The <code>Board</code> to simulate (required)</li>
-<li><strong><code>full_system</code></strong>: Whether to simulate a full system (default: <code>False</code>, can be infered from the board, not needed specified in most cases)</li>
+<li><strong><code>full_system</code></strong>: Whether to simulate a full system (default: <code>False</code>, can be inferred from the board, not needed specified in most cases)</li>
 <li><strong><code>on_exit_event</code></strong>: A complex data structure that allows you to control the simulation. The simulator exits for many reasons, this allows you to customize what happens. We just saw any example</li>
 <li><strong><code>checkpoint_path</code></strong>: If we're restoring from a checkpoint, this is the path to the checkpoint. More on checkpoints later.</li>
 <li><strong><code>id</code></strong>: An optional name for this simulation. Used in multisim. More on this in the future.</li>
