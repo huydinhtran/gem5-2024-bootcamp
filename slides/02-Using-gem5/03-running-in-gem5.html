@@ -762,9 +762,9 @@ simple-traffic-generators.py
 <p>For example, if <code>min_addr</code> = 0, <code>max_addr</code> = 9, and <code>num_partitions</code> = 3, then <code>partition_range</code> would return &lt;0,3&gt;, &lt;3,6&gt;, &lt;6,9&gt;.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="52" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
-<h2 id="06-traffic-gen-hybridgenerator-a-quick-reminder-about-randomgenerator">06-traffic-gen: HybridGenerator: A quick reminder about RandomGenerator</h2>
-<p>We also have to consider the <code>RandomGenerators</code>.</p>
-<p>It would be reasonable to assume that we should partition them like the <code>LinearGenerators</code>, but this is not the case.</p>
+<h2 id="06-traffic-gen-hybridgenerator-a-quick-reminder-about-randomgeneratorcores">06-traffic-gen: HybridGenerator: A quick reminder about RandomGeneratorCores</h2>
+<p>We also have to consider the <code>RandomGeneratorCores</code>.</p>
+<p>It would be reasonable to assume that we should partition them like the <code>LinearGeneratorCores</code>, but this is not the case.</p>
 <p>Even if each <code>RandomGeneratorCore</code> has the same <code>min_addr</code> and <code>max_addr</code>, since each one simulates a random memory access, each one will be simulating accesses to different (random) memory addresses.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="53" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="71">
