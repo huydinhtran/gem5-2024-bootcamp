@@ -145,29 +145,21 @@ As gem5 is open source these contributions are public and are therefore a good w
 <p>That's understandable.</p>
 <p>However, please keep the following in mind:</p>
 <ol>
-<li>
-<p><em>Everyone</em>, even the most experienced gem5 devs, have had their changes rejected.<br />
+<li><em>Everyone</em>, even the most experienced gem5 devs, have had their changes rejected.<br />
 There will always exist a pull-request on the gem5 GitHub so the changes are never &quot;gone&quot;.<br />
 The reasons for rejection are not personal, but are often concerns about how it will affect users or long term maintainability.<br />
-If a change would be a lot of time to implement, try contacting the community to see if it'd be welcome before starting.</p>
-</li>
-<li>
-<p>The gem5 devs are nice people and are not trying to be mean.<br />
+If a change would be a lot of time to implement, try contacting the community to see if it'd be welcome before starting.</li>
+<li>The gem5 devs are nice people and are not trying to be mean.<br />
 We have to critique code contributed but we try our best to ensure it's constructive. Where possible we'll suggest how address our concerns.<br />
-Again, nothing is personal.</p>
-</li>
+Again, nothing is personal.</li>
 </ol>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
 <ol start="3">
-<li>
-<p>Very very few changes of any magnitude are accepted without some back and forth requests.<br />
-Everyone who's worked on gem5 long enough has changes that needed 5 or 6 iterations before they were accepted. It shouldn't be feared or seen as a bad thing.</p>
-</li>
-<li>
-<p>No one fully understands the gem5 codebase.<br />
-There are parts of gem5 no one understands. It's ok to feel you don't understand the codebase completely, but it's not a reason to not contribute to the parts you do.</p>
-</li>
+<li>Very very few changes of any magnitude are accepted without some back and forth requests.<br />
+Everyone who's worked on gem5 long enough has changes that needed 5 or 6 iterations before they were accepted. It shouldn't be feared or seen as a bad thing.</li>
+<li>No one fully understands the gem5 codebase.<br />
+There are parts of gem5 no one understands. It's ok to feel you don't understand the codebase completely, but it's not a reason to not contribute to the parts you do.</li>
 </ol>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
@@ -179,19 +171,11 @@ Bug fixes are obviously welcome, but so are new features, improvements to existi
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
 <h2 id="what-cant-i-contribute">What can't I contribute?</h2>
 <ol>
-<li>
-<p><em>Anything that'll be a burden for the community to maintain</em> : If you've developed something complex that would be seen to require significant updates as gem5 chances, it's unlikely to be accepted.<br />
-A large part of avoiding or fixing changes to get around this regards testing.</p>
-</li>
-<li>
-<p><em>Something for which we can't validate correctness, now or in the future</em> : If you've developed something that's hard to test, or that we can't easily validate is correct, it's unlikely to be accepted. We can't just read the code and always understand that it's functional. <strong>To avoid this provide tests with your changes</strong> (more of this later).</p>
-</li>
-<li>
-<p><em>Features that are overly niche and lack general applicability to the typical gem5 user</em> : If it's something you and only one or two other people will use, it's unlikely to be accepted. In these cases it's probably better to maintain a fork of gem5 with your changes.</p>
-</li>
-<li>
-<p><em>It doesn't conform our standards</em> :  (typically style guidelines) the code is fine, it works, but you need to make some changes to make it conform to our style guidelines. This is a common reason for changes to be rejected, but it's also one of the easiest to fix.</p>
-</li>
+<li><em>Anything that'll be a burden for the community to maintain</em>: If you've developed something complex that would be seen to require significant updates as gem5 changes, it's unlikely to be accepted.<br />
+A large part of avoiding or fixing changes to get around this regards testing.</li>
+<li><em>Something for which we can't validate correctness, now or in the future</em>: If you've developed something that's hard to test, or that we can't easily validate is correct, it's unlikely to be accepted. We can't just read the code and always understand that it's functional. <strong>To avoid this provide tests with your changes</strong> (more of this later).</li>
+<li><em>Features that are overly niche and lack general applicability to the typical gem5 user</em>: If it's something you and only one or two other people will use, it's unlikely to be accepted. In these cases it's probably better to maintain a fork of gem5 with your changes.</li>
+<li><em>It doesn't conform our standards</em>:  (typically style guidelines) the code is fine, it works, but you need to make some changes to make it conform to our style guidelines. This is a common reason for changes to be rejected, but it's also one of the easiest to fix.</li>
 </ol>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
@@ -201,11 +185,11 @@ A large part of avoiding or fixing changes to get around this regards testing.</
 <p>When you've finished implementing changes in your forked repo, you can submit a PR to request that changes from your forked repo be merged into the original.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="11" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="lets-get-started-forking-the-repo-1">Let's get started: Forking the repo</h2>
 <p>You can go to the gem5 GitHub page and click the &quot;Fork&quot; button to create a fork of the gem5 repo.</p>
 <p><img src="01-contributing-img/gem5-fork.png" alt="right:40%" /></p>
 <p><strong>Uncheck &quot;Copy the stable branch only&quot;</strong>. We don't use the stable branch for development, so you'll want to fork the <code>develop</code> branch.</p>
-<p>Once done, you can clone and alter this repository as you would any other.<br />
-You can clone it locally:</p>
+<p>You can clone it locally:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-shell">git clone https://github.com/your-username/gem5.git
 </code></pre>
 </section>
@@ -225,57 +209,46 @@ git branch -c develop new-branch.
 <p><strong>Note</strong>: name your new branches something descriptive of the changes you're making.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="your-forked-repo-some-tips-and-good-housekeeping-1">Your forked repo: Some tips and good housekeeping</h2>
 <ul>
-<li>
-<p>Never make changes on the <code>stable</code> branch, make them on the <code>develop</code> branch.<br />
-In gem5, developers' changes are only merged into the <code>develop</code> branch. The <code>develop</code> branch is periodically merged into the <code>stable</code> branch to create a new gem5 release.</p>
-</li>
-<li>
-<p>Keep your forked repo's <code>stable</code> and <code>develop</code> branches up to date with the main gem5 repo.<br />
-There are multiple ways to do this.</p>
-<ol>
-<li>Via the web interface: Go to your forked repo on GitHub go to the <code>stable</code> or <code>develop</code> branch and click the &quot;Fetch upstream&quot; button &quot;sync fork&quot; (note: you have to do this for each branch). Then pull the changes into your local repo with <code>git pull origin stable</code> and/or <code>git pull origin develop</code>.</li>
-</ol>
-</li>
+<li>Never make changes on the <code>stable</code> branch, make them on the <code>develop</code> branch.<br />
+In gem5, developers' changes are only merged into the <code>develop</code> branch. The <code>develop</code> branch is periodically merged into the <code>stable</code> branch to create a new gem5 release.</li>
+<li>Keep your forked repo's <code>stable</code> and <code>develop</code> branches up to date with the main gem5 repo.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<ol start="2">
-<li>
-<p>Use the GitHub CLI: <code>gh repo sync {username}/gem5 -b develop &amp;&amp; gh repo sync {username}/gem5 -b stable</code> will sync your forked repo (on GitHub) with the main gem5 repo.<br />
-You can then pull the changes into your local repo with <code>git switch stable &amp;&amp; git pull &amp;&amp; git switch develop &amp;&amp; git pull</code>.<br />
-<strong>Note</strong>: We will not cover this in this tutorial.<br />
-The GitHub CLI is a powerful tool but requires a bit setup.<br />
-You can find out more about it here: (<a href="https://cli.github.com/">https://cli.github.com/</a>)</p>
-</li>
-<li>
-<p>Through the git tool in your local repo by fetching the (the main gem5 repo) and merge the upstream into your local repo.</p>
-</li>
+<h2 id="keeping-your-repo-up-to-date">Keeping your repo up to date</h2>
+<p>There are multiple ways to do this.</p>
+<ol>
+<li>Via the web interface: Go to your forked repo on GitHub go to the <code>stable</code> or <code>develop</code> branch and click the &quot;Fetch upstream&quot; button &quot;sync fork&quot; (note: you have to do this for each branch). Then pull the changes into your local repo with <code>git pull origin stable</code> and/or <code>git pull origin develop</code>.</li>
+<li>Use the GitHub CLI: <code>gh repo sync {username}/gem5 -b develop &amp;&amp; gh repo sync {username}/gem5 -b stable</code> will sync your forked repo (on GitHub) with the main gem5 repo.<br />
+You can then pull the changes into your local repo with <code>git switch stable &amp;&amp; git pull &amp;&amp; git switch develop &amp;&amp; git pull</code>.</li>
 </ol>
+<blockquote>
+<p><strong>Note</strong>: We will not cover this in this tutorial. See (<a href="https://cli.github.com/">https://cli.github.com/</a>)</p>
+</blockquote>
+<ol start="3">
+<li>Through the git tool in your local repo by fetching the (the main gem5 repo) and merge the upstream into your local repo.</li>
+</ol>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="syncing-your-local-repo">Syncing your local repo</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-shell">git remote -v
 </code></pre>
 <p>Typically you'll have an <code>origin</code> which is your GitHub repo you pulled this from.<br />
 GitHub will also add a remote called <code>upstream</code>, for forked repos, which is the main gem5 repo.<br />
 We'll keep with this naming convention, but please be aware these &quot;remotes&quot; can be named anything.</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
 <p>If you need to add the upstream you can do with</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-shell">git remote add upstream https://github.com/gem5/gem5.git
 </code></pre>
 <p>Then you can fetch the changes from the main gem5 repo with:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git fetch upstream
-
-<span class="hljs-comment"># Go to your stable branch and merge the</span>
-<span class="hljs-comment"># changes into your local repo.</span>
-git switch stable
-git merge upstream/stable
-
-<span class="hljs-comment"># Go to your develop branch and do the same.</span>
 git switch develop
 git merge upstream/develop
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="16" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="more-syncing-your-local-repo">More syncing your local repo</h2>
 <p>You can then push this update to your repo on GitHub with:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-shell">git switch stable
 git push origin stable
@@ -284,8 +257,14 @@ git push origin develop
 </code></pre>
 <p><strong>Please note:</strong> To push to your GitHub you'll need to authenticate yourself on the system you're using.<br />
 There's a few ways to do this and may be dependent on how you've setup your GitHub account. We won't cover this here, but you can find out more here: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github</a>. Pushing in this tutorial isn't important. You can figure this out in your own time.</p>
+<blockquote>
+<p><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork">More on github's help page</a></p>
+</blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="17" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-class="start" data-theme="gem5" lang="en-US" class="start" data-marpit-pagination="17" style="--paginate:true;--class:start;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="making-changes-and-submitting">Making changes and submitting</h2>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
 <h2 id="making-changes-and-submitting-them-basic-flow">Making changes and submitting them (basic flow)</h2>
 <p>Let's ignore style guidelines, etc. for now and focus on the basic flow of making changes and submitting them.</p>
 <ol>
@@ -295,7 +274,8 @@ There's a few ways to do this and may be dependent on how you've setup your GitH
 git switch -c my-change
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="making-changes-and-submitting-them-basic-flow-1">Making changes and submitting them (basic flow)</h2>
 <ol start="2">
 <li>Make your changes. If it's a big change, break it up over multiple commits.</li>
 </ol>
@@ -310,7 +290,8 @@ git commit -m &quot;misc: Adding goodbye to hello.txt&quot;
 <p>Please, for now, include <code>misc:</code> in your commit messages.<br />
 This will be explained later.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="making-changes-and-submitting-them-basic-flow-2">Making changes and submitting them (basic flow)</h2>
 <ol start="3">
 <li>Push your changes to your forked repo on GitHub.<br />
 The first time you'll likely need to set the upstream branch with:</li>
@@ -321,33 +302,32 @@ The first time you'll likely need to set the upstream branch with:</li>
 <p><strong>Note</strong>: It's unfortunate &quot;upstream&quot; is used in two different contexts here. In this case upstream is your GitHub based repo: it is what is immediately &quot;upstream&quot; to this your local repo. However the upstream in <code>git remote -v</code> is the main gem5 repo. In this case it's what's &quot;upstream&quot; from origin.<br />
 There's a chain of upstreams: your local repo contributes upstream to your GitHub repo which, via a pull request, contributes upstream to the main gem5 repo.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-contributing-img/create-pr.png&quot;);background-size:30%;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="content">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-contributing-img/create-pr.png&quot;);background-size:30%;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="content">
+<h2 id="making-changes-and-submitting-them-basic-flow-3">Making changes and submitting them (basic flow)</h2>
 <ol start="4">
 <li>Create a pull request. Look for the contribute button in the GitHub repo for your fork of gem5.</li>
 </ol>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="20" style="" data-marpit-pagination-total="41" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-contributing-img/pr-create-screen.png&quot;);background-size:70%;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="content">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="" data-marpit-pagination-total="41" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-contributing-img/pr-create-screen.png&quot;);background-size:70%;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41" data-marpit-advanced-background="content">
+<h2 id="making-changes-and-submitting-them-basic-flow-4">Making changes and submitting them (basic flow)</h2>
+
 <p><strong>Note</strong>: By default the PR will try to create a request to merge into the gem5 <code>stable</code> branch.<br />
 Make sure you select the <code>develop</code> branch instead.</p>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="" data-marpit-pagination-total="41" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="22" style="" data-marpit-pagination-total="41" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="23" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
 <h2 id="the-pr-review-process-and-making-updates">The PR review process and making updates</h2>
 <p>Once you've submitted a PR, the gem5 devs will review it.<br />
-You can see PRs currently under review at <a href="https://github.com/gem5/gem5/pull">https://github.com/gem5/gem5/pull</a>.</p>
+You can see PRs currently under review at <a href="https://github.com/gem5/gem5/pulls">https://github.com/gem5/gem5/pulls</a>.</p>
 <p>There are two things that must happen before the PR is merged into the <code>develop</code> branch:</p>
 <ol>
-<li>
-<p>The PR must pass the Continuous Integration (CI) tests.<br />
-These are run automatically by GitHub when you submit a PR.</p>
-</li>
-<li>
-<p>Reviewers must approve the PR.</p>
-</li>
+<li>The PR must pass the Continuous Integration (CI) tests.<br />
+These are run automatically by GitHub when you submit a PR.</li>
+<li>Reviewers must approve the PR.</li>
 </ol>
 <p>When both these conditions have been met, a member of the gem5 maintainer team will merge the PR into the <code>develop</code> branch. The gem5 maintainer therefore has the final say on whether a PR is merged.</p>
 <p>If the CI tests fail or a reviewer requests changes before approval you'll need to make updates to the PR.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="23" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="24" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
 <h2 id="updating-the-pr">Updating the PR</h2>
 <p>In Github, all you need to do is update the branch you've submitted the PR from on Github.<br />
 (i.e., the branch from your forked repo).</p>
@@ -364,8 +344,8 @@ git commit -m &quot;misc: Adding bla to hello.txt&quot;
 git push origin my-change
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="24" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<h3 id="rebase">Rebase</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="25" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="rebasing-when-gem5-is-updated">Rebasing when gem5 is updated</h2>
 <p>You can <em>rebase</em> your branch to make changes to existing commits in it.<br />
 This is useful if you need to change a commit message or change the order of commits, change contents of commits, merge commits, or delete commits.</p>
 <p>It is very powerful but can be dangerous if you're not sure what you're doing.</p>
@@ -378,7 +358,8 @@ pick e4f5g6h misc: Adding goodbye to hello.txt
 pick a1b2c3d misc: Adding bla to hello.txt
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="25" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="26" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="rebasing">Rebasing</h2>
 <p>Using this you can reorder commits:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-shell">pick i7j8k9l misc: Adding hello.txt
 pick a1b2c3d misc: Adding bla to hello.txt
@@ -393,7 +374,8 @@ pick a1b2c3d misc: Adding bla to hello.txt
 reword a1b2c3d misc: Adding bla to hello.txt
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="26" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="27" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="rebasing-1">Rebasing</h2>
 <p>Tag a commit to be edited (this allows the commit to be changed in the same way as when you're making a commit):</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-shell">edit i7j8k9l misc: Adding hello.txt
 reword a1b2c3d misc: Adding bla to hello.txt
@@ -407,7 +389,7 @@ If you're not sure what you're doing, it's best to avoid rebasing and just add c
 Generally though, using <code>fixup</code> and <code>squash</code> are safe, as is <code>reword</code>.<br />
 Difficulties arise when moving, deleting, or editing commits.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="27" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
 <h2 id="the-gem5-projects-contribution-requirements">The gem5 project's contribution requirements</h2>
 <p>The following are basic requirements for a PR to be accepted:</p>
 <ul>
@@ -417,8 +399,8 @@ Difficulties arise when moving, deleting, or editing commits.</p>
 <li>Commit messages contain a Change-Id.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<h3 id="pre-commit"><code>pre-commit</code></h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="29" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="using-pre-commit">Using <code>pre-commit</code></h2>
 <p>Fortunately there's a tool which can help with <em>most</em> of this: Python <code>pre-commit</code>.<br />
 <code>pre-commit</code> is a tool that runs a series of checks on your code before you commit it.<br />
 It checks for code style and formatting issues, and runs some other basic checks in your local repo, allowing you to catch problems before you submit a PR.</p>
@@ -434,15 +416,15 @@ It checks for code style and formatting issues, and runs some other basic checks
 <p>For the case of CPP formatting, <code>pre-commit</code> runs some limited checks but these are not all inclusive.<br />
 For now CPP formatting is a manual process.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="29" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<h4 id="installing-pre-commit">Installing pre-commit</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="installing-pre-commit">Installing pre-commit</h2>
 <p><code>pre-commit</code> triggers a series of checks when <code>git commit</code> is run. It is a git hook which is executed before the commit is made.</p>
 <p>To install <code>pre-commit</code> execute the following:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-shell">./util/pre-commit-install.sh
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<h3 id="running-pre-commit">Running pre-commit</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="31" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="running-pre-commit">Running pre-commit</h2>
 <p>Try doing the following and see how it works.</p>
 <ol>
 <li>Add some random white space at the end of lines in a Python file. <code>git add &lt;file&gt; &amp;&amp; git commit -m &quot;misc: Adding white space&quot;</code>.<br />
@@ -452,8 +434,8 @@ Use <code>git log</code> to observe the addition of a <code>Change-Id</code> to 
 <li>Add a commit without <code>misc:</code> and see <code>pre-commit</code> fail : <code>echo &quot;hello&quot; &gt;&gt;hello.txt &amp;&amp; git add hello.txt &amp;&amp; git commit -m &quot;hello&quot;</code>.</li>
 </ol>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="31" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<h3 id="formatting-a-commit-message">Formatting a commit message</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="32" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="formatting-a-commit-message">Formatting a commit message</h2>
 <p>A commit message should be in the following format to avoid complaint by <code>pre-commit</code> and our CI system:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-txt">test,base: A header no greater than 65 chars inc. tags
 
@@ -467,7 +449,8 @@ A short description of the change. The valid tags are found in the
 Issue: https://github.com/gem5/gem5/issues/123
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="32" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="33" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="formatting-a-commit-message-1">Formatting a commit message</h2>
 <p>A description may spawn multiple paragraphs if desired. It can be useful to add metadata about the change at the end. In particular, a link to the Issue it addresses is helpful.</p>
 <p><strong>Important</strong>:</p>
 <ol>
@@ -482,16 +465,16 @@ Issue: https://github.com/gem5/gem5/issues/123
 <li>A link to the issue the change addresses.</li>
 </ol>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="33" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<h3 id="style-guide">Style Guide</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="34" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="gem5s-code-style-guide">gem5's Code Style Guide</h2>
 <p>For Python we simply recommend whatever <code>pre-commit</code> suggests and formats your code to.<br />
 It uses the Black formatter which is a widely used Python formatter.</p>
 <p>For CPP, only part of the style guide is enforced by <code>pre-commit</code>.<br />
 The full style guide can be found here: <a href="https://www.gem5.org/documentation/general_docs/development/coding_style">https://www.gem5.org/documentation/general_docs/development/coding_style</a></p>
 <p>Despite the formality of the style guide we advise <strong>conforming to the style of the code you're working on</strong>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="34" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<h3 id="high-level-cpp-style-guide-points">High level CPP style guide points</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="35" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="high-level-cpp-style-guide-points">High level CPP style guide points</h2>
 <p><strong>Lines, indentation, and braces</strong>:</p>
 <ul>
 <li>Lines must be no longer than 79 characters.</li>
@@ -506,7 +489,8 @@ The full style guide can be found here: <a href="https://www.gem5.org/documentat
 <li>Access specifiers (<code>public</code>, <code>private</code> in classes) should be on their own line and indented by 2.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="35" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="36" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="code-style-example">Code style example</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ExampleClass</span>
 {
   <span class="hljs-keyword">public</span>:
@@ -518,15 +502,14 @@ The full style guide can be found here: <a href="https://www.gem5.org/documentat
         <span class="hljs-keyword">if</span> (condition) {
            <span class="hljs-keyword">this</span>-&gt;exampleVar = <span class="hljs-number">5</span>;
         } <span class="hljs-keyword">else</span> {
-           <span class="hljs-keyword">if</span> (another_condition)
-               <span class="hljs-keyword">this</span>-&gt;exampleVar;
+           <span class="hljs-keyword">if</span> (another_condition) <span class="hljs-keyword">this</span>-&gt;exampleVar;
         }
     }
 };
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="36" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<p><strong>Spacing</strong>:</p>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="37" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="spacing">Spacing</h2>
 <ul>
 <li>One space between keywords (if, for, while, etc.) and opening parentheses</li>
 <li>One space around binary operators (+, -, &lt;, &gt;, etc.) including assignment operators (=, +=, etc.)</li>
@@ -535,8 +518,8 @@ The full style guide can be found here: <a href="https://www.gem5.org/documentat
 <li>No space immediately inside parentheses, except for very complex expressions. Complex expressions are preferentially broken into multiple simpler expressions using temporary variables.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="37" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<p><strong>Naming</strong>:</p>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="naming">Naming</h2>
 <ul>
 <li>Class and Type names are CamelCase starting with a capital letter (e.g., <code>MyClass</code>).</li>
 <li>Class member variables are camelCase starting with a lowercase letter (e.g. <code>classVar</code>).</li>
@@ -547,7 +530,8 @@ The full style guide can be found here: <a href="https://www.gem5.org/documentat
 This includes function arguments (e.g., <code>myFunction(int arg_one, int arg_two)</code>).</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="39" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="another-code-example">Another code example</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FooBarCPU</span>
 {
   <span class="hljs-keyword">private</span>:
@@ -566,14 +550,13 @@ This includes function arguments (e.g., <code>myFunction(int arg_one, int arg_tw
 };
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="39" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<p>For <code>include</code> statements we split them into blocks, each separated by a blank line.<br />
-Each block is ordered alphabetically.</p>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-class="code-60-percent" data-theme="gem5" lang="en-US" class="code-60-percent" data-marpit-pagination="40" style="--paginate:true;--class:code-60-percent;--theme:gem5;" data-marpit-pagination-total="41">
+<h2 id="include-blocks">Include blocks</h2>
+<p>For <code>include</code> statements we split them into blocks, each separated by a blank line. Each block is ordered alphabetically.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-comment">// Include Python.h first if you need it.</span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;Python.h&gt;</span></span>
 
-<span class="hljs-comment">// Include your main header file before any other non-Python</span>
-<span class="hljs-comment">// headers (i.e., the one with the same name as your cc source file)</span>
+<span class="hljs-comment">// Include your main header file before any other non-Python headers</span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;main_header.hh&quot;</span></span>
 
 <span class="hljs-comment">// C includes in sorted order</span>
@@ -582,13 +565,9 @@ Each block is ordered alphabetically.</p>
 
 <span class="hljs-comment">// C++ includes</span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cerrno&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span>
-</code></pre>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="40" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="41">
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-comment">// Shared headers living in include/.</span>
+
+<span class="hljs-comment">// Shared headers living in include/.</span>
 <span class="hljs-comment">// These are used both in the simulator and utilities such as the m5 tool.</span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;gem5/asm/generic/m5ops.h&gt;</span></span>
 
