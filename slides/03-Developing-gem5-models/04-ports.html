@@ -240,7 +240,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <p>A <code>ClockedObject</code> is a child class of <code>SimObject</code> that provides facilities for managing time in <code>cycles</code>. Every <code>ClockedObject</code> has a <code>clk_domain</code> parameter that defines its clock frequency. Using the <code>clk_domain</code>, the <code>ClockedObject</code> provides functionalities like below:</p>
 <ul>
 <li><code>clockEdge(Cycles n)</code>: A function that returns the time of the <code>nth</code> clock edge into the future.</li>
-<li><code>nextCycle()</code>: A function that return the time of first clock edge into the future, i.e. <code>nextCycle() := clockEdge(Cycles(1))</code>.</li>
+<li><code>nextCycle()</code>: A function that returns the time of first clock edge into the future, i.e. <code>nextCycle() := clockEdge(Cycles(1))</code>.</li>
 </ul>
 <p>This class is defined in <a href="../../gem5/src/sim/clocked_object.hh"><code>gem5/src/sim/clocked_object.hh</code></a> as shown below:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ClockedObject</span> : <span class="hljs-keyword">public</span> SimObject, <span class="hljs-keyword">public</span> Clocked
@@ -833,7 +833,7 @@ InspectorGadget::MemSidePort::<span class="hljs-built_in">sendPacket</span>(Pack
 <span class="hljs-title">InspectorGadget::processNextReqSendEvent</span><span class="hljs-params">()</span>
 </span>{
     <span class="hljs-built_in">panic_if</span>(memSidePort.<span class="hljs-built_in">blocked</span>(), <span class="hljs-string">&quot;Should never try to send if blocked!&quot;</span>);
-    <span class="hljs-built_in">panic_if</span>(!outputBuffer.<span class="hljs-built_in">hasReady</span>(<span class="hljs-built_in">curTick</span>()), <span class="hljs-string">&quot;Should never try to send if no ready packets!&quot;</span>);
+    <span class="hljs-built_in">panic_if</span>(!inspectionBuffer.<span class="hljs-built_in">hasReady</span>(<span class="hljs-built_in">curTick</span>()), <span class="hljs-string">&quot;Should never try to send if no ready packets!&quot;</span>);
 
     PacketPtr pkt = inspectionBuffer.<span class="hljs-built_in">front</span>();
     memSidePort.<span class="hljs-built_in">sendPacket</span>(pkt);
