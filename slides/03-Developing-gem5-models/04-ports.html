@@ -275,7 +275,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <p>Now, inside <code>InspectorGadget.py</code>, let's define <code>InspectorGadget</code> as a <code>ClockedObject</code>. To do that, we need to import <code>ClockedObject</code>. Do it by adding the following line to <code>InspectorGadget.py</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> m5.objects.ClockedObject <span class="hljs-keyword">import</span> ClockedObject
 </code></pre>
-<p>The remaining part of the declaration is for now similar to that of <code>HelloSimObject</code> in <a href="01-sim-objects-intro.md">Introduction to SimOjbects</a>. Do that part on your own. When you are done, you can find my version of the code in the next slide.</p>
+<p>The remaining part of the declaration is for now similar to that of <code>HelloSimObject</code> in <a href="01-sim-objects-intro.md">Introduction to SimObjects</a>. Do that part on your own. When you are done, you can find my version of the code in the next slide.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="inspectorgadget-simobject-declaration-file-so-far">InspectorGadget: SimObject Declaration File So Far</h2>
@@ -295,7 +295,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <p>Our next step is to define a <code>RequestPort</code> and a <code>ResponsePort</code> for <code>InspectorGadget</code>. To do this add the following import line to <code>InspectorGadget.py</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> m5.params <span class="hljs-keyword">import</span> *
 </code></pre>
-<p><strong>NOTE</strong>: My personal preference in python is to import modules very explicitly. However, when importing <code>m5.params</code>, I think it's ok to do import <code>*</code>. This is mainly because, when I'm creating <code>SimObjects</code>, I might need different kinds of parameters that I might not know about in advance.</p>
+<p><strong>NOTE</strong>: My personal preference in Python is to import modules very explicitly. However, when importing <code>m5.params</code>, I think it's ok to do import <code>*</code>. This is mainly because, when I'm creating <code>SimObjects</code>, I might need different kinds of parameters that I might not know about in advance.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="inspectorgadget-adding-ports">InspectorGadget: Adding Ports</h2>
@@ -303,7 +303,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <p><strong>Question</strong>: What type should <code>cpu_side_port</code> and <code>mem_side_port</code> be?</p>
 <p>Before looking at the answer, try to answer the question for yourself.</p>
 <p><strong>Answer</strong>: <code>cpu_side_port</code> should be a <code>ResponsePort</code> and <code>mem_side_port</code> should be a <code>RequestPort</code>.</p>
-<p>Make sure this answer makes sense to you, before moving on to the next slide.</p>
+<p>Make sure this answer makes sense to you before moving on to the next slide.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-class="no-logo" data-theme="gem5" lang="en-US" class="no-logo" data-marpit-pagination="21" style="--paginate:true;--class:no-logo;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="inspectorgadget-adding-ports-cont">InspectorGadget: Adding Ports cont.</h2>
@@ -311,7 +311,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">cpu_side_port = ResponsePort(<span class="hljs-string">&quot;ResponsePort to receive requests from CPU side.&quot;</span>)
 mem_side_port = RequestPort(<span class="hljs-string">&quot;RequestPort to send received requests to memory side.&quot;</span>)
 </code></pre>
-<p>To buffer traffic, we need two FIFOs: one for <code>requests</code> (from <code>cpu_side_port</code> to <code>mem_side_port</code>) and one for <code>responses</code> (from <code>mem_side_port</code> to <code>cpu_side_port</code>). For the the FIFO in the <code>request</code> path, we know that in the future we want to <em>inspect</em> the requests. Therefore, let's call it <code>inspectionBuffer</code>; we need a parameter to determine the the number of entries in this buffer so let's call that parameter <code>inspection_buffer_entries</code>. For the <code>response</code> path, we will simply call the buffer <code>response_buffer</code> and add a parameter for its entries named <code>response_buffer_entries</code>. Do it by adding the following lines under the declaration of <code>InspectorGadget</code>:</p>
+<p>To buffer traffic, we need two FIFOs: one for <code>requests</code> (from <code>cpu_side_port</code> to <code>mem_side_port</code>) and one for <code>responses</code> (from <code>mem_side_port</code> to <code>cpu_side_port</code>). For the the FIFO in the <code>request</code> path, we know that in the future we want to <em>inspect</em> the requests. Therefore, let's call it <code>inspectionBuffer</code>. We also need a parameter to determine the the number of entries in this buffer so let's call that parameter <code>inspection_buffer_entries</code>. For the <code>response</code> path, we will simply call the buffer <code>response_buffer</code> and add a parameter for its entries named <code>response_buffer_entries</code>. Do it by adding the following lines under the declaration of <code>InspectorGadget</code>:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">inspection_buffer_entries = Param.Int(<span class="hljs-string">&quot;Number of entries in the inspection buffer.&quot;</span>)
 response_buffer_entries = Param.Int(<span class="hljs-string">&quot;Number of entries in the response buffer.&quot;</span>)
 </code></pre>
@@ -414,7 +414,7 @@ DebugFlag(<span class="hljs-string">&quot;InspectorGadget&quot;</span>)
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="extending-ports">Extending Ports</h2>
-<p>Recall, <code>RequestPort</code> and <code>ResponsePort</code> classes were abstract classes, i.e. they had <code>pure virtual</code> functions which means objects can not be instantiated from that class. Therefore, for us to use <code>Ports</code> we need to extend the classes and implement their <code>pure virtual</code> functions.</p>
+<p>Recall, <code>RequestPort</code> and <code>ResponsePort</code> classes were abstract classes, i.e. they had <code>pure virtual</code> functions which means objects cannot be instantiated from that class. Therefore, for us to use <code>Ports</code> we need to extend the classes and implement their <code>pure virtual</code> functions.</p>
 <p>Before anything, let's go ahead and import the header file that contains the declaration for <code>Port</code> classes. We also need to include <a href="../../gem5/src/mem/packet.hh"><code>mem/packet.hh</code></a> since we will be dealing with and moving around <code>Packets</code> a lot. Do it by adding the following lines to <code>inspector_gadget.hh</code>:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mem/packet.hh&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mem/port.hh&quot;</span></span>
@@ -534,7 +534,7 @@ DebugFlag(<span class="hljs-string">&quot;InspectorGadget&quot;</span>)
 <h2 id="simobjectgetport-cont">SimObject::getPort cont.</h2>
 <p>This function is used for connecting ports to each other. As far as we are concerned, we need to create a mapping between our <code>Port</code> objects in C++ and the <code>Ports</code> that we declare in Python. To the best of my knowledge, we will never have to call this function on our own.</p>
 <p>For now, let's implement this function to return a <code>Port&amp;</code> when we recognize <code>if_name</code> (which would be the name that we gave to a <code>Port</code> in Python) and, otherwise, we will pass this up to the parent class <code>ClockedObject</code> to handle the function call.</p>
-<p>Let's go ahead an add the declaration for this function to <code>inspector_gadget.hh</code>.</p>
+<p>Let's go ahead and add the declaration for this function to <code>inspector_gadget.hh</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp">  <span class="hljs-keyword">public</span>:
     <span class="hljs-function"><span class="hljs-keyword">virtual</span> Port&amp; <span class="hljs-title">getPort</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string&amp; if_name, PortID idxInvalidPortID)</span></span>;
 </code></pre>
@@ -564,7 +564,7 @@ DebugFlag(<span class="hljs-string">&quot;InspectorGadget&quot;</span>)
     }
 }
 </code></pre>
-<p>If you remember, <code>getPort</code> needs to create a mapping between <code>Port</code> objects in Python and <code>Port</code> objects in C++. In this function when <code>if_name == &quot;cpu_side_port&quot;</code> we will retrun <code>cpuSidePort</code> (the name comes from the Python declaration, look at <code>InspectorGadget.py</code>) . We do the same thing to map <code>&quot;mem_side_port&quot;</code> to our instance <code>memSidePort</code>. For now, you don't have to worry about <code>idx</code>. We will talk about it later in the context of <code>VectorPorts</code> – ports that can connect to multiple peers.</p>
+<p>If you remember, <code>getPort</code> needs to create a mapping between <code>Port</code> objects in Python and <code>Port</code> objects in C++. In this function when <code>if_name == &quot;cpu_side_port&quot;</code> we will return <code>cpuSidePort</code> (the name comes from the Python declaration, look at <code>InspectorGadget.py</code>) . We do the same thing to map <code>&quot;mem_side_port&quot;</code> to our instance <code>memSidePort</code>. For now, you don't have to worry about <code>idx</code>. We will talk about it later in the context of <code>VectorPorts</code> – ports that can connect to multiple peers.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="defining-functions-from-cpusideport">Defining Functions from CPUSidePort</h2>
@@ -650,7 +650,7 @@ InspectorGadget::CPUSidePort::<span class="hljs-built_in">recvTimingReq</span>(P
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-class="no-logo" data-theme="gem5" lang="en-US" class="no-logo" data-marpit-pagination="43" style="--paginate:true;--class:no-logo;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="timedqueue">TimedQueue</h2>
-<p>As we mentioned, in this first step, all <code>InspectorGadget</code> does is buffer the traffic, forwarding <code>requests</code> and <code>responses</code>. To do that, let's create a &quot;first in first out&quot; (FIFO) structure for <code>inspectionBuffer</code> and <code>responseBuffer</code>. We will wrap <code>std::queue</code> to expose the following functionalities, the purpose of this structure is impose a minimum latency between the times when items are pushed to the queue and when they can be accessed. We will add a member variable called <code>latency</code> to make this delay configurable.</p>
+<p>As we mentioned, in this first step, all <code>InspectorGadget</code> does is buffer the traffic, forwarding <code>requests</code> and <code>responses</code>. To do that, let's create a &quot;first in first out&quot; (FIFO) structure for <code>inspectionBuffer</code> and <code>responseBuffer</code>. The purpose of this structure is impose a minimum latency between the times when items are pushed to the queue and when they can be accessed. We will add a member variable called <code>latency</code> to make this delay configurable. We will wrap <code>std::queue</code> to expose the following functionalities.</p>
 <p>1: Method <code>front</code> that will return a reference to the oldest item in the queue, similar to <code>std::queue</code>.<br />
 2: Method <code>pop</code> that will remove the oldest item in the queue, similar to <code>std::queue</code>.<br />
 3: Method <code>push</code> that will add a new item to the queue as well as tracking the simulation time the item was inserted. This is useful for ensuring a minimum amount of time has passed before making it ready to be accessed, modeling the latency.<br />
@@ -718,7 +718,7 @@ InspectorGadget::CPUSidePort::<span class="hljs-built_in">recvTimingReq</span>(P
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-class="code-60-percent" data-theme="gem5" lang="en-US" class="code-60-percent" data-marpit-pagination="46" style="--paginate:true;--class:code-60-percent;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="lets-get-the-easy-ones-out-the-way">Let's Get the Easy Ones Out the Way</h2>
-<p>Between the four functions, <code>getAddrRanges</code> and <code>recvFunctional</code> are the most straight-forward to define. We just need to call the same functions from <code>memSidePort</code>. To define these two functions, add the following code under <code>namespace gem5</code> in <code>inspector_gadget.cc</code>:</p>
+<p>Between the four functions, <code>getAddrRanges</code> and <code>recvFunctional</code> are the most straightforward to define. We just need to call the same functions from <code>memSidePort</code>. To define these two functions, add the following code under <code>namespace gem5</code> in <code>inspector_gadget.cc</code>:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-function">AddrRangeList
 <span class="hljs-title">InspectorGadget::getAddrRanges</span><span class="hljs-params">()</span> <span class="hljs-type">const</span>
 </span>{
@@ -764,7 +764,7 @@ InspectorGadget::CPUSidePort::<span class="hljs-built_in">recvTimingReq</span>(P
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="49" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="were-not-done-yet">We're Not Done Yet!</h2>
-<p>So far, we have managed to program the movement of <code>Packets</code> from <code>cpuSidePort</code> into <code>inspectionBuffer</code>. Now, what we need to send the <code>Packets</code> that are inside <code>inspectionBuffer</code> to <code>memSidePort</code>.</p>
+<p>So far, we have managed to program the movement of <code>Packets</code> from <code>cpuSidePort</code> into <code>inspectionBuffer</code>. Now, we need to send the <code>Packets</code> that are inside <code>inspectionBuffer</code> to <code>memSidePort</code>.</p>
 <p>One would ask, why not call <code>memSidePort.sendTimingReq</code> inside <code>InspectorGadget::recvTimingReq</code>? The answer is because we want to impose a latency on the movement of the <code>Packet</code> through <code>inspectionBuffer</code>. Think about how the real hardware would work. If the <code>Packet</code> is available on <code>cpuSidePort</code> on the rising edge of the clock, it would go inside <code>inspectionBuffer</code> by the falling edge of the clock, i.e. time will pass. Now, assuming that <code>Packet</code> is at the front of <code>inspectionBuffer</code>, it will be available on the rising edge of the next clock cycle. If you remember, we use <code>events</code> to make things happen in the future by defining callback functions.</p>
 <p>Now, let's go ahead and declare an <code>EventFunctionWrapper</code> for picking the <code>Packet</code> at the front of <code>inspectionBuffer</code> and sending it through <code>memSidePort</code>.</p>
 </section>

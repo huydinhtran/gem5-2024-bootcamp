@@ -110,24 +110,24 @@ scons build/NULL/gem5.opt -j$(<span class="hljs-built_in">nproc</span>)
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="3" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="50">
-<h2 id="some-basics-on-gem5s-build-system">Some Basics on gem5's build system</h2>
-<p>gem5's build system is <em>complicated</em></p>
+<h2 id="some-basics-on-gem5s-build-system">Some basics on gem5's build system</h2>
+<p>gem5's build system is <em>complicated</em>.</p>
 <p>As we'll see in the coming sections, gem5 has a number of domain-specific languages and source-to-source compilers.</p>
 <p>This means two things:</p>
 <ol>
-<li>It's not always obvious what the final code is going to look like</li>
-<li>Setting up the gem5 is build has many, many options.</li>
+<li>It's not always obvious what the final code is going to look like.</li>
+<li>There are many, many options for setting up the gem5 build.</li>
 </ol>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="4" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="50">
 <h2 id="configuring-the-gem5-build">Configuring the gem5 build</h2>
 <p>As we've seen, there are multiple ways to configure the gem5 build and this results in different binaries.</p>
-<p>There are to categories of options:</p>
+<p>There are two categories of options:</p>
 <ol>
 <li>Build-time configuration (e.g., what models to include in the binary)</li>
 <li>Compiler configuration (e.g., optimizations, debug flags, etc.)</li>
 </ol>
-<p>If you forget any of this</p>
+<p>If you forget any of this,</p>
 <blockquote>
 <p><code>scons --help</code> will explain the targets and Kconfig tools.</p>
 </blockquote>
@@ -139,19 +139,19 @@ scons build/NULL/gem5.opt -j$(<span class="hljs-built_in">nproc</span>)
 <li><code>fast</code>: All optimizations, no debug symbols, most assertions are disabled.
 <ul>
 <li>Use this only after you have fully debugged your models.</li>
-<li>Significant speedup over <code>opt</code> because the binary is smaller (~50 MiB)</li>
+<li>Significant speedup over <code>opt</code> because the binary is smaller (~50 MiB).</li>
 </ul>
 </li>
 <li><code>opt</code>: Optimized build with debug symbols and all panics, assertions, etc. enabled.
 <ul>
-<li>This is the most common build target, but it's very large (~500 MiB)</li>
-<li>Can use this with <code>gdb</code> but sometimes it will say &quot;that variable is optimized away&quot;</li>
+<li>This is the most common build target, but it's very large (~500 MiB).</li>
+<li>Can use this with <code>gdb</code> but sometimes it will say &quot;that variable is optimized away&quot;.</li>
 </ul>
 </li>
 <li><code>debug</code>: Minimal optimizations (<code>-O1</code>) and all debug symbols.
 <ul>
 <li>Use this when you need to debug the gem5 code itself and <code>opt</code> doesn't work for you.</li>
-<li><em>Much, much</em> slower than <code>opt</code> (order 5-10x slower)</li>
+<li><em>Much, much</em> slower than <code>opt</code> (order 5-10x slower).</li>
 </ul>
 </li>
 </ul>
@@ -162,7 +162,7 @@ scons build/NULL/gem5.opt -j$(<span class="hljs-built_in">nproc</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="50">
 <h2 id="build-time-configuration">Build-time configuration</h2>
 <p>There are many options for configuring the gem5 build.</p>
-<p>Two ways to do this</p>
+<p>Two ways to do this:</p>
 <ol>
 <li>Use the defaults found in <code>gem5/build_opts</code></li>
 <li>Configure with <code>Kconfig</code> (the same tool the Linux kernel uses)</li>
@@ -189,7 +189,7 @@ Note: This directory can have any name and live <em>anywhere</em> on your system
 <p>Common practice is to create a directory called <code>build</code> in the gem5 source directory and to use a default from <code>build_opts</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">scons defconfig build/my_gem5/ build_opts/ALL
 </code></pre>
-<p>In this case, we are using <code>build/m5_gem5</code> as the build directory and <code>build_opts/ALL</code> as the default configuration.</p>
+<p>In this case, we are using <code>build/my_gem5</code> as the build directory and <code>build_opts/ALL</code> as the default configuration.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="50">
 <h2 id="using-kconfig-cont">Using Kconfig (cont.)</h2>
@@ -213,7 +213,7 @@ You may want to use fewer cores if you're doing other things on your system.</p>
 <h2 id="gem5s-scons-build-system">gem5's Scons build system</h2>
 <p>There are two main types of files used to set up gem5's build:</p>
 <ul>
-<li><code>SConsctruct</code>: Contains definitions of types of build targets.
+<li><code>SConstruct</code>: Contains definitions of types of build targets.
 <ul>
 <li>All of the <code>SConstruct</code> files are executed first.</li>
 <li>Some code is also in <code>gem5/build_tools</code></li>
@@ -334,7 +334,7 @@ Add the following line to <code>HelloSimObject.py</code> to import the definitio
     cxx_class = <span class="hljs-string">&quot;gem5::HelloSimObject&quot;</span>
 </code></pre>
 <ul>
-<li><code>type</code> is the type name for the <code>SimObject</code> in python.</li>
+<li><code>type</code> is the type name for the <code>SimObject</code> in Python.</li>
 <li><code>cxx_header</code> denotes the path to the C++ header file that declares the <code>SimObject</code> in C++. <strong>IMPORTANT</strong>: This path should be specified relative to <code>gem5/src</code>.</li>
 <li><code>cxx_class</code> is the name of your <code>SimObject</code> class in C++.</li>
 </ul>
@@ -357,7 +357,7 @@ Add the following line to <code>HelloSimObject.py</code> to import the definitio
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh"><span class="hljs-built_in">touch</span> src/bootcamp/hello-sim-object/hello_sim_object.hh
 </code></pre>
 <p><strong>VERY IMPORTANT</strong>: If a <code>SimObject</code> class inherits from another <code>SimObject</code> class in Python, it should do the same in C++. For example, <code>HelloSimObject</code> inherits from <code>SimObject</code> in Python, so in C++, <code>HelloSimObject</code> should inherit from <code>SimObject</code>.<br />
-<strong>VERY IMPORTANT</strong>: <code>SimObject</code> parameter structs are inherited in the same way as the <code>SimObject</code> itself. For example, if <code>HelloSimObject</code> inherits from <code>SimObject</code>, <code>HelloSimObjectParams</code> inherits from <code>SimObjectParams</code></p>
+<strong>VERY IMPORTANT</strong>: <code>SimObject</code> parameter structs are inherited in the same way as the <code>SimObject</code> itself. For example, if <code>HelloSimObject</code> inherits from <code>SimObject</code>, <code>HelloSimObjectParams</code> inherits from <code>SimObjectParams</code>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-class="code-60-percent" data-theme="gem5" lang="en-US" class="code-60-percent" data-marpit-pagination="22" style="--paginate:true;--class:code-60-percent;--theme:gem5;" data-marpit-pagination-total="50">
 <h2 id="simobject-header-file-first-few-lines">SimObject Header File: First Few Lines</h2>
@@ -536,7 +536,7 @@ exit_event = m5.simulate()
     <span class="hljs-keyword">for</span> obj <span class="hljs-keyword">in</span> root.descendants():
         obj.connectPorts()
 </code></pre>
-<p>When you call <code>m5.instantiate</code>, first, all the <code>SimObjects</code> are created (i.e. their C++ constructors are called). Then, all the <code>port</code> connections are created. If you don't know what a <code>Port</code> is, don't worry. We will get to that in the later slides. For now, think of <code>ports</code> as a facility for <code>SimObjects</code> to send each other data.</p>
+<p>When you call <code>m5.instantiate</code>, first, all the <code>SimObjects</code> are created (i.e. their C++ constructors are called). Then, all the <code>port</code> connections are created. If you don't know what a <code>Port</code> is, don't worry. We will get to that in the later slides. For now, think of <code>ports</code> as a way for <code>SimObjects</code> to send each other data.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-class="code-50-percent" data-theme="gem5" lang="en-US" class="code-50-percent" data-marpit-pagination="37" style="--paginate:true;--class:code-50-percent;--theme:gem5;" data-marpit-pagination-total="50">
 <h2 id="detour-m5instantiate-simobjectinit">Detour: m5.instantiate: SimObject::init</h2>

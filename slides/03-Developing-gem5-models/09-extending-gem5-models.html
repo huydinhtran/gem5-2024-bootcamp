@@ -104,14 +104,14 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="the-ninja-feature-of-gem5">The Ninja Feature of gem5</h2>
-<p>There are many useful tools inside gem5 that do not have proper documentations.<br />
+<p>There are many useful tools inside gem5 that do not have proper documentation.<br />
 In this section, we will cover</p>
 <ul>
 <li>Probe point</li>
 </ul>
 
 <h3 id="ooo-action">OOO Action</h3>
-<p>If you have never built /gem5/build/X86/gem5.fast, please do so with the following command due to the time needed to build gem5 might be long</p>
+<p>If you have never built /gem5/build/X86/gem5.fast, please do so with the following command, as gem5 takes a long time to build.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">cd</span> gem5
 scons build/X86/gem5.fast -j$(<span class="hljs-built_in">nproc</span>)
 </code></pre>
@@ -158,7 +158,7 @@ scons build/X86/gem5.fast -j$(<span class="hljs-built_in">nproc</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="hands-on-time">Hands-On Time!</h2>
 <h3 id="01-local-inst-tracker">01-local-inst-tracker</h3>
-<p>Currently, in gem5, there is not a straight-forward method to raise an exit event after we executed (committed) a number of instructions for multi-core simulation. We can easily create one with Probe Point. We will start with creating ProbeListener that listen to each core's <code>ppRetiredInsts</code> ProbePoint, then in 02-global-inst-tracker, we will create a SimObject to manage all the ProbeListener to raise an exit event after the simulation executed (committed) a number of instructions.</p>
+<p>Currently, gem5 does not have a straight-forward method to raise an exit event after we execute (commit) a number of instructions for multi-core simulation. We can easily create one with Probe Point. We will start with creating a ProbeListener that listens to each core's <code>ppRetiredInsts</code> ProbePoint, then in <code>02-global-inst-tracker</code>, we will create a SimObject to manage all the ProbeListeners to raise an exit event after the simulation executes (commits) a number of instructions.</p>
 <h3 id="goal">Goal</h3>
 <ol>
 <li>Create a ProbeListener called the local-instruction-tracker</li>
@@ -169,8 +169,8 @@ scons build/X86/gem5.fast -j$(<span class="hljs-built_in">nproc</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="hands-on-time-1">Hands-On Time!</h2>
 <h3 id="01-local-inst-tracker-1">01-local-inst-tracker</h3>
-<p>All completed materials can be found under <code>materials/03-Developing-gem5-models/09-extending-gem5-models/01-local-inst-tracker/complete</code>.</p>
-<p>Let's start with creating a <code>inst_tracker.hh</code> and <code>inst_tacker.cc</code> files under <code>/src/cpu/probes</code>.</p>
+<p>All completed materials can be found under <a href="/materials/03-Developing-gem5-models/09-extending-gem5-models/01-local-inst-tracker/complete"><code>materials/03-Developing-gem5-models/09-extending-gem5-models/01-local-inst-tracker/complete</code></a>.</p>
+<p>Let's start with creating <code>inst_tracker.hh</code> and <code>inst_tacker.cc</code> under <code>/src/cpu/probes</code>.</p>
 <p>In the <code>inst_tracker.hh</code> file, we need to include the headers and necessary libraries:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> __CPU_PROBES_INST_TRACKER_HH__</span>
 <span class="hljs-meta">#<span class="hljs-keyword">define</span> __CPU_PROBES_INST_TRACKER_HH__</span>
@@ -191,12 +191,13 @@ scons build/X86/gem5.fast -j$(<span class="hljs-built_in">nproc</span>)
     <span class="hljs-built_in">LocalInstTracker</span>(<span class="hljs-type">const</span> LocalInstTrackerParams &amp;params);
     <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">regProbeListeners</span><span class="hljs-params">()</span></span>;
 }
+}
 </code></pre>
 <p>Now, we have a constructor for the <code>LocalInstTracker</code> and a virtual function <code>regProbeListeners()</code>. The <code>regProbeListeners</code> is called automatically when the simulation starts. We will use it to attach to the ProbePoint.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="01-local-inst-tracker-3">01-local-inst-tracker</h2>
-<p>Our goal is to count the number of committed instruction for our attached core, so we can listen to the <code>ppRetiredInsts</code> ProbePoint that already exists in the <code>BaseCPU</code> SimObject.</p>
+<p>Our goal is to count the number of committed instructions for our attached core so we can listen to the <code>ppRetiredInsts</code> ProbePoint that already exists in the <code>BaseCPU</code> SimObject.</p>
 <p>Let's look at the <code>ppRetiredInsts</code> ProbePoint a bit.<br />
 It is a <code>PMU probe point</code> that as suggested in <a href="https://github.com/gem5/gem5/blob/stable/src/sim/probe/pmu.hh">src/cpu/base.hh</a> that it will notify the listeners with a <code>uint64_t</code> variable.<br />
 In <a href="https://github.com/gem5/gem5/blob/stable/src/cpu/base.cc#L379">src/cpu/base.cc:379</a>, we can see that it is registered to the <code>BaseCPU</code> SimObject's ProbeManager with the string <code>&quot;RetiredInsts&quot;</code>. All ProbePoints are registered with the ProbeManager with a unique string variable, so we can use this string later to attach our listeners to this ProbePoint. Lastly, we can find that this ProbePoint notifies its listeners with an integer <code>1</code> when there is an instruction committed in <a href="https://github.com/gem5/gem5/blob/stable/src/cpu/base.cc#L393">src/cpu/base.cc:393</a>.<br />
@@ -211,7 +212,7 @@ Now that we know what ProbePoint we are targeting, we can set it up for our Loca
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-keyword">typedef</span> ProbeListenerArg&lt;LocalInstTracker, <span class="hljs-type">uint64_t</span>&gt; LocalInstTrackerListener;
 </code></pre>
 <ol start="2">
-<li>We need to have a function to handle the notification from the ProbePoint. Since we are counting the number of instruction committed and wanting to exit when it reaches a certain threshold, let's also create two <code>uint64_t</code> variables for this purpose</li>
+<li>We need to have a function to handle the notification from the ProbePoint. Since we are counting the number of instructions committed and wanting to exit when it reaches a certain threshold, let's also create two <code>uint64_t</code> variables for this purpose</li>
 </ol>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">checkPc</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">uint64_t</span>&amp; inst)</span></span>;
 <span class="hljs-type">uint64_t</span> instCount;
@@ -220,7 +221,7 @@ Now that we know what ProbePoint we are targeting, we can set it up for our Loca
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="01-local-tracker">01-local-tracker</h2>
-<p>Here comes to a optional part. The Probe Point tool allows dynamic attachment and detachment during the simulation. Therefore, we can create a way to start and stop listening for our LocalInstTracker.</p>
+<p>Here comes an optional part. The Probe Point tool allows dynamic attachment and detachment during the simulation. Therefore, we can create a way to start and stop listening for our LocalInstTracker.</p>
 <p>In the <code>inst_tracker.hh</code>,</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-type">bool</span> listening;
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">stopListening</span><span class="hljs-params">()</span></span>;
@@ -282,13 +283,13 @@ Now that we know what ProbePoint we are targeting, we can set it up for our Loca
     listeners.<span class="hljs-built_in">clear</span>();
 }
 </code></pre>
-<p>This is a really rough example of how it can be done. It does not check what ProbPoint the listeners are attaching to, so if our ProbeListener listens to multiple ProbePoints, we will need to check the registered string variables for detaching the correct ProbeListeners.<br />
+<p>This is a really rough example of how it can be done. It does not check what ProbePoint the listeners are attaching to, so if our ProbeListener listens to multiple ProbePoints, we will need to check the registered string variables for detaching the correct ProbeListeners.<br />
 For our simple case here, this rough method will serve the purpose.<br />
 For more detailed information about how the dynamic detachment can be done, please refer to <a href="https://github.com/gem5/gem5/blob/stable/src/sim/probe/probe.hh">src/sim/probe/probe.hh</a></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="17" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="01-local-tracker-4">01-local-tracker</h2>
-<p>Additional to the above functionality, we can also add some getter and setter functions, such as</p>
+<p>In addition to the above functionality, we can also add some getter and setter functions, such as</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">changeThreshold</span><span class="hljs-params">(<span class="hljs-type">uint64_t</span> newThreshold)</span> </span>{
   instThreshold = newThreshold;
 }
@@ -305,7 +306,7 @@ For more detailed information about how the dynamic detachment can be done, plea
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-class="code-60-percent" data-theme="gem5" lang="en-US" class="code-60-percent" data-marpit-pagination="18" style="--paginate:true;--class:code-60-percent;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="01-local-inst-tracker-5">01-local-inst-tracker</h2>
-<p>Now, let's setup the Python object of the LocalInstTracker.<br />
+<p>Now, let's set up the Python object of the LocalInstTracker.<br />
 Let's create a file called <code>InstTracker.py</code> under the same directory <code>src/cpu/probes</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> m5.objects.Probe <span class="hljs-keyword">import</span> ProbeListenerObject
 <span class="hljs-keyword">from</span> m5.params <span class="hljs-keyword">import</span> *
@@ -333,7 +334,7 @@ Let's create a file called <code>InstTracker.py</code> under the same directory 
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="01-local-inst-tracker-6">01-local-inst-tracker</h2>
-<p>Like all new objects, we need to register it in scons, so let's modify the <a href="../../gem5/src/cpu/probes/SConscript">src/cpu/probes/SConscript</a> and add</p>
+<p>Like all new objects, we need to register it in Scons, so let's modify <a href="../../gem5/src/cpu/probes/SConscript">src/cpu/probes/SConscript</a> and add</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">SimObject(
     <span class="hljs-string">&quot;InstTracker.py&quot;</span>,
     sim_objects=[<span class="hljs-string">&quot;LocalInstTracker&quot;</span>],
@@ -365,7 +366,7 @@ m5_work_end(<span class="hljs-number">0</span>, <span class="hljs-number">0</spa
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="01-local-inst-tracker-8">01-local-inst-tracker</h2>
-<p>For our SE script, we first attach a LocalInstTracker to each core object with a threshold of 100,000 instructions. We will not start listening to the core's committed instruction from the start of the simulation.</p>
+<p>For our SE script, we first attach a LocalInstTracker to each core object with a threshold of 100,000 instructions. We will not start listening to the core's committed instructions from the start of the simulation.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> m5.objects <span class="hljs-keyword">import</span> LocalInstTracker
 <span class="hljs-keyword">for</span> core <span class="hljs-keyword">in</span> processor.get_cores():
     tracker = LocalInstTracker(
@@ -459,15 +460,15 @@ Simulation Done
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-class="center-image two-col" data-theme="gem5" lang="en-US" class="center-image two-col" data-marpit-pagination="26" style="--paginate:true;--class:center-image two-col;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="01-local-inst-tracker-13">01-local-inst-tracker</h2>
-<p>Congratulation! We now have our LocalInstTracker!<br />
-However, this local instruction exit event can be done with the <a href="https://github.com/studyztp/gem5/blob/studyztp/probe-user-inst/src/cpu/BaseCPU.py#L72">scheduleInstStop</a> function in <code>BaseCPU</code>. Our goal is to have an instruction exit event that track the global committed instructions, which does not have an interface to do so easily in gem5 yet.<br />
+<p>Congratulations! We now have our LocalInstTracker!<br />
+However, this local instruction exit event can be done with the <a href="https://github.com/studyztp/gem5/blob/studyztp/probe-user-inst/src/cpu/BaseCPU.py#L72">scheduleInstStop</a> function in <code>BaseCPU</code>. Our goal is to have an instruction exit event that tracks the global committed instructions, which does not have an interface to do so easily in gem5 yet.<br />
 Since each ProbeListener can only attach to one SimObject, we can modify our LocalInstTracker to notify a global object to keep tracking all committed instructions in all ProbeListeners.</p>
 
 <p><img src="09-extending-gem5-models-imgs/global-listener.drawio.svg" alt="" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="27" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="02-global-inst-tracker">02-global-inst-tracker</h2>
-<p>All materials about this section can be found under <code>materials/03-Developing-gem5-models/09-extending-gem5-models/02-global-inst-tracker</code>.</p>
+<p>All materials about this section can be found under <a href="/materials/03-Developing-gem5-models/09-extending-gem5-models/02-global-inst-tracker"><code>materials/03-Developing-gem5-models/09-extending-gem5-models/02-global-inst-tracker</code></a>.</p>
 <p>We can create a new SimObject to help us to keep track of all ProbeListeners.<br />
 Let's start to modify the <code>inst_tracker.hh</code> by adding a new SimObject class called <code>GlobalInstTracker</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;params/GlobalInstTracker.hh&quot;</span></span>
@@ -558,7 +559,7 @@ Therefore, in <code>inst_tracker.hh</code>, let's add a <code>checkPc</code> fun
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="32" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="38">
 <h2 id="02-global-inst-tracker-5">02-global-inst-tracker</h2>
-<p>We are almost done with c++ part. Let's don't forget about the <code>GlobalInstTracker</code>'s constructor in the <code>inst_tracker.cc</code></p>
+<p>We are almost done with C++ part. Let's don't forget about the <code>GlobalInstTracker</code>'s constructor in the <code>inst_tracker.cc</code></p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp">GlobalInstTracker::<span class="hljs-built_in">GlobalInstTracker</span>(<span class="hljs-type">const</span> GlobalInstTrackerParams &amp;p)
     : <span class="hljs-built_in">SimObject</span>(p),
       <span class="hljs-built_in">instCount</span>(<span class="hljs-number">0</span>),

@@ -209,7 +209,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <li><strong>Actions</strong>: Execute single operations on cache structures</li>
 <li><strong>Transitions</strong>: Move from state to state and execute actions</li>
 </ul>
-<p><strong>In ports</strong> read <strong>Cache memory</strong> then <em>triggers</em> <strong>Events</strong>.<br />
+<p><strong>In ports</strong> read <strong>Cache memory</strong> then <em>trigger</em> <strong>Events</strong>.<br />
 <strong>Events</strong> cause <strong>Transitions</strong> based on the <strong>State</strong> which execute <strong>Actions</strong>.<br />
 <strong>Actions</strong> can update <strong>Cache memory</strong> and send <strong>Messages</strong> via <strong>Message buffers</strong>.</p>
 </section>
@@ -572,7 +572,7 @@ system.caches.controllers0 time: 73 addr: 0x9100 event: DataDirNoAcks state: IS_
 <li>Fill in the &quot;write data to cache&quot; action
 <ul>
 <li>Get the data out of the message (how to get the message?)</li>
-<li>set the cache entry's data (how? where does <code>cache_entry</code> come from?)</li>
+<li>Set the cache entry's data (how? where does <code>cache_entry</code> come from?)</li>
 <li>Make sure to have <code>assert(is_valid(cache_entry))</code></li>
 </ul>
 </li>
@@ -613,7 +613,7 @@ build/ALL_MyMSI/gem5.opt --debug-flags=ProtocolTrace configs/learning_gem5/part3
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="35" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="49">
 <h2 id="when-debugging-takes-too-long-rubyrandomtester">When debugging takes too long: RubyRandomTester</h2>
 <p><strong>At some point it might be taking while to get to new errors, so...</strong></p>
-<p>Run the ruby random tester. This is a special &quot;CPU&quot; which exercises coherence corner cases.</p>
+<p>Run the Ruby random tester. This is a special &quot;CPU&quot; which exercises coherence corner cases.</p>
 <ul>
 <li>Modify the <code>test_caches.py</code> the same way as <code>msi_caches.py</code></li>
 </ul>
@@ -661,7 +661,7 @@ transition(I, Store,IM_AD) {}
 }
 
 </code></pre>
-<p>Runs scons and python script</p>
+<p>Run Scons and the Python script again</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-class="code-60-percent no-logo" data-theme="gem5" lang="en-US" class="code-60-percent no-logo" data-marpit-pagination="38" style="--paginate:true;--class:code-60-percent no-logo;--theme:gem5;" data-marpit-pagination-total="49">
 <h2 id="fixing-the-error-deadlock">Fixing the error: Deadlock</h2>
@@ -687,8 +687,9 @@ transition(I, Store,IM_AD) {}
   sequencer.<span class="hljs-built_in">readCallback</span>(address, cache_entry.DataBlk, <span class="hljs-literal">false</span>);
 }
 </code></pre>
-<p>Try again (scons and python script)</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">build/ALL_MyMSI/gem5.opt --debug-flags=ProtocolTrace configs/learning_gem5/part3/ruby_test.py
+<p>Try again (Scons and Python script)</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">scons build/ALL_MyMSI/gem5.opt -j$(<span class="hljs-built_in">nproc</span>) PROTOCOL=MYMSI
+build/ALL_MyMSI/gem5.opt --debug-flags=ProtocolTrace configs/learning_gem5/part3/ruby_test.py
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="39" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="49">
@@ -714,7 +715,7 @@ transition(I, Store,IM_AD) {}
     }
   }
 </code></pre>
-<p>Run scons and python script</p>
+<p>Run Scons and Python script</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-class="code-60-percent" data-theme="gem5" lang="en-US" class="code-60-percent" data-marpit-pagination="40" style="--paginate:true;--class:code-60-percent;--theme:gem5;" data-marpit-pagination-total="49">
 <h2 id="final-error-what-to-do-when-there-is-sharing">Final error: What to do when there is sharing?</h2>
@@ -738,7 +739,7 @@ transition(I, Store,IM_AD) {}
     popRequestQueue;
 }
 </code></pre>
-<p>Try again (scons and python script): (note: no protocol trace this time since it is mostly working)</p>
+<p>Try again (Scons and Python script): (note: no protocol trace this time since it is mostly working)</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">build/ALL_MyMSI/gem5.opt configs/learning_gem5/part3/ruby_test.py
 </code></pre>
 </section>

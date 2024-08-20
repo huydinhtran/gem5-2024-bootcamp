@@ -100,7 +100,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 
 
 /* Misc effects */div#\:\$p>svg>foreignObject>section .hljs-emphasis{font-style:italic}div#\:\$p>svg>foreignObject>section .hljs-strong{font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure>figcaption{position:absolute;border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content],div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#\:\$p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="title" data-theme="gem5" lang="en-US" class="title" data-marpit-pagination="1" style="--paginate:true;--class:title;--theme:gem5;" data-marpit-pagination-total="71">
-<h2 id="running-things-on-gem5">Running Things on gem5</h2>
+<h2 id="running-things-in-gem5">Running Things in gem5</h2>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="what-we-will-cover">What we will cover</h2>
@@ -125,8 +125,8 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <h2 id="example">Example</h2>
 <h3 id="00-se-hello-world">00-SE-hello-world</h3>
 <p>Under <code>materials/02-Using-gem5/03-running-in-gem5/00-SE-hello-world</code>, there is a small example of an SE simulation.<br />
-<a href="../../materials/02-Using-gem5/03-running-in-gem5/00-SE-hello-world/00-SE-hello-world.py">00-SE-hello-world.py</a> will run <a href="../../materials/02-Using-gem5/03-running-in-gem5/00-SE-hello-world/00-SE-hello-world.c">00-SE-hello-world</a> binary with a simply X86 configuration.<br />
-This binary does a print of the string <code>Hello, Worlds!</code>.<br />
+<a href="../../materials/02-Using-gem5/03-running-in-gem5/00-SE-hello-world/00-SE-hello-world.py">00-SE-hello-world.py</a> will run the <a href="../../materials/02-Using-gem5/03-running-in-gem5/00-SE-hello-world/00-SE-hello-world.c">00-SE-hello-world</a> binary with a simple X86 configuration.<br />
+This binary prints the string <code>Hello, World!</code>.<br />
 If we use the debug flag <code>SyscallAll</code> with it, we will able to see what syscalls are simulated.<br />
 We can do it with the following command:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">gem5 -re --debug-flags=SyscallAll 00-SE-hello-world.py
@@ -138,12 +138,12 @@ The default output is in <code>m5out/simout.txt</code> and m5out/simerr.txt`.</p
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="00-se-hello-world-1">00-SE-hello-world</h2>
-<p>Then in the <a href="../../materials/02-Using-gem5/03-running-in-gem5/00-SE-hello-world/m5out/simout.txt">simout.txt</a>, we should see:</p>
+<p>Then in <a href="../../materials/02-Using-gem5/03-running-in-gem5/00-SE-hello-world/m5out/simout.txt">simout.txt</a>, we should see:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">280945000: board.processor.cores.core: T0 : syscall Calling write(1, 21152, 14)...
 Hello, World!
 280945000: board.processor.cores.core: T0 : syscall Returned 14.
 </code></pre>
-<p>On the left, it is the timestamp for the simulation.<br />
+<p>On the left is the timestamp for the simulation.<br />
 As the timestamp suggests, <strong>SE simulation DOES NOT record the time for the syscall</strong>.</p>
 <blockquote>
 <p>Note that in the <code>simout.txt</code> file the standard out from the <em>simulator</em> and the <em>guest</em> are mixed together.</p>
@@ -159,7 +159,7 @@ As the timestamp suggests, <strong>SE simulation DOES NOT record the time for th
 <li>The commonly used functionalities are below. More can be found in <a href="https://www.gem5.org/documentation/general_docs/m5ops/">the m5ops documentation</a>:
 <ul>
 <li>exit [delay]: Stop the simulation in delay nanoseconds</li>
-<li>workbegin: Cause an exit event of type &quot;workbegin&quot; that can be used to mark the begining of an ROI</li>
+<li>workbegin: Cause an exit event of type &quot;workbegin&quot; that can be used to mark the beginning of an ROI</li>
 <li>workend: Cause and exit event of type &quot;workend&quot; that can be used to mark the ending of an ROI</li>
 <li>resetstats [delay[period]]: Reset simulation statistics in delay nanoseconds; repeat this every period nanoseconds</li>
 <li>dumpstats [delay[period]]: Save simulation statistics to a file in delay nanoseconds; repeat this every period nanoseconds</li>
@@ -177,16 +177,16 @@ As the timestamp suggests, <strong>SE simulation DOES NOT record the time for th
 <li>For example:
 <ul>
 <li>exit: Actually exits</li>
-<li>workbegin: Only exits, if configured in <code>System</code></li>
-<li>workend: Only exits, if configured in <code>System</code></li>
+<li>workbegin: Only exits if configured in <code>System</code></li>
+<li>workend: Only exits if configured in <code>System</code></li>
 <li>resetstats: Resets the stats</li>
 <li>dumpstats: Dumps the stats</li>
 <li>checkpoint: Only exits</li>
 <li>switchcpu: Only exits</li>
 </ul>
 </li>
-<li>See <a href="https://github.com/gem5/gem5/blob/stable/src/sim/pseudo_inst.cc">gem5/src/sim/pseudo_inst.cc</a> for details</li>
-<li>The gem5 standard library might have default behaviors for some of the  m5ops. See <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/simulate/simulator.py#L301">src/python/gem5/simulate/simulator.py</a> for the default behaviors</li>
+<li>See <a href="https://github.com/gem5/gem5/blob/stable/src/sim/pseudo_inst.cc">gem5/src/sim/pseudo_inst.cc</a> for details.</li>
+<li>The gem5 standard library might have default behaviors for some of the m5ops. See <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/simulate/simulator.py#L301">src/python/gem5/simulate/simulator.py</a> for the default behaviors.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
@@ -194,8 +194,8 @@ As the timestamp suggests, <strong>SE simulation DOES NOT record the time for th
 <p>There are three versions of m5ops:</p>
 <ol>
 <li>Instruction mode: it only works with simulated CPU models</li>
-<li>Address mode: it works with simulated CPU models and KVM CPU (only supports Arm and X86)</li>
-<li>Semihosting: it works with simulated CPU models and Fast Model</li>
+<li>Address mode: it works with simulated CPU models and the KVM CPU (only supports Arm and X86)</li>
+<li>Semihosting: it works with simulated CPU models and the Fast Model</li>
 </ol>
 <p>Different modes should be used depending on the CPU type and ISA.</p>
 <p>The address mode m5ops will be covered in <a href="07-full-system.md">07-full-system</a> as gem5-bridge and <a href="08-accelerating-simulation.md">08-accelerating-simulation</a> after the KVM CPU is introduced.<br />
@@ -213,7 +213,7 @@ As the timestamp suggests, <strong>SE simulation DOES NOT record the time for th
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="how-to-use-m5ops">How to use m5ops</h2>
 <p>m5ops provides a library of functions for different functionalities. All functions can be found in <a href="https://github.com/gem5/gem5/blob/stable/include/gem5/m5ops.h">gem5/include/gem5/m5ops.h</a>.<br />
-The commonly used functions (they are matched with the commonly used functionailites above):</p>
+The commonly used functions (they are matched with the commonly used functionalities above):</p>
 <ul>
 <li><code>void m5_exit(uint64_t ns_delay)</code></li>
 <li><code>void m5_work_begin(uint64_t workid, uint64_t threadid)</code></li>
@@ -237,8 +237,8 @@ In order to build the m5ops library,</p>
 </ol>
 <h3 id="notes">Notes</h3>
 <ul>
-<li>If the host system ISA does not match with the target ISA, then we will need to use the cross-compiler</li>
-<li><code>TARGET_ISA</code> has to be in lower case</li>
+<li>If the host system ISA does not match with the target ISA, then we will need to use the cross-compiler.</li>
+<li><code>TARGET_ISA</code> has to be in lower case.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
@@ -250,7 +250,7 @@ scons build/x86/out/m5
 scons arm64.CROSS_COMPILE=aarch64-linux-gnu- build/arm64/out/m5
 </code></pre>
 <blockquote>
-<p>Note: while building these uses scons, it's a different environment from building gem5 with different targets and options.<br />
+<p>Note: although we are using Scons to build these, it's a different environment from building gem5 with different targets and options.<br />
 Don't expect things to be similar (e.g., use <code>arm64</code> instead of <code>ARM</code>).</p>
 </blockquote>
 </section>
@@ -259,17 +259,17 @@ Don't expect things to be similar (e.g., use <code>arm64</code> instead of <code
 <p>After building the m5ops library, we can link them to our workload by:​</p>
 <ol>
 <li>
-<p>Include <strong>gem5/m5ops.h</strong> in the workload's source file(s) (<code>&lt;gem5/m5ops.h&gt;</code>)</p>
+<p>Including <strong>gem5/m5ops.h</strong> in the workload's source file(s) (<code>&lt;gem5/m5ops.h&gt;</code>)</p>
 </li>
 <li>
-<p>Add <strong>gem5/include</strong> to the compiler's include search path (<code>-Igem5/include</code>)</p>
+<p>Adding <strong>gem5/include</strong> to the compiler's include search path (<code>-Igem5/include</code>)</p>
 </li>
 <li>
-<p>Add <strong>gem5/util/m5/build/{TARGET_ISA}/out</strong> to the linker search path<br />
+<p>Adding <strong>gem5/util/m5/build/{TARGET_ISA}/out</strong> to the linker search path<br />
 (<code>-Lgem5/util/m5/build/{TARGET_ISA}/out</code>)</p>
 </li>
 <li>
-<p>Link against <strong>libm5.a</strong> with (<code>-lm5</code>)</p>
+<p>Linking against <strong>libm5.a</strong> with (<code>-lm5</code>)</p>
 </li>
 </ol>
 </section>
@@ -277,7 +277,7 @@ Don't expect things to be similar (e.g., use <code>arm64</code> instead of <code
 <h2 id="hands-on-time-1">Hands-on Time!</h2>
 <h3 id="02-annotate-this">02-annotate-this</h3>
 <h3 id="lets-annotate-the-workload-with-m5_work_begin-and-m5_work_end">Let's annotate the workload with <code>m5_work_begin</code> and <code>m5_work_end</code></h3>
-<p>In <code>materials/02-Using-gem5/03-running-in-gem5/02-annotate-this</code>, there is a workload source file <a href="../../materials/02-Using-gem5/03-running-in-gem5/02-annotate-this/02-annotate-this.cpp">02-annotate-this.cpp</a> and a <a href="../../materials/02-Using-gem5/03-running-in-gem5/02-annotate-this/Makefile">Makefile</a>.</p>
+<p>In <code>materials/02-Using-gem5/03-running-in-gem5/02-annotate-this</code>, there is a workload source file called <a href="../../materials/02-Using-gem5/03-running-in-gem5/02-annotate-this/02-annotate-this.cpp">02-annotate-this.cpp</a> and a <a href="../../materials/02-Using-gem5/03-running-in-gem5/02-annotate-this/Makefile">Makefile</a>.</p>
 <p>The workload mainly does two things:</p>
 <ol>
 <li>Write a string to the standard out</li>
@@ -317,7 +317,7 @@ std::cout&lt;&lt;std::endl;
 <li>Include the m5ops header file with <code>#include &lt;gem5/m5ops.h&gt;</code></li>
 <li>Call <code>m5_work_begin(0, 0);</code> right before <code>write(1, &quot;This will be output to standard out\n&quot;, 36);</code>.</li>
 <li>Call <code>m5_work_end(0, 0);</code> right after <code>write(1, &quot;This will be output to standard out\n&quot;, 36);</code></li>
-<li>Compile the workload with the following requirments
+<li>Compile the workload with the following requirements:
 <ol>
 <li>Add <strong>gem5/include</strong> to the compiler's include search path</li>
 <li>Add <strong>gem5/util/m5/build/x86/out</strong> to the linker search path</li>
@@ -328,7 +328,7 @@ std::cout&lt;&lt;std::endl;
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="02-annotate-this-3">02-annotate-this</h2>
-<p>For step 4, we can modifiy the <a href="../../materials/02-Using-gem5/03-running-in-gem5/02-annotate-this/Makefile">Makefile</a> to have it run</p>
+<p>For step 4, we can modify the <a href="../../materials/02-Using-gem5/03-running-in-gem5/02-annotate-this/Makefile">Makefile</a> to have it run</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-Makefile"><span class="hljs-variable">$(GXX)</span> -o 02-annotate-this 02-annotate-this.cpp \
   -I<span class="hljs-variable">$(GEM5_PATH)</span>/<span class="hljs-keyword">include</span> \
   -L<span class="hljs-variable">$(GEM5_PATH)</span>/util/m5/build/<span class="hljs-variable">$(ISA)</span>/out \
@@ -345,8 +345,8 @@ std::cout&lt;&lt;std::endl;
 <p>However, we will see the following error:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">Illegal instruction (core dumped)
 </code></pre>
-<p>This is because the host does not recognize the instruction version of m5ops.<br />
-This is also the reason why we will need to use the address version of m5ops if we use the KVM CPU for our simulation.</p>
+<p>This is because the host does not recognize the instruction version of m5ops.</p>
+<p>This is also the reason why we will need to use the address version of m5ops if we use the KVM CPU for our simulation.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="hands-on-time-2">Hands-on Time!</h2>
@@ -357,22 +357,22 @@ This is also the reason why we will need to use the address version of m5ops if 
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">gem5 -re 03-run-x86-SE.py
 </code></pre>
 <p>After running the simulation, we should see a directory called <code>m5out</code> in <code>materials/02-Using-gem5/03-running-in-gem5/03-run-x86-SE</code>. Open the file <code>simerr.txt</code> in <code>m5out</code>. We should see two lines that look like this:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">warn: No behavior was <span class="hljs-built_in">set</span> by the user <span class="hljs-keyword">for</span> work begin. Default behavior is resetting the stats and continuing.
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-text">warn: No behavior was set by the user for work begin. Default behavior is resetting the stats and continuing.
 
-warn: No behavior was <span class="hljs-built_in">set</span> by the user <span class="hljs-keyword">for</span> work end. Default behavior is dumping the stats and continuing.
+warn: No behavior was set by the user for work end. Default behavior is dumping the stats and continuing.
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="03-run-x86-se-1">03-run-x86-SE</h2>
 <p>As mentioned before, the gem5 standard library might have default behaviors for some of the m5ops. In here, we can see that it has default behaviors for <code>m5_work_begin</code> and <code>m5_work_end</code>.<br />
-Let's detour a bit to see how the gem5 standard library recognize the exit event and assign it a default exit event.<br />
-All standard library defined exit events can be found in <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/simulate/exit_event.py">src/python/gem5/simulate/exit_event.py</a>. It uses the exit string of exit events to categories exit events. For example, both <code>&quot;workbegin&quot;</code> and <code>&quot;m5_workend instruction encountered&quot;</code> exit strings are categorized as <code>ExitEvent.WORKBEGIN</code>.<br />
-All pre-defined exit event handler can be found in <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/simulate/exit_event_generators.py">src/python/gem5/simulate/exit_event_generators.py</a>.</p>
-<p>For example, the <code>ExitEvent.WORKBEGIN</code> defaults to use the <code>reset_stats_generator</code>. It means that when we are using the standard library <code>Simulator</code> object, if there is an exit with exit string <code>&quot;workbegin&quot;</code> or <code>&quot;m5_workbegin instruction encountered&quot;</code>, it will automatically execute <code>m5.stats.reset()</code> unless we over-write the default behavior using the <code>on_exit_event</code> parameter in the gem5 stdlib <code>Simulator</code> parameter.</p>
+Let's detour a bit to see how the gem5 standard library recognizes the exit event and assigns it a default exit handler.<br />
+All standard library defined exit events can be found in <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/simulate/exit_event.py">src/python/gem5/simulate/exit_event.py</a>. It uses the exit string of exit events to categorize exit events. For example, both <code>&quot;workbegin&quot;</code> and <code>&quot;m5_workend instruction encountered&quot;</code> exit strings are categorized as <code>ExitEvent.WORKBEGIN</code>.<br />
+All pre-defined exit event handlers can be found in <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/simulate/exit_event_generators.py">src/python/gem5/simulate/exit_event_generators.py</a>.</p>
+<p>For example, <code>ExitEvent.WORKBEGIN</code> defaults to using the <code>reset_stats_generator</code>. It means that when we are using the standard library's <code>Simulator</code> object, if there is an exit with exit string <code>&quot;workbegin&quot;</code> or <code>&quot;m5_workbegin instruction encountered&quot;</code>, it will automatically execute <code>m5.stats.reset()</code> unless we overwrite the default behavior using the <code>on_exit_event</code> parameter in the gem5 stdlib <code>Simulator</code> parameter.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-class="two-col code-70-percent" data-theme="gem5" lang="en-US" class="two-col code-70-percent" data-marpit-pagination="23" style="--paginate:true;--class:two-col code-70-percent;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="03-run-x86-se-2">03-run-x86-SE</h2>
-<p>Let's add custom workbegin and workend handlers, and use the <code>on_exit_event</code> parameter in <code>Simulator</code> parameter to over-write the default behaviors. To do this, add the following into <a href="../../materials/02-Using-gem5/03-running-in-gem5/03-run-x86-SE/03-run-x86-SE.py">03-run-x86-SE.py</a>:</p>
+<p>Let's add custom workbegin and workend handlers, and use the <code>on_exit_event</code> parameter in <code>Simulator</code> parameter to overwrite the default behavior. To do this, add the following into <a href="../../materials/02-Using-gem5/03-running-in-gem5/03-run-x86-SE/03-run-x86-SE.py">03-run-x86-SE.py</a>:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># define a workbegin handler</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">workbegin_handler</span>():
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Workbegin handler&quot;</span>)
@@ -386,7 +386,7 @@ All pre-defined exit event handler can be found in <a href="https://github.com/g
 <span class="hljs-comment">#</span>
 </code></pre>
 <h3 id=""></h3>
-<p>Also, register the handlers using the <code>on_exit_event</code> parameter in the <code>Simulator</code> object construction</p>
+<p>Also, register the handlers using the <code>on_exit_event</code> parameter in the <code>Simulator</code> object construction.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># setup handler for ExitEvent.WORKBEGIN and ExitEvent.WORKEND</span>
     on_exit_event= {
         ExitEvent.WORKBEGIN: workbegin_handler(),
@@ -405,7 +405,7 @@ All pre-defined exit event handler can be found in <a href="https://github.com/g
 This will be output to standard out
 3757180000: board.processor.cores.core: A0 T0 : 0x7ffff7c82574 @_end+140737350460444    : cmp	rax, 0xfffffffffffff000
 </code></pre>
-<p>This shows the log of the debug flag <code>ExecAll</code> that we enabled for our ROI using the <code>m5.debug.flags[&quot;ExecAll&quot;].enable()</code>, it shows all the execution trace for our ROI. As the timestamp on the left suggested again, SE mode <strong>DOES NOT</strong> time the emulated system calls. Also, as the log suggested, we over-wrote the default behavior of the <code>m5_work_begin</code> and <code>m5_work_end</code>.</p>
+<p>This shows the log of the debug flag <code>ExecAll</code> that we enabled for our ROI using <code>m5.debug.flags[&quot;ExecAll&quot;].enable()</code>. It shows the entire execution trace for our ROI. As the timestamp on the left suggests again, SE mode <strong>DOES NOT</strong> time the emulated system calls. Also, as the log suggests, we overwrote the default behavior of <code>m5_work_begin</code> and <code>m5_work_end</code>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="25" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <p>Then, with the output</p>
@@ -418,7 +418,7 @@ Simulation Done
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="26" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="tips-on-se-mode">Tips on SE mode</h2>
-<p>With the gem5 stdlib, we usually use the <code>set_se_binary_workload</code> function in the <code>board</code> object to setup the workloads. We can pass in files, arguments, enviornment variables, and output file paths to the <code>set_se_binary_workload</code> function using the corresponding parameters.</p>
+<p>With the gem5 stdlib, we usually use the <code>set_se_binary_workload</code> function in the <code>board</code> object to set up the workloads. We can pass in files, arguments, environment variables, and output file paths to the <code>set_se_binary_workload</code> function using the corresponding parameters.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_se_binary_workload</span>(<span class="hljs-params">
     self,
     binary: BinaryResource,
@@ -492,7 +492,7 @@ board.redirect_paths = [RedirectPath(app_path=<span class="hljs-string">f&quot;/
 <h3 id="se-mode-does-not-implement-many-things%E2%80%8B">SE mode does NOT implement many things!​</h3>
 <ul>
 <li>Filesystem​</li>
-<li>Most of systemcalls</li>
+<li>Most system calls</li>
 <li>I/O devices</li>
 <li>Interrupts</li>
 <li>TLB misses</li>
@@ -513,7 +513,7 @@ board.redirect_paths = [RedirectPath(app_path=<span class="hljs-string">f&quot;/
 <p>Synthetic traffic generation is a technique for driven memory subsystems without requiring the simulation of processor models and running workload programs. We have to note the following about synthetic traffic generation.</p>
 <ul>
 <li>It can be used for the following: measuring maximum theoretical bandwidth, testing correctness of cache coherency protocol</li>
-<li>It can not be used for: measuring the execution time of workload (even if you have their memory trace)</li>
+<li>It can not be used for: measuring the execution time of workloads (even if you have their memory trace)</li>
 </ul>
 <p>Synthetic traffic could follow a certain pattern like <code>sequential (linear)</code>, <code>strided</code>, and <code>random</code>. In this section we will look at tools in gem5 that facilitate synthetic traffic generation.</p>
 <p><img src="03-running-in-gem5-imgs/t_gen_diagram.drawio.svg" alt="Traffic generator center" /></p>
@@ -727,15 +727,15 @@ simple-traffic-generators.py
 <h2 id="detailed-look-on-some-components">Detailed Look on Some Components</h2>
 <ul>
 <li>You can find all generator related standard library components under <a href="https://github.com/gem5/gem5/tree/stable/src/python/gem5/components/processors"><code>src/python/gem5/components/processors</code></a>.</li>
-<li>Looking at <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/components/processors/abstract_generator.py#L53"><code>AbstractGenerator.__init__</code></a>, you'll see that this class takes a list of <code>AbstractGeneratorCore</code> as the input. Example classes that inherit from <code>AbstractGenerator</code> are <code>LinearGenerator</code> and <code>RandomGenerator</code>.</li>
-<li>We will look at classes that extend <code>AbstractGeneratorCore</code> that will will create <strong>synthetic traffic</strong> by using a <code>SimObject</code> called <code>PyTrafficGen</code>, for more information you can look at <code>src/cpu/testers/traffic_gen</code>.</li>
+<li>Looking at <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/components/processors/abstract_generator.py#L53"><code>AbstractGenerator.__init__</code></a>, you'll see that this class takes a list of <code>AbstractGeneratorCores</code> as the input. Example classes that inherit from <code>AbstractGenerator</code> are <code>LinearGenerator</code> and <code>RandomGenerator</code>.</li>
+<li>We will look at classes that extend <code>AbstractGeneratorCore</code> that will will create <strong>synthetic traffic</strong> by using a <code>SimObject</code> called <code>PyTrafficGen</code>. For more information you can look at <code>src/cpu/testers/traffic_gen</code>.</li>
 <li><code>LinearGenerator</code> can have multiple <code>LinearGeneratorCores</code> and <code>RandomGenerator</code> can have multiple <code>RandomGeneratorCores</code>.</li>
 </ul>
 <p>Next we will look at extending <code>AbstractGenerator</code> to create <code>HybridGenerator</code> that has both <code>LinearGeneratorCores</code> and <code>RandomGeneratorCores</code>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="48" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="extending-abstractgenerator">Extending AbstractGenerator</h2>
-<p>gem5 has a lot of tools in its standard library, but in your research, if you want to simulate specific memory accesses patterns, there might not be anything in the standard library to do this.</p>
+<p>gem5 has a lot of tools in its standard library, but if you want to simulate specific memory accesses patterns in your research, there might not be anything in the standard library to do this.</p>
 <p>In this case, you would have to extend <code>AbstractGenerator</code> to create a concrete generator that is tailored to your needs.</p>
 <p>To do this, we will go through an example called <code>HybridGenerator</code>.</p>
 <p>The goal of <code>HybridGenerator</code> is to simultaneously simulate both linear and random memory accesses.</p>
@@ -785,7 +785,7 @@ simple-traffic-generators.py
             <span class="hljs-keyword">else</span>:
                 <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> ** <span class="hljs-built_in">int</span>(log(num_cores, <span class="hljs-number">2</span>))
 </code></pre>
-<p>The rest of the cores will be <code>RandomGeneratorCores</code></p>
+<p>The rest of the cores will be <code>RandomGeneratorCores</code>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-paginate="true" data-class="two-col code-60-percent" data-theme="gem5" lang="en-US" class="two-col code-60-percent" data-marpit-pagination="55" style="--paginate:true;--class:two-col code-60-percent;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="06-traffic-gen-hybridgenerator-constructor">06-traffic-gen: HybridGenerator Constructor</h2>
@@ -858,7 +858,7 @@ num_random_cores = num_cores - num_linear_cores
   (16384, 20480), (20480, 24576), (24576, 28672), (28672, 32768)]
 </code></pre>
 <p>For the <code>i</code>'th <code>LinearGeneratorCore</code>, we take the <code>i</code>'th entry in <code>addr_ranges</code>. <code>min_addr</code> is the first value that entry, and <code>max_addr</code> is the second value in that entry.</p>
-<p>In this example, <code>LinearGeneratorCore</code> 0 gets initialized with <code>min_addr=0</code> and <code>max_addr=4096</code>, <code>LinearGeneratorCore</code> 2 gets initialized with <code>min_addr=4096</code> and <code>max_addr=8192</code>, etc.</p>
+<p>In this example, <code>LinearGeneratorCore</code> 0 gets initialized with <code>min_addr=0</code> and <code>max_addr=4096</code>, <code>LinearGeneratorCore</code> 1 gets initialized with <code>min_addr=4096</code> and <code>max_addr=8192</code>, etc.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-paginate="true" data-class="two-col" data-theme="gem5" lang="en-US" class="two-col" data-marpit-pagination="60" style="--paginate:true;--class:two-col;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="06-traffic-gen-hybridgenerator-creating-a-list-of-cores-lineargeneratorcore">06-traffic-gen: HybridGenerator: Creating a List of Cores: LinearGeneratorCore</h2>
@@ -1045,20 +1045,20 @@ system.cache_hierarchy.l1dcaches5.ReadReq.missRate::processor.cores5.generator  
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="71" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="71">
 <h2 id="summary-1">Summary</h2>
-<p>Overall, we discussed two diffent types of traffic generators: <strong>Linear</strong> and <strong>Random</strong>.</p>
+<p>Overall, we discussed two different types of traffic generators: <strong>Linear</strong> and <strong>Random</strong>.</p>
 <p><code>LinearGenerators</code> simulate linear memory accesses, and <code>RandomGenerators</code> simulate random memory accesses.</p>
 <p>We looked into how to configure a board that uses these traffic generators.</p>
 <p>We also extended the <code>AbstractGenerator</code> class to create a <code>HybridGenerator</code>, which simulates linear and random memory accesses simultaneously.</p>
-<p>Finally, we saw some of the statistical differences <code>LinearGeneratorCores</code> and <code>RandomGeneratorCores</code>.</p>
+<p>Finally, we saw some of the statistical differences between<code>LinearGeneratorCores</code> and <code>RandomGeneratorCores</code>.</p>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver(((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()}))}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var t,s,o,r,a;this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=null!==(t=this.shadowRoot.querySelector(`div[${e}]`))&&void 0!==t?t:void 0;const l=this.svg;this.svg=null!==(o=null===(s=this.wrapper)||void 0===s?void 0:s.querySelector(`svg[${i}]`))&&void 0!==o?o:void 0,this.svg!==l&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=null!==(a=null===(r=this.svg)||void 0===r?void 0:r.querySelector(`span[${n}]`))&&void 0!==a?a:void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame((()=>{t.style.display=""})))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){var t,e,i,n,s,o,r;let a=Math.ceil(null!==(e=null===(t=this.containerSize)||void 0===t?void 0:t.width)&&void 0!==e?e:0);const l=Math.ceil(null!==(n=null===(i=this.containerSize)||void 0===i?void 0:i.height)&&void 0!==n?n:0);void 0!==this.dataset.downscaleOnly&&(a=Math.max(a,null!==(o=null===(s=this.wrapperSize)||void 0===s?void 0:s.width)&&void 0!==o?o:0));const c=null===(r=this.svg)||void 0===r?void 0:r.querySelector(":scope > foreignObject");if(null==c||c.setAttribute("width",`${a}`),null==c||c.setAttribute("height",`${l}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${a} ${l}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=a<=0||l<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const o=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this.attachShadow({mode:"open"})}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_update(){const t=i?`<style>:host { ${i} }</style>`:"";let e="<slot></slot>";const{autoScaling:n}=this.dataset;if(void 0!==n){e=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===n?"data-downscale-only":""}>${e}</marp-auto-scaling>`}this.shadowRoot.innerHTML=t+e}};let r;const a=Symbol();let l;const c="marpitSVGPolyfill:setZoomFactor,",d=Symbol(),g=Symbol();const h=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[u]:[],i={then:e=>(t?(async()=>{if(void 0===l){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise((t=>{i.addEventListener("load",(()=>t()))}));i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),l=e.getImageData(5,5,1,1).data[3]<128}return l})().then((t=>{null==e||e(t?[u]:[])})):null==e||e([]),i)};return Object.assign(e,i)};let p,m;function u(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",(({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(c)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(m=i)}}catch(t){console.error(t)}})));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,s,o,r;t.style.transform||(t.style.transform="translateZ(0)");const a=i||m||t.currentScale||1;p!==a&&(p=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(r=null===(o=n.y)||void 0===o?void 0:o.baseVal.value)&&void 0!==r?r:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}})),!1!==n&&Array.from(e.querySelectorAll("iframe"),(({contentWindow:t})=>{null==t||t.postMessage(`${c}${n}`,"null"===window.origin?"*":window.origin)}))}function v({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[d])return t[d];let e=!0;const i=()=>{e=!1,delete t[d]};Object.defineProperty(t,d,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await h()}finally{s=!0}})();const o=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(o)};return o(),i}(e);return t?(i(),()=>{}):i}p=1,m=void 0;const b=Symbol(),w=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[a];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,a=t[n].proto();null!=r||(r=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is")),r&&a!==HTMLElement?i||customElements.define(s,o(a,{style:t[n].style}),{extends:n}):(i||customElements.define(s,o(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach((t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)})))}window[a]=!0})(e),e[b])return e[b];const i=v({target:e}),n=()=>{i(),delete e[b]},l=Object.assign(n,{cleanup:n,update:()=>w(e)});return Object.defineProperty(e,b,{configurable:!0,value:l}),l},y=document.currentScript;w(y?y.getRootNode():document)}();
-</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="19" tabindex="0"><p>I think ./02-annotate-this is what should go above. It was previously blank.</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>What I want to do in this exercies:
+</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="19" tabindex="0"><p>I think ./02-annotate-this is what should go above. It was previously blank.</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>What I want to do in this exercise:
 1. Have people run ```gem5 -re 03-run-x86-SE.py``` without any modification and show them what is the default handler for workbegin and workend in stdlib.
 2. Have people to add a workbegin handler and a workend handler that uses debug.flags[&quot;ExecAll] to enable and disable debug flag to see the execution trace of the syscall.
-3. Point out that SE mode do not time the syscall and it can read/write the host directory</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>What I want to do in this execerise:
+3. Point out that SE mode do not time the syscall and it can read/write the host directory</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>What I want to do in this exercise:
 
 1. have people to cross compile the workload statically and dynamically by modifying the Makefile
-2. point out the cross compiler and &quot;-static&quot;</p></div><div class="bespoke-marp-note" data-index="30" tabindex="0"><p>What I want to do in this execerise:
+2. point out the cross compiler and &quot;-static&quot;</p></div><div class="bespoke-marp-note" data-index="30" tabindex="0"><p>What I want to do in this exercise:
 1. first let people run the static one, and let them know this is arm
 2. then let people run the dynamic one which will lead to errors
 3. show people how to redirect lib</p><p>Not sure what to say for &quot;and let them know this is arm&quot;</p></div><div class="bespoke-marp-note" data-index="43" tabindex="0"><p>Is the sentence above accurate?</p></div><div class="bespoke-marp-note" data-index="70" tabindex="0"><p>Speaker Notes:

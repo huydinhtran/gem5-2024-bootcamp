@@ -148,7 +148,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 </ul>
 </li>
 </ul>
-<p>The models isn't &quot;cycle accurate,&quot; but it's <em>cycle level</em> and quite accurate compared to other DRAM simulators such as DRAMSim and DRAMSys.</p>
+<p>The model isn't &quot;cycle accurate,&quot; but it's <em>cycle level</em> and quite accurate compared to other DRAM simulators such as DRAMSim and DRAMSys.</p>
 <p>You can extend the interface for new kinds of memory devices (e.g., DDR6), but usually you will use interfaces that have already been implemented.</p>
 <p>The main way gem5's memory is normally configured is the number of channels and the channel/rank/bank/row/column bits since systems rarely use bespoke memory devices.</p>
 </section>
@@ -159,10 +159,10 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <p>See <a href="../../gem5/src/python/gem5/components/memory/multi_channel.py"><code>gem5/src/python/gem5/components/memory/multi_channel.py</code></a> and <a href="../../gem5/src/python/gem5/components/memory/single_channel.py"><code>gem5/src/python/gem5/components/memory/single_channel.py</code></a> for examples.</p>
 <p>Additionally,</p>
 <ul>
-<li><code>SimpleMemory()</code> allows the user to not worry about timing parameters and instead, just give the desired latency. bandwidth, and latency variation</li>
-<li><code>ChanneledMemory()</code> encompasses a whole memory system (both the controller and the interface)</li>
-<li>ChanneledMemory provides a simple way to use multiple memory channels</li>
-<li>ChanneledMemory handles things like scheduling policy and interleaving for you</li>
+<li><code>SimpleMemory()</code> allows the user to not worry about timing parameters and instead, just give the desired latency, bandwidth, and latency variation.</li>
+<li><code>ChanneledMemory()</code> encompasses a whole memory system (both the controller and the interface).</li>
+<li>ChanneledMemory provides a simple way to use multiple memory channels.</li>
+<li>ChanneledMemory handles things like scheduling policy and interleaving for you.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="25">

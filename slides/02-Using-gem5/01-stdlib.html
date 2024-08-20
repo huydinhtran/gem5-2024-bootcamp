@@ -104,47 +104,43 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="why-a-standard-library">Why a Standard Library?</h2>
-<p>When done without the library you must define <em>every part</em> of your simulation: Every Simobject, connected correctly to every port, for every part, no matter now small.<br />
-This can result in scripts of hundreds of lines of code even for the most basic of simulations.</p>
-<p>This resulted in:</p>
+<p>When done without the library you must define <em>every part</em> of your simulation: Every SimObject, connected correctly to every port, for every part, no matter now small.<br />
+This can result in scripts with hundreds of lines of code even for the most basic of simulations.</p>
+<p>This causes:</p>
 <ul>
 <li>A lot of duplicated code.</li>
 <li>Error-prone configurations.</li>
-<li>A lock of portability between different simulations setups.</li>
+<li>A lack of portability between different simulation setups.</li>
 </ul>
-<p>In addition, while there is no &quot;one size fits all&quot; for gem5 users, most users have similar needs and requirements for their simulations; requiring only a few modifications off some commonly used configuration systems.<br />
-Prior to the creation of the standard library users would regularly circulte long complex scripts and hack at them endlessly.<br />
+<p>In addition, while there is no &quot;one size fits all&quot; for gem5 users, most users have similar needs and requirements for their simulations, requiring only a few modifications off of some commonly used configuration systems.<br />
+Prior to the creation of the standard library users would regularly circulate long, complex scripts and hack at them endlessly.<br />
 Such practices inspired the creation of the gem5 Standard Library.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="3" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="what-is-the-standard-library">What is the Standard Library?</h2>
-<p>The purpose of the gem5 Standard library is to provide a set of pre-defined components that can be used to build a simulation that does the majority of the work for you.</p>
-<p>The the remainder not supported by the standard library, APIs are provided that make it easy to extend the library for your own use.</p>
+<p>The purpose of the gem5 Standard Library is to provide a set of predefined components that can be used to build a simulation that does the majority of the work for you.</p>
+<p>For the remainder that is not supported by the standard library, APIs are provided that make it easy to extend the library for your own use.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="4" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;01-stdlib-imgs/stdlib-design.drawio.svg&quot;);background-size:90%;"><figcaption>overview of some standard library components and their relationships</figcaption></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="4" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51" data-marpit-advanced-background="content">
 <h2 id="the-metaphor-plugging-components-together-into-a-board">The metaphor: Plugging components together into a board</h2>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="4" style="" data-marpit-pagination-total="51" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="main-idea">Main idea</h2>
-<p>Due to is modular, object-oriented design, gem5 can be thought of as a set of components that can be plugged together to form a simulation.</p>
+<p>Due to its modular, object-oriented design, gem5 can be thought of as a set of components that can be plugged together to form a simulation.</p>
 <p>The types of components are <em>boards</em>, <em>processors</em>, <em>memory systems</em>, and <em>cache hierarchies</em>:</p>
 <ul>
 <li><strong>Board</strong>: The &quot;backbone&quot; of the system. You plug components into the board. The board also contains the system-level things like devices, workload, etc. It's the boards job to negotiate the connections between other components.</li>
-<li><strong>Processor</strong>: Processors connect to boards and have one or more <em>cores</em></li>
+<li><strong>Processor</strong>: Processors connect to boards and have one or more <em>cores</em>.</li>
 <li><strong>Cache hierarchy</strong>: A cache hierarchy is a set of caches that can be connected to a processor and memory system.</li>
 <li><strong>Memory system</strong>: A memory system is a set of memory controllers and memory devices that can be connected to the cache hierarchy.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="quick-note-on-relationship-to-gem5-models">Quick note on relationship to gem5 models</h2>
-<p>The C++ code in gem5 specifies <em>parameterized</em> <strong>models</strong> (typically referred to &quot;SimObjects&quot; in most gem5 literature).<br />
-These models are then instantiated in the Python scripts.</p>
-<p>The standard library is a way to <em>wrap</em> these models in a standard API into, what we call, <em>components</em>.<br />
-The standard library are pre-made Python script instantiating these models provided by gem5.</p>
-<p>The gem5 mode are fine grained concepts which make little sense for us to divide down further into sub-models or hardcore parameters for (for example, a <em>core</em>). A component works on courser grained concepts typically containing many models instantiate with sensible parameters. For, example a <em>processor</em> which contains multiple cores, how they are connected buses and each other with all parameters set ot sensible values.</p>
-<p>If you want to create a new component you are encouraged to <em>extend</em> (i.e., subclass) the components in the standard library or create new components.<br />
-This allows you the models within the component and the value of their parameters.<br />
-We will see some examples of this over the coming lectures.</p>
+<p>The C++ code in gem5 specifies <em>parameterized</em> <strong>models</strong> (typically referred to &quot;SimObjects&quot; in most gem5 literature). These models are then instantiated in the Python scripts.</p>
+<p>The standard library is a way to <em>wrap</em> these models in a standard API into, what we call, <em>components</em>. The standard library consists of pre-made Python scripts instantiating these models provided by gem5.</p>
+<p>The gem5 models are fine grained concepts which make little sense for us to divide down further into sub-models or hardcore parameters for (for example, a <em>core</em>). A component works on coarser grained concepts typically containing many models instantiated with sensible parameters. For, example a <em>processor</em> which contains multiple cores and specifies how they are connected to buses and each other with all parameters set to sensible values.</p>
+<p>If you want to create a new component you are encouraged to <em>extend</em> (i.e., subclass) the components in the standard library or create new components. This allows you to choose the models within the component and the value of their parameters. We will see some examples of this over the coming lectures.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="7" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="lets-get-started">Let's get started!</h2>
@@ -180,7 +176,7 @@ This uses the <a href="05-cache-hierarchies.md">Ruby memory model</a>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="next-lets-add-a-memory-system">Next, let's add a memory system</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">memory = SingleChannelDDR3_1600()
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">memory = SingleChannelDDR4_2400()
 </code></pre>
 <p>This component represents a single-channel DDR3 memory system.</p>
 <p>There is a <code>size</code> parameter that can be used to specify the size of the memory system of the simulated system. You can reduce the size to save simulation time, or use the default for the memory type (e.g., one channel of DDR3 defaults to 8 GiB).</p>
@@ -198,7 +194,7 @@ We'll cover this more in <a href="06-memory.md">Memory Systems</a>.</p>
 <h2 id="next-plug-components-into-the-board">Next, plug components into the board</h2>
 <p>A <code>SimpleBoard</code> is a board which can run any ISA in Syscall Emulation (SE) mode.<br />
 It is &quot;Simple&quot; due the relative simplicity of SE mode.<br />
-Most board are tied to a specific ISA and require more complex designs do running Full System (FS) simulation.</p>
+Most boards are tied to a specific ISA and require more complex designs to run Full System (FS) simulation.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board = SimpleBoard(
     clk_freq=<span class="hljs-string">&quot;3GHz&quot;</span>,
     processor=processor,
@@ -208,21 +204,21 @@ Most board are tied to a specific ISA and require more complex designs do runnin
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h2 id="next-setup-the-workload">Next Setup the workload</h2>
+<h2 id="next-set-up-the-workload">Next, set up the workload</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board.set_workload(obtain_resource(<span class="hljs-string">&quot;arm-gapbs-bfs-run&quot;</span>))
 </code></pre>
 <p>The <code>obtain_resource</code> function downloads the files needed to run the specified workload. In this case &quot;arm-gapbs-bfs-run&quot; is a BFS workload from the GAP Benchmark Suite.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h3 id="gem5-resources">gem5 Resources</h3>
-<p>We will return to gem5 Resources later in the bootcamp, but for now, you can think of them as a way to download and manage files needed for your simulation but don't actually specify the simulated computer system hardware.<br />
-Typically they are used to download and manage workloads, disk images, checkpoints needed for the simulation.</p>
-<p>Here we can search the available resource: <a href="https://resources.gem5.org/">https://resources.gem5.org/</a>.</p>
+<p>We will return to gem5 Resources later in the bootcamp, but for now, you can think of it as a way to download and manage files needed for your simulation but don't actually specify the simulated computer system hardware.<br />
+Typically it is used to download and manage workloads, disk images, checkpoints needed for the simulation.</p>
+<p>Here we can search the available resources: <a href="https://resources.gem5.org/">https://resources.gem5.org/</a>.</p>
 <p>Here is the arm-gabps-bss-run resource: <a href="https://resources.gem5.org/resources/arm-gapbs-bfs-run?version=1.0.0">https://resources.gem5.org/resources/arm-gapbs-bfs-run?version=1.0.0</a>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h2 id="next-setup-the-simulation">Next Setup the Simulation</h2>
-<p>Setup the simulation:</p>
+<h2 id="next-set-up-the-simulation">Next, set up the simulation</h2>
+<p>Set up the simulation:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">simulator = Simulator(board=board)
 simulator.run()
 </code></pre>
@@ -277,7 +273,7 @@ gem5/src/python/gem5/prebuilt
 <li>Prebuilt
 <ul>
 <li>Demo: Just examples to build off of</li>
-<li>riscvmatched: Models SiFive Unmatched</li>
+<li>riscvmatched: Model of SiFive Unmatched</li>
 </ul>
 </li>
 </ul>
@@ -299,9 +295,9 @@ gem5/src/python/gem5/prebuilt
 <li>Boards: Things to plug into
 <ul>
 <li>Have &quot;set_workload&quot; and &quot;connect_things&quot;</li>
-<li>Simple: SE-only, configurable</li>
 </ul>
 </li>
+<li>Simple: SE-only, configurable</li>
 <li>Arm, RISC-V, and X86 versions for full system simulation</li>
 </ul>
 </section>
@@ -325,7 +321,7 @@ gem5/src/python/gem5/prebuilt
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
-<h2 id="a-bit-more-about-cache-hiearchies">A bit more about cache hiearchies</h2>
+<h2 id="a-bit-more-about-cache-hierarchies">A bit more about cache hierarchies</h2>
 <ul>
 <li>Quick caveat: You need different gem5 binaries for different protocols</li>
 <li>Any binary can use classic caches</li>
@@ -379,21 +375,21 @@ gem5/src/python/gem5/prebuilt
 </code></pre>
 <h3 id="-4"></h3>
 <ul>
-<li>Mostly &quot;configurable&quot; processors to build off</li>
+<li>Mostly &quot;configurable&quot; processors to build off of.</li>
 <li>Generators
 <ul>
-<li>Synthetic traffic, but act like processors</li>
-<li>Have linear, random, and more interesting</li>
+<li>Synthetic traffic, but act like processors.</li>
+<li>Have linear, random, and more interesting patterns</li>
 </ul>
 </li>
 <li>Simple
 <ul>
-<li>Only default parameters, one ISA</li>
+<li>Only default parameters, one ISA.</li>
 </ul>
 </li>
 <li>Switchable
 <ul>
-<li>We'll see this later, but you can switch from one to another during simulation</li>
+<li>We'll see this later, but you can switch from one to another during simulation.</li>
 </ul>
 </li>
 </ul>
@@ -401,18 +397,18 @@ gem5/src/python/gem5/prebuilt
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="more-on-processors">More on processors</h2>
 <ul>
-<li>Processors are made up of cores</li>
-<li>Cores have a &quot;BaseCPU&quot; as a member. This is the actual CPU model</li>
+<li>Processors are made up of cores.</li>
+<li>Cores have a &quot;BaseCPU&quot; as a member. This is the actual CPU model.</li>
 <li><code>Processor</code> is what interfaces with <code>CacheHierarchy</code> and <code>Board</code></li>
-<li>Processors are organized, structured, sets of cores, defining how they connect together and with outside components and the board though standard interface.</li>
+<li>Processors are organized, structured sets of cores. They define how cores connect with each other and with outside components and the board though standard interface.</li>
 </ul>
 <h3 id="gem5-has-three-or-four-or-five-different-processor-models">gem5 has three (or four or five) different processor models</h3>
 <p>More details coming in the <a href="04-cpu-models.md">CPU Models</a> section.</p>
 <ul>
 <li><code>CPUTypes.TIMING</code>: A simple in-order CPU model
 <ul>
-<li>This is a &quot;single cycle&quot; CPU. Each instructions takes the time to fetch and executes immediately.</li>
-<li>Memory operations take the latency of the memory system</li>
+<li>This is a &quot;single cycle&quot; CPU. Each instruction takes the time to fetch and executes immediately.</li>
+<li>Memory operations take the latency of the memory system.</li>
 <li>OK for doing memory-centric studies, but not good for most research.</li>
 </ul>
 </li>
@@ -442,9 +438,9 @@ gem5/src/python/gem5/prebuilt
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="24" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="a-slightly-more-complex-example">A slightly more complex example</h2>
-<p>We have went over basic &quot;getting started&quot; example then went over the various components we offer.<br />
-Let's create more complex example, incorporating more features delivered by the standard library.</p>
-<p>In this example we will create system using multiple cores, on an X86 board, in Full System mode.</p>
+<p>We have went over a basic &quot;getting started&quot; example, then went over the various components we offer.<br />
+Let's create a more complex example, incorporating more features delivered by the standard library.</p>
+<p>In this example we will create a system using multiple cores, on an X86 board, in Full System mode.</p>
 <h3 id="first-lets-discuss-se-mode-and-fs-mode">First: Let's discuss SE mode and FS mode</h3>
 <p>SE mode relays application syscalls to the host OS. This means we don't need to simulate an OS for applications to run.</p>
 <p>In addition, we can access host resources such as files of libraries to dynamically link in.</p>
@@ -459,13 +455,13 @@ Let's create more complex example, incorporating more features delivered by the 
 <h2 id="fs-and-se-mode-common-pitfalls">FS and SE mode: Common pitfalls</h2>
 <ul>
 <li><strong>Don't treat SE mode as &quot;FS  but faster&quot;</strong>: You must understand what you're simulating and whether it will impact results.</li>
-<li><strong>Not all syscalls will ever be implemented</strong>: We'd love to have all the syscalls implement but Linux changes rapidly. We try to cover common use-cases but we can't cover everything. If a Syscall is missing, you can implement it, ignore it, or use FS mode.</li>
-<li><strong>Binaries with elevated privileges do not work in SE mode</strong>: If you're running a binary that requires elevated privileges, you'll need to run it FS mode.</li>
+<li><strong>Not all syscalls will ever be implemented</strong>: We'd love to have all the syscalls implemented but Linux changes rapidly. We try to cover common use-cases but we can't cover everything. If a Syscall is missing, you can implement it, ignore it, or use FS mode.</li>
+<li><strong>Binaries with elevated privileges do not work in SE mode</strong>: If you're running a binary that requires elevated privileges, you'll need to run it in FS mode.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="se-mode-if-in-doubt-use-fs-mode">SE mode: If in doubt, use FS mode</h2>
-<p>FS mode does everything SE mod does (and more!) but can take longer to get to the region of interest. You have to wait for the OS to boot each time (unless you <a href="08-accelerating-simulation.md">accelerate the simulation</a>).</p>
+<p>FS mode does everything SE mode does (and more!) but can take longer to get to the region of interest. You have to wait for the OS to boot each time (unless you <a href="08-accelerating-simulation.md">accelerate the simulation</a>).</p>
 <p>However, as SE mode doesn't simulate the OS, you risk missing important events triggered via syscalls, I/O, or the operating system, which may mean your simulated system doesn't properly reflect the real system.</p>
 <p><strong>Think through what SE mode is doing and if it's right for your use-case.</strong> If in doubt, use FS mode. It's (generally) not worth the risk using SE mode if you're not sure.</p>
 </section>
@@ -508,7 +504,7 @@ memory = SingleChannelDDR3_1600(size=<span class="hljs-string">&quot;3GB&quot;</
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="32" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="lets-add-a-simpleswitchableprocessor">Let's add a SimpleSwitchableProcessor</h2>
-<p>Here we setup the processor. This is a special switchable processor in which a starting core type and a switch core type must be specified. Once a configuration is instantiated a user may call <code>processor.switch()</code> to switch from the starting core types to the switch core types. In this simulation we start with Timing cores to simulate the OS boot, then switch to the Out-of-order (O3) cores for the command we wish to run after boot.</p>
+<p>Here we set up the processor. This is a special switchable processor in which a starting core type and a switch core type must be specified. Once a configuration is instantiated a user may call <code>processor.switch()</code> to switch from the starting core types to the switch core types. In this simulation we start with Timing cores to simulate the OS boot, then switch to the Out-of-order (O3) cores for the command we wish to run after boot.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">processor = SimpleSwitchableProcessor(
     starting_core_type=CPUTypes.TIMING,
     switch_core_type=CPUTypes.O3,
@@ -519,7 +515,7 @@ memory = SingleChannelDDR3_1600(size=<span class="hljs-string">&quot;3GB&quot;</
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="33" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="next-plug-components-into-the-board-1">Next, plug components into the board</h2>
-<p>Here we setup the board. The X86Board allows for Full-System X86 simulations.</p>
+<p>Here we set up the board. The X86Board allows for Full-System X86 simulations.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board = X86Board(
     clk_freq=<span class="hljs-string">&quot;3GHz&quot;</span>,
     processor=processor,
@@ -544,7 +540,7 @@ The <code>set_kernel_disk_workload</code> function for the X86Board takes a kern
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="35" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="setting-the-workload">Setting the workload</h2>
 <p>This a slightly more convoluted way of specifying a workload.<br />
-Here we specifying the kernel, disk image, and the command to run after booting the system.</p>
+Here we specify the kernel, disk image, and the command to run after booting the system.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board.set_kernel_disk_workload(
     kernel=obtain_resource(<span class="hljs-string">&quot;x86-linux-kernel-4.4.186&quot;</span>),
     disk_image=obtain_resource(<span class="hljs-string">&quot;x86-ubuntu-18.04-img&quot;</span>),
@@ -554,7 +550,7 @@ Here we specifying the kernel, disk image, and the command to run after booting 
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="36" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="create-the-simulator-object">Create the simulator object</h2>
-<p>Here we setup the simulator. We pass the board to the simulator and run it but also specify what to do when the simulation exits with the <code>EXIT</code> exit event. In this case we call the <code>processor.switch</code> function on the first exit event. For the 2nd the default action will be triggered which exists the simulator.</p>
+<p>Here we set up the simulator. We pass the board to the simulator and run it but also specify what to do when the simulation exits with the <code>EXIT</code> exit event. In this case we call the <code>processor.switch</code> function on the first exit event. For the 2nd the default action will be triggered which exits the simulator.</p>
 <p>Warning: This is using a generator expression to create a tuple of functions to call.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">simulator = Simulator(
     board=board,
@@ -588,7 +584,7 @@ simulator.run()
 simulator.run()
 </code></pre>
 <p>We passed objects to specify exactly what to do on each exit event type via Python generators generator expression. In this case the generator yields <code>processor.switch</code> which is called when the exit event <code>ExitEvent.EXIT</code> is triggered.<br />
-When the 2nd exit is triggered the default action is triggered as there is nothing left to yield. The default action is to exit the simulation loop</p>
+When the 2nd exit is triggered the default action is triggered as there is nothing left to yield. The default action is to exit the simulation loop.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="40" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="exit-event-types">Exit event types</h2>
@@ -608,10 +604,10 @@ When the 2nd exit is triggered the default action is triggered as there is nothi
 <h2 id="key-idea-the-simulator-object-controls-simulation">Key idea: The <code>Simulator</code> object controls simulation</h2>
 <p>To place our idea of gem5:</p>
 <ul>
-<li>*models (or <em>SimObjects</em>) are the fine-grained objects that are connected together in Python scripts to form a simulation.</li>
+<li><em>models</em> (or <em>SimObjects</em>) are the fine-grained objects that are connected together in Python scripts to form a simulation.</li>
 <li><em>components</em> are the coarse-grained objects that are connected defined as a set of configured models in Python scripts to form and delivered as part of the Standard Library</li>
 <li>The standard library allows users to specify a board and specify the properties of the board by specify the components that are connected to it.</li>
-<li>The Simulator takes a board and launches the simulation and gives an api which allows for control of the simulation: specifying the simulation stopping and restarting condition; replacing components &quot;on the fly&quot;; defining when the simulation is stop and start; etc.</li>
+<li>The Simulator takes a board and launches the simulation and gives an API which allows for control of the simulation: specifying the simulation stopping and restarting condition, replacing components &quot;on the fly&quot;, defining when the simulation should stop and start, etc.</li>
 </ul>
 <p>See <a href="../../gem5/src/python/gem5/simulate/simulator.py"><code>src/python/gem5/simulate/simulator.py</code></a> for the Simulator source.</p>
 <p>We'll see more about this in <a href="08-accelerating-simulation.md">Accelerating Simulation</a>.</p>
@@ -621,7 +617,7 @@ When the 2nd exit is triggered the default action is triggered as there is nothi
 <ul>
 <li><strong><code>board</code></strong>: The <code>Board</code> to simulate (required)</li>
 <li><strong><code>full_system</code></strong>: Whether to simulate a full system (default: <code>False</code>, can be inferred from the board, not needed specified in most cases)</li>
-<li><strong><code>on_exit_event</code></strong>: A complex data structure that allows you to control the simulation. The simulator exits for many reasons, this allows you to customize what happens. We just saw any example</li>
+<li><strong><code>on_exit_event</code></strong>: A complex data structure that allows you to control the simulation. The simulator exits for many reasons, this allows you to customize what happens. We just saw an example.</li>
 <li><strong><code>checkpoint_path</code></strong>: If we're restoring from a checkpoint, this is the path to the checkpoint. More on checkpoints later.</li>
 <li><strong><code>id</code></strong>: An optional name for this simulation. Used in multisim. More on this in the future.</li>
 </ul>
@@ -635,7 +631,7 @@ When the 2nd exit is triggered the default action is triggered as there is nothi
 <li><strong>`get_stats()``</strong>: Get the statistics from the simulation. Returns a dictionary of statistics.</li>
 </ul>
 <p>See <a href="../../gem5/src/python/gem5/simulate/simulator.py"><code>src/python/gem5/simulate/simulator.py</code></a> for more details.</p>
-<p>we will be covering much more about how to use the <code>Simulator</code> object in other parts of the bootcamp.</p>
+<p>We will be covering much more about how to use the <code>Simulator</code> object in other parts of the bootcamp.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="44" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="standard-library-components">Standard Library components</h2>
@@ -646,13 +642,13 @@ When the 2nd exit is triggered the default action is triggered as there is nothi
 <p>NOT designed for &quot;parameterization&quot;</p>
 </blockquote>
 <p>If you want to create a processor/cache hierarchy/etc. with different parameters:<br />
-Extend using object-oriented semantics</p>
-<p>Let's see an example</p>
+Extend using object-oriented semantics.</p>
+<p>Let's see an example.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="45" style="--paginate:true;--theme:gem5;--marpit-advanced-background-split:60%;" data-marpit-pagination-total="51" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./01-stdlib-imgs/gem5-software-arch.drawio.svg&quot;);background-size:contain;"><figcaption>diagram of models, stdlib, and simulation control</figcaption></figure></div></section></foreignObject><foreignObject width="40%" height="720"><section id="45" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="45" style="--paginate:true;--theme:gem5;--marpit-advanced-background-split:60%;" data-marpit-pagination-total="51" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <h2 id="quick-reminder-of-gem5s-architecture">Quick reminder of gem5's architecture</h2>
-<p>We will now create a new component</p>
-<p>Specialize/extend the &quot;BaseCPUProcessor&quot; to create an ARM processor which a singlatr out-of-order core.</p>
+<p>We will now create a new component.</p>
+<p>We will specialize/extend the &quot;BaseCPUProcessor&quot; to create an ARM processor with a singular out-of-order core.</p>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="45" style="" data-marpit-pagination-total="51" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="46" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="51">
 <h2 id="lets-create-a-processor-with-out-of-order-cores">Let's create a processor with out-of-order cores</h2>

@@ -107,9 +107,9 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <ul>
 <li>What is full system simulation?</li>
 <li>Basics of booting up a real system in gem5</li>
-<li>Creating disk images using packer and qemu</li>
+<li>Creating disk images using Packer and QEMU</li>
 <li>Extending/modifying a gem5 disk image</li>
-<li>m5term to interact with a running system</li>
+<li>Using m5term to interact with a running system</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="3" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
@@ -152,7 +152,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <h2 id="lets-run-a-full-system-simulation-in-gem5">Let's run a full system simulation in gem5</h2>
 <p>The incomplete code already has a board built.</p>
 <p>Let's run a full-system workload in gem5.</p>
-<p>This workload is an Ubuntu 24.04 boot, it will throw three m5 exits at:</p>
+<p>This workload is an Ubuntu 24.04 boot. It will throw three m5 exits at:</p>
 <ul>
 <li>Kernel Booted</li>
 <li>When <code>after_boot.sh</code> runs</li>
@@ -169,7 +169,7 @@ board.set_workload(workload)
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="7" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="22">
 <h2 id="obtain-the-workload-and-set-exit-event-conti">Obtain the workload and set exit event (conti.)</h2>
-<p>Let's make the exit event handler and set it in our simulator's object</p>
+<p>Let's make the exit event handler and set it in our simulator's object.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">exit_event_handler</span>():
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;first exit event: Kernel booted&quot;</span>)
     <span class="hljs-keyword">yield</span> <span class="hljs-literal">False</span>
@@ -197,59 +197,60 @@ make
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
 <h2 id="watch-gem5s-output">Watch gem5's output</h2>
-<p>Now, let's run the workload and connect to the terminal using <code>m5term</code>.</p>
+<p>Now, let's run the workload and connect to the terminal of the disk image boot using <code>m5term</code>.</p>
+<p>Run gem5 with:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">gem5 x86-fs-kvm-run.py
 </code></pre>
-<p>In another terminal, run the following command to connect to the terminal:</p>
+<p>In another terminal window, run the following command to connect to the disk image boot's terminal:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">m5term 3456
 </code></pre>
 <p>3456 is the port number on which the terminal is running.<br />
 You will see this printed in the gem5 output.</p>
 <p>If you run multiple gem5 instances, they will have sequential port numbers.<br />
-If you're running in a non-interactive environment, there will be no ports to connect to.</p>
+If you are running in a non-interactive environment, there will be no ports to connect to.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-class="start" data-theme="gem5" lang="en-US" class="start" data-marpit-pagination="10" style="--paginate:true;--class:start;--theme:gem5;" data-marpit-pagination-total="22">
 <h2 id="creating-your-own-disk-images">Creating your own disk images</h2>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="11" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="creating-disk-images-using-packer-and-qemu">Creating disk images using packer and qemu</h2>
-<p>To create a generic ubuntu diskimage that we can use in gem5, we will use:</p>
+<h2 id="creating-disk-images-using-packer-and-qemu">Creating disk images using Packer and QEMU</h2>
+<p>To create a generic Ubuntu disk image that we can use in gem5, we will use:</p>
 <ul>
-<li>packer: This will automate the diskimage creation process.</li>
-<li>qemu: We will use qemu plugin in packer to actually create the diskimage.</li>
-<li>ubuntu autoinstall: We will use autoinstall to autmate the ubuntu install process.</li>
+<li>Packer: This will automate the disk image creation process.</li>
+<li>QEMU: We will use a QEMU plugin in Packer to actually create the disk image.</li>
+<li>Ubuntu autoinstall: We will use autoinstall to automate the Ubuntu install process.</li>
 </ul>
-<p>gem5 resources already have code that can create the a generic ubuntu image using the above mentioned method.</p>
+<p>gem5 resources already has code that can create a generic Ubuntu image using the aforementioned method.</p>
 <ul>
-<li>Path on codespaces: <a href="../../gem5-resources/src/x86-ubuntu"><code>/workspaces/2024/gem5-resources/src/x86-ubuntu</code></a></li>
+<li>Path to code: <a href="../../gem5-resources/src/x86-ubuntu"><code>gem5-resources/src/x86-ubuntu</code></a></li>
 </ul>
 <p>Let's go through the important parts of the creation process.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="getting-the-iso-and-the-user-data-file">Getting the iso and the user-data file</h2>
-<p>As we are using ubuntu autoinstall, we need a live server install iso</p>
+<h2 id="getting-the-iso-and-the-user-data-file">Getting the ISO and the user-data file</h2>
+<p>As we are using Ubuntu autoinstall, we need a live server install ISO.</p>
 <ul>
-<li>This can be found online from the ubuntu website: <a href="https://old-releases.ubuntu.com/releases/jammy/">iso</a> (switch link to 24.04)</li>
+<li>This can be found online from the Ubuntu website: <a href="https://releases.ubuntu.com/noble/">iso</a></li>
 </ul>
-<p>We also need the user-data file that will tell ubuntu autoinstall how to install ubuntu</p>
+<p>We also need the user-data file that will tell Ubuntu autoinstall how to install Ubuntu.</p>
 <ul>
 <li>The user-data file on gem5-resources specifies all default options with a minimal server installation.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
 <h2 id="how-to-get-our-own-user-data-file">How to get our own user-data file</h2>
-<p>To get a user-data file from scratch, you need to install ubuntu on a machine.</p>
+<p>To get a user-data file from scratch, you need to install Ubuntu on a machine.</p>
 <ul>
 <li>Post-installation, we can retrieve the <code>autoinstall-user-data</code> from <code>/var/log/installer/autoinstall-user-data</code> after the system's first reboot.</li>
 </ul>
-<p>You can install ubuntu on your own vm and get the user-data file</p>
+<p>You can install Ubuntu on your own VM and get the user-data file.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="using-qemu-to-get-the-user-data-file">Using qemu to get the user-data file</h2>
-<p>We can also use qemu to install ubuntu and then get the above mentioned file.</p>
+<h2 id="using-qemu-to-get-the-user-data-file">Using QEMU to get the user-data file</h2>
+<p>We can also use QEMU to install Ubuntu and get the aforementioned file.</p>
 <ul>
-<li>First, we need to create an empty diskimage in qemu with the command: <code>qemu-img create -f raw ubuntu-22.04.2.raw 5G</code></li>
-<li>Then we use qemu to boot the diskimage:</li>
+<li>First, we need to create an empty disk image in QEMU with the command: <code>qemu-img create -f raw ubuntu-22.04.2.raw 5G</code></li>
+<li>Then we use QEMU to boot the diskimage:</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">qemu-system-x86_64 -m 2G \
       -cdrom ubuntu-22.04.2-live-server-amd64.iso \
@@ -257,11 +258,11 @@ If you're running in a non-interactive environment, there will be no ports to co
       -enable-kvm -cpu host -smp 2 -net nic \
       -net user,hostfwd=tcp::2222-:22
 </code></pre>
-<p>After installing ubuntu, we can use ssh to get the user-data file</p>
+<p>After installing Ubuntu, we can use ssh to get the user-data file.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="important-parts-of-the-packer-script">Important parts of the packer script</h2>
-<p>Let's go over the packer file.</p>
+<h2 id="important-parts-of-the-packer-script">Important parts of the Packer script</h2>
+<p>Let's go over the Packer file.</p>
 <ul>
 <li>
 <p><strong>bootcommand</strong>:</p>
@@ -271,20 +272,20 @@ If you're running in a non-interactive environment, there will be no ports to co
 &quot;autoinstall  ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---&lt;wait&gt;&quot;,
 &quot;&lt;f10&gt;&lt;wait&gt;&quot;
 </code></pre>
-<p>This boot command opens the GRUB menu to edit the boot command, then removes the <code>---</code> and adds autoinstall command.</p>
+<p>This boot command opens the GRUB menu to edit the boot command, then removes the <code>---</code> and adds the  autoinstall command.</p>
 </li>
 <li>
-<p><strong>http_directory</strong>: This directory points to directory that has the user-data file and an empty file named meta-data. These files are used to install ubuntu</p>
+<p><strong>http_directory</strong>: This directory points to the directory with the user-data file and an empty file named meta-data. These files are used to install Ubuntu.</p>
 </li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="16" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="important-parts-of-the-packer-script-conti">Important parts of the packer script (Conti.)</h2>
+<h2 id="important-parts-of-the-packer-script-conti">Important parts of the Packer script (Conti.)</h2>
 <ul>
 <li>
-<p><strong>qemu_args</strong>: We need to provide packer with the qemu arguments we will be using to boot the image.</p>
+<p><strong>qemu_args</strong>: We need to provide Packer with the QEMU arguments we will be using to boot the image.</p>
 <ul>
-<li>For example, the qemu command that the packer script will use will be:</li>
+<li>For example, the QEMU command that the Packer script will use will be:</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">qemu-system-x86_64 -vnc 127.0.0.1:32 -m 8192M \
 -device virtio-net,netdev=user.0 -cpu host \
@@ -294,7 +295,7 @@ If you're running in a non-interactive environment, there will be no ports to co
 </code></pre>
 </li>
 <li>
-<p><strong>File provisioners</strong>: These commands allow us to move files from host machine to the qemu image.</p>
+<p><strong>File provisioners</strong>: These commands allow us to move files from the  host machine to the QEMU image.</p>
 </li>
 <li>
 <p><strong>Shell provisioner</strong>: This allows us to run bash scripts that can run the post installation commands.</p>
@@ -302,14 +303,14 @@ If you're running in a non-interactive environment, there will be no ports to co
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-class="no-logo" data-theme="gem5" lang="en-US" class="no-logo" data-marpit-pagination="17" style="--paginate:true;--class:no-logo;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="lets-use-the-base-ubuntu-image-to-create-a-diskimage-with-the-gapbs-benchmark">Let's use the base ubuntu image to create a diskimage with the gapbs benchmark</h2>
+<h2 id="lets-use-the-base-ubuntu-image-to-create-a-disk-image-with-the-gapbs-benchmarks">Let's use the base Ubuntu image to create a disk image with the GAPBS benchmarks</h2>
 <p>Update the <a href="../../materials/02-Using-gem5/07-full-system/x86-ubuntu-gapbs/x86-ubuntu.pkr.hcl">x86-ubuntu.pkr.hcl</a> file.</p>
-<p>The general structure of the packer file would be the same but with a few key changes:</p>
+<p>The general structure of the Packer file would be the same but with a few key changes:</p>
 <ul>
 <li>
-<p>We will now add an argument in <code>source &quot;qemu&quot; &quot;initialize&quot;</code> block.</p>
+<p>We will now add an argument in the <code>source &quot;qemu&quot; &quot;initialize&quot;</code> block.</p>
 <ul>
-<li><code>diskimage = true</code> : This will let packer know that we are using a base diskimage and not an iso from which we will install ubuntu.</li>
+<li><code>diskimage = true</code> : This will let Packer know that we are using a base disk image and not an iso from which we will install Ubuntu.</li>
 </ul>
 </li>
 <li>
@@ -317,7 +318,7 @@ If you're running in a non-interactive environment, there will be no ports to co
 </li>
 <li>
 <p>Change the <code>iso_checksum</code> and <code>iso_urls</code> to that of our base image.</p>
-<p>Let's get the base ubuntu 24.04 image gen5 resources and unzip it.</p>
+<p>Let's get the base Ubuntu 24.04 image from gem5 resources and unzip it.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">wget https://storage.googleapis.com/dist.gem5.org/dist/develop/images/x86/ubuntu-24-04/x86-ubuntu-24-04.gz
 gzip -d x86-ubuntu-24-04.gz
 </code></pre>
@@ -330,7 +331,7 @@ gzip -d x86-ubuntu-24-04.gz
 </code></pre>
 <ul>
 <li><strong>Update the file and shell provisioners:</strong> Let's remove the file provisioners as we dont need to transfer the files again.</li>
-<li><strong>Boot command:</strong> As we are not installing ubuntu, we can write the commands to login along with any other commands we need (e.g. setting up network or ssh). Let's update the boot command to login and enable network:</li>
+<li><strong>Boot command:</strong> As we are not installing Ubuntu, we can write the commands to login along with any other commands we need (e.g. setting up network or ssh). Let's update the boot command to login and enable network:</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-hcl">&quot;&lt;wait30&gt;&quot;,
 &quot;gem5&lt;enter&gt;&lt;wait&gt;&quot;,
@@ -342,32 +343,32 @@ gzip -d x86-ubuntu-24-04.gz
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="changes-to-the-postinstallation-script">Changes to the postinstallation script</h2>
-<p>For this post installation script we need to get the dependencies and build the gapbs benchmarks.</p>
+<h2 id="changes-to-the-post-installation-script">Changes to the post installation script</h2>
+<p>For this post installation script we need to get the dependencies and build the GAPBS benchmarks.</p>
 <p>Add this to the <a href="../../materials/02-Using-gem5/07-full-system/x86-ubuntu-gapbs/scripts/post-installation.sh">post-installation.sh</a> script</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/sbeamer/gapbs
 <span class="hljs-built_in">cd</span> gapbs
 make
 </code></pre>
-<p>Let's run the packer script and use this diskimage in gem5!</p>
+<p>Let's run the Packer script and use this disk image in gem5!</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">cd</span> /workspaces/2024/materials/02-Using-gem5/07-full-system
 x86-ubuntu-gapbs/build.sh
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
-<h2 id="lets-use-our-built-diskimage-in-gem5">Let's use our built diskimage in gem5</h2>
-<p>Let's add the md5sum and the path to our <a href="../../materials/02-Using-gem5/07-full-system/completed/local-gapbs-resource.json">local JSON </a></p>
-<p>Let's run the <a href="../../materials/02-Using-gem5/07-full-system/completed/x86-fs-gapbs-kvm-run.py">gem5 gapbs config</a></p>
-<p>This script should run the bfs benchmark.</p>
+<h2 id="lets-use-our-built-disk-image-in-gem5">Let's use our built disk image in gem5</h2>
+<p>Let's add the md5sum and the path to our <a href="../../materials/02-Using-gem5/07-full-system/completed/local-gapbs-resource.json">local JSON </a>.</p>
+<p>Let's run the <a href="../../materials/02-Using-gem5/07-full-system/completed/x86-fs-gapbs-kvm-run.py">gem5 GAPBS config</a>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">GEM5_RESOURCE_JSON_APPEND=./completed/local-gapbs-resource.json gem5 x86-fs-gapbs-kvm-run.py
 </code></pre>
+<p>This script should run the bfs benchmark.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="21" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="22">
 <h2 id="lets-see-how-we-can-access-the-terminal-using-m5term">Let's see how we can access the terminal using m5term</h2>
 <ul>
-<li>We are going to run the same <a href="../../materials/02-Using-gem5/07-full-system/x86-fs-gapbs-kvm-run.py">gem5 gapbs config</a> but with a small change.</li>
+<li>We are going to run the same <a href="../../materials/02-Using-gem5/07-full-system/x86-fs-gapbs-kvm-run.py">gem5 GAPBS config</a> but with a small change.</li>
 </ul>
-<p>Let's change the last <code>yield True</code> to <code>yield False</code> so that the simulation doesnt exit and we can access the simulation</p>
+<p>Let's change the last <code>yield True</code> to <code>yield False</code> so that the simulation doesn't exit and we can access the simulation.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">exit_event_handler</span>():
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;first exit event: Kernel booted&quot;</span>)
     <span class="hljs-keyword">yield</span> <span class="hljs-literal">False</span>

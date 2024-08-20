@@ -171,7 +171,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="10" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="hands-on-time">Hands-on Time!</h2>
 <h3 id="01-annotate-this">01-annotate-this</h3>
-<p>Materials are under <code>materials/02-Using-gem5/08-accelerating-simulation/01-annotate-this</code>.<br />
+<p>Materials are under <a href="/materials/02-Using-gem5/08-accelerating-simulation/01-annotate-this/">materials/02-Using-gem5/08-accelerating-simulation/01-annotate-this</a>.<br />
 <a href="../../materials/02-Using-gem5/08-accelerating-simulation/01-annotate-this/01-annotate-this.cpp"><code>01-annotate-this.cpp</code></a> is the same workload we used in <a href="03-running-in-gem5.md">03-running-in-gem5</a>, but this time, we need to use the address version of m5ops to annotate it.</p>
 <p>We first need to get the functions we need from the m5ops library.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp"><span class="hljs-comment">// Include the gem5 m5ops header file</span>
@@ -254,16 +254,16 @@ List of Files &amp; Folders:
 <h3 id="02-kvm-time">02-kvm-time</h3>
 <h3 id="lets-use-kvm-to-fast-forward-to-the-roi">Let's use KVM to fast forward to the ROI</h3>
 <p>Let's run the Class A EP benchmark in the NPB benchmark suite.<br />
-gem5 resources provides us with the <code>npb-ep-a</code> workload that allows us to run it with a single line</p>
+gem5 resources provides us with the <code>npb-ep-a</code> workload that allows us to run it with a single line:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">board.set_workload(obtain_resource(<span class="hljs-string">&quot;npb-ep-a&quot;</span>))
 </code></pre>
 <p>so we don't need to worry about building the disk image, the workload, and annotating it for now.</p>
 <p>In this workload, there will be a <code>m5_work_begin_addr</code> call after EP's initialization and a <code>m5_work_end_addr</code> call after EP's ROI finishes.</p>
-<p>You can find the details about the workload at the <a href="https://resources.gem5.org/">gem5 resources website</a> and the source code in the <a href="https://github.com/gem5/gem5-resources">gem5 resources GitHub</a>. For example, for EP, here is the <a href="https://github.com/gem5/gem5-resources/blob/stable/src/npb/disk-image/npb/npb-hooks/NPB/NPB3.4-OMP/EP/ep.f90#L125">source file</a> with m5 addr version annotation.</p>
+<p>You can find the details of the workload at the <a href="https://resources.gem5.org/">gem5 resources website</a> and the source code in the <a href="https://github.com/gem5/gem5-resources">gem5 resources GitHub</a>. For example, for EP, here is the <a href="https://github.com/gem5/gem5-resources/blob/stable/src/npb/disk-image/npb/npb-hooks/NPB/NPB3.4-OMP/EP/ep.f90#L125">source file</a> with m5 addr version annotation.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="16" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="02-kvm-time-1">02-kvm-time</h2>
-<p>All materials can be found in <code>materials/02-Using-gem5/08-accelerating-simulation/02-kvm-time</code>.</p>
+<p>All materials can be found in <a href="/materials/02-Using-gem5/08-accelerating-simulation/02-kvm-time">materials/02-Using-gem5/08-accelerating-simulation/02-kvm-time</a>.</p>
 <p>We will be editing <a href="../../materials/02-Using-gem5/08-accelerating-simulation/02-kvm-time/02-kvm-time.py"><code>02-kvm-time.py</code></a></p>
 <h3 id="goal">Goal</h3>
 <ol>
@@ -336,7 +336,7 @@ processor = SimpleSwitchableProcessor(
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-class="no-logo code-80-percent" data-theme="gem5" lang="en-US" class="no-logo code-80-percent" data-marpit-pagination="21" style="--paginate:true;--class:no-logo code-80-percent;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="02-kvm-time-5">02-kvm-time</h2>
 <p>If we run it with</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">cd</span> /workspaces/2024/materials/02-Using-gem5/08-accelerating-simulation/02-kvm-time
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">cd</span> materials/02-Using-gem5/08-accelerating-simulation/02-kvm-time
 gem5 -re 02-kvm-time.py
 </code></pre>
 <p>We will see the following error in our terminal</p>
@@ -395,10 +395,10 @@ Resetting stats at the start of ROI!
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="25" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="02-kvm-time-9">02-kvm-time</h2>
-<p>Because we schedule an exit event that will be triggered after running for 1,000,000,000 Ticks, it will exit the simulation before the <code>work_begin_addr</code> is called so we can look at the stats faster just for the tutorial.<br />
+<p>Because we schedule an exit event that will be triggered after running for 1,000,000,000 Ticks, the simulation will exit before <code>work_begin_addr</code> is called so we can look at the stats sooner for the tutorial.<br />
 Let's look at the stats now.<br />
 It should be in the <code>stats.txt</code> file under the <code>m5out</code> folder.</p>
-<p>There are two stats dump, one from the end of the KVM fast-forwarding, and the other from the end of the detailed simulation after simulating 100,000 instructions in any thread.</p>
+<p>There are two stats dumps, one from the end of the KVM fast-forwarding and the other from the end of the detailed simulation after simulating 100,000 instructions in any thread.</p>
 <p><code>---------- Begin Simulation Statistics ----------</code><br />
 and<br />
 <code>---------- End Simulation Statistics   ----------</code><br />
@@ -413,8 +413,8 @@ we should get the following results</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">board.processor.start0.core.commitStats0.numOps            0
 board.processor.start1.core.commitStats0.numOps            0
 </code></pre>
-<p>It indicates that the KVM CPU did not simulate any operations, so any stats that are produced by the KVM CPU should be ignored, including the <code>simSeconds</code> and <code>simTicks</code>.<br />
-Importantly, it also indicates that the KVM fast-forwarding does not warm up the micro-architectural components, such as caches, so we should consider having a period of warmup simulation before measuring the actual detailed simulation.</p>
+<p>It indicates that the KVM CPU did not simulate any operations, so any stats that are produced by the KVM CPU should be ignored. This includes <code>simSeconds</code> and <code>simTicks</code>.<br />
+Importantly, it also indicates that KVM fast-forwarding does not warm up micro-architectural components, such as caches, so we should consider having a period of warmup simulation before measuring the actual detailed simulation.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-class="no-logo" data-theme="gem5" lang="en-US" class="no-logo" data-marpit-pagination="27" style="--paginate:true;--class:no-logo;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="02-kvm-time-11">02-kvm-time</h2>
@@ -471,8 +471,8 @@ However, we have a different goal this time. Also we will have a much simpler sy
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="32" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="03-checkpoint-and-restore-1">03-checkpoint-and-restore</h2>
-<p>All materials can be found under <code>materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore</code>.<br />
-We will first edit the <a href="../../materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore/03-take-a-checkpoint.py"><code>03-take-a-checkpoint.py</code></a> to take a checkpoint. We will be calling it as the checkpointing script.</p>
+<p>All materials can be found under <a href="/materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore">materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore</a>.<br />
+We will first edit <a href="../../materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore/03-take-a-checkpoint.py"><code>03-take-a-checkpoint.py</code></a> to take a checkpoint. We will be calling it as the checkpointing script.</p>
 <p>In the checkpointing script, let's first give the system the simplest cache hierarchy, which is no cache at all.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># Let&#x27;s setup a NoCache cache hierarchy</span>
 <span class="hljs-keyword">from</span> gem5.components.cachehierarchies.classic.no_cache <span class="hljs-keyword">import</span> NoCache
@@ -511,7 +511,7 @@ processor = SimpleProcessor(
     <span class="hljs-keyword">yield</span> <span class="hljs-literal">True</span>
 <span class="hljs-comment">#</span>
 </code></pre>
-<p>In this example, it will save the gem5 checkpoint into the directory <code>./03-cpt</code>. You can config the path and the name using the <code>simulator.save_checkponit()</code> function.</p>
+<p>In this example, it will save the gem5 checkpoint into the directory <code>./03-cpt</code>. You can config the path and the name using the <code>simulator.save_checkpoint()</code> function.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="35" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="03-checkpoint-and-restore-4">03-checkpoint-and-restore</h2>
@@ -543,7 +543,7 @@ In this case, we might need to update it with <a href="../../gem5/util/cpt_upgra
 <p>We will be using the exact same system that we used in 02-kvm-time to restore the checkpoint we just took.</p>
 <p>The restoring script is <a href="../../materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore/03-restore-the-checkpoint.py"><code>materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore/03-restore-the-checkpoint.py</code></a>.</p>
 <p>We can pass in the path to the checkpoint as a parameter to the <code>simulator</code> object.<br />
-We can also pass in the path using the <code>board</code> object. More detail can be found <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/components/boards/kernel_disk_workload.py#L142">here</a>.</p>
+We can also pass in the path using the <code>board</code> object. More details can be found <a href="https://github.com/gem5/gem5/blob/stable/src/python/gem5/components/boards/kernel_disk_workload.py#L142">here</a>.</p>
 <p>For this example, we will pass in the path to the <code>simulator</code> object.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">simulator = Simulator(
     board=board,
@@ -572,13 +572,13 @@ src/dev/x86/pc.cc:117: warn: Don<span class="hljs-string">&#x27;t know what inte
 build/ALL/arch/x86/generated/exec-ns.cc.inc:27: warn: instruction &#x27;</span>verw_Mw_or_Rv<span class="hljs-string">&#x27; unimplemented
 </span></code></pre>
 <p>Unlike a simulation that starts from the beginning, a simulation that restores a checkpoint will start at the Tick when the checkpoint was taken.</p>
-<p>If we search for <code>curTick</code> in the <a href="../../materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore/03-cpt/m5.cpt"><code>m5.cpt</code></a> file under the checkpoint folder, we will see the Tick when the checkpoint was taken. It might not be exact to the sample showing here because KVM brings variation to the Ticks, but the starting Tick in the restoring simulation should match with the <code>curTick</code> in the <code>m5.cpt</code> file.</p>
+<p>If we search for <code>curTick</code> in the <a href="../../materials/02-Using-gem5/08-accelerating-simulation/03-checkpoint-and-restore/03-cpt/m5.cpt"><code>m5.cpt</code></a> file under the checkpoint folder, we will see the Tick when the checkpoint was taken. It might not be exactly the same as the sample shown here  because KVM brings variation to the Ticks, but the starting Tick in the restoring simulation should match with the <code>curTick</code> in the <code>m5.cpt</code> file.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">curTick=14788319800411
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="40" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="44">
 <h2 id="03-checkpoint-and-restore-9">03-checkpoint-and-restore</h2>
-<p>As mentioned in the beginning, there are some restrictions in what we can change between the checkpointing and restoring systems.</p>
+<p>As mentioned in the beginning, there are some restrictions on what we can change between the checkpointing and restoring systems.</p>
 <ol>
 <li>The number of cores in both systems have to be the same (the restoring simulation will not have an error if they are not the same, but it does not guarantee correctness).</li>
 <li>The size of the memory in both systems has to be the same.</li>

@@ -182,7 +182,7 @@ See <a href="../../gem5/src/sim/power/MathExprPowerModel.py"><code>gem5/src/sim/
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="9">
 <h2 id="adding-the-power-model">Adding the power model</h2>
-<p>Add the following code to you <code>cache_hierarchy</code>.</p>
+<p>Add the following code to your <code>cache_hierarchy</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add_power_model</span>(<span class="hljs-params">self</span>):
         self.l3_cache.power_state.default_state = <span class="hljs-string">&quot;ON&quot;</span>
         self.l3_cache.power_model = L3PowerModel(self.l3_cache.path())

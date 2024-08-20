@@ -101,7 +101,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 
 /* Misc effects */div#\:\$p>svg>foreignObject>section .hljs-emphasis{font-style:italic}div#\:\$p>svg>foreignObject>section .hljs-strong{font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure>figcaption{position:absolute;border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content],div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#\:\$p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="title" data-theme="gem5" lang="en-US" class="title" data-marpit-pagination="1" style="--paginate:true;--class:title;--theme:gem5;" data-marpit-pagination-total="18">
 <h2 id="getting-started-with-gem5">Getting started with gem5</h2>
-<p>In this section, we will get familiar the tutorial's codespace environment and run our first gem5 simulation.</p>
+<p>In this section, we will get familiar with the tutorial's codespace environment and run our first gem5 simulation.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="18">
 <h2 id="lets-hit-the-ground-running">Let’s hit the ground running</h2>
@@ -126,10 +126,10 @@ I.e., <code>apt install gem5</code> will not work.</p>
 </code></pre>
 <blockquote>
 <p>There are two main branches in the gem5 repository:<br />
-<strong>stable</strong>: The default branch for gem5. Updated at stable releases. Currently v24.0.<br />
+<strong>stable</strong>: The default branch for gem5. Updated at stable releases. Currently v24.0 (As of August 2024).<br />
 <strong>develop</strong>: The branch in which new features, improvements, etc. are added regularly for the next release.</p>
 </blockquote>
-<p>In this tutorial we’re going to use codespaces with a repo which includes some example materials. Though all the gem5 code is v24.0</p>
+<p>In this tutorial we’re going to use codespaces with a repo which includes some example materials. Though all the gem5 code is v24.0.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="4" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="18">
 <h2 id="gem5-versions">gem5 versions</h2>
@@ -161,7 +161,7 @@ The last two numbers are for</p>
 <blockquote>
 <p><strong>Step 1:</strong> Go to the classroom <a href="https://classroom.github.com/a/gCcXlgBs">https://classroom.github.com/a/gCcXlgBs</a></p>
 </blockquote>
-<p>You need to be in the github organization (via the classroom) to get free codespaces.</p>
+<p>You need to be in the GitHub organization (via the classroom) to get free codespaces.</p>
 <h3 id="we-strongly-recommend-using-codespaces-for-the-bootcamp">We strongly recommend using codespaces for the bootcamp.</h3>
 <p>This guarantees everyone is using the same environment and will make debugging easier.</p>
 </section>
@@ -177,7 +177,7 @@ Again, note that this is the repo where the slides are.</p>
 <blockquote>
 <p><strong>Step 3:</strong> Wait for the environment to load.</p>
 </blockquote>
-<p>You can also open it in your local VS Code if you install the codespaces extension.<br />
+<p>You can also open it in your local VS Code if you install the Codespaces extension.<br />
 (If you do this, the extensions will not be installed automatically on your local VS Code.)</p>
 <p><img src="02-getting-started-imgs/codespaces-screenshot-2.drawio.png" alt="Screenshot of the codespace loaded and ready to use" style="width:1100px;" /></p>
 </section>
@@ -197,7 +197,7 @@ Again, note that this is the repo where the slides are.</p>
 <li><strong><code>slides/</code></strong>
 <ul>
 <li>Markdown version of these slides. Used to build the website/slides.</li>
-<li>You can also preview the slides in vs code.</li>
+<li>You can also preview the slides in VS Code.</li>
 </ul>
 </li>
 <li><strong><code>materials/</code></strong>
@@ -207,7 +207,7 @@ Again, note that this is the repo where the slides are.</p>
 <li>Completed examples are in the <code>completed</code> directories.</li>
 </ul>
 </li>
-<li>A few other things for the website, automatic building, vs code configurations, etc.</li>
+<li>A few other things for the website, automatic building, VS Code configurations, etc.</li>
 </ul>
 <p>Both the slides and materials are broken down into sections and lessons.<br />
 We use numbering to keep them in order.</p>
@@ -217,7 +217,7 @@ We use numbering to keep them in order.</p>
 <blockquote>
 <p>Don't do this right now!</p>
 </blockquote>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">scons build/ALL/gem5.opt
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sh">scons build/ALL/gem5.opt -j [number of cores]
 </code></pre>
 <ul>
 <li>This takes a while (10-15 minutes with 16 cores, ~1hr on 1 core).</li>
@@ -271,7 +271,7 @@ Open the <a href="../../materials/01-Introduction/02-getting-started/basic.py"><
 </ul>
 </li>
 </ul>
-<p>See the <a href="https://resources.gem5.org/resources/x86-ubuntu-24.04-boot-no-systemd?version=1.0.0">gem5 resource page</a></p>
+<p>See the <a href="https://resources.gem5.org/resources/x86-ubuntu-24.04-boot-no-systemd?version=1.0.0">gem5 resource page</a>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="14" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="18">
 <h2 id="gem5-resources-web-portal">gem5 resources web portal</h2>
@@ -332,7 +332,7 @@ It's both verbose on stdout, but also writes many files in <code>m5out/</code>.<
 <li><strong>Statistics</strong> (the most important part)</li>
 </ul>
 </li>
-<li>The codespaces environment is configured to make things easy.
+<li>The Codespaces environment is configured to make things easy.
 <ul>
 <li>You'll need to do some work to set up your own environment.</li>
 </ul>

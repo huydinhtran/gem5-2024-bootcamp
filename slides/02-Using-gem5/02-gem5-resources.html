@@ -122,7 +122,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <strong>binary</strong>: A program that is used to test the performance of a computer system.<br />
 <strong>bootloader</strong>: A small program that is responsible for loading the operating system into memory when a computer starts up.<br />
 <strong>checkpoint</strong>: A snapshot of a simulation.<br />
-<strong>simpoint</strong>: This resource stores all information required to perform a Simpoint creation and restore.<br />
+<strong>simpoint</strong>: This resource stores all information required to create and restore a Simpoint.<br />
 <strong>file</strong>: A resource consisting of a single file.<br />
 <strong>workload</strong>: Bundles of resources and any input parameters that can be run directly in gem5.<br />
 <strong>suite</strong>: A collection of workloads.</p>
@@ -160,8 +160,8 @@ gem5 01-hello-example.py
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:gem5;--marpit-advanced-background-split:50%;" data-marpit-pagination-total="17" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;../02-Using-gem5/02-gem5-resouces-imgs/se_workload_ss.drawio.png&quot;);background-size:contain;"><figcaption>workload se</figcaption></figure></div></section></foreignObject><foreignObject width="50%" height="720"><section id="7" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:gem5;--marpit-advanced-background-split:50%;" data-marpit-pagination-total="17" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <h2 id="workloads">Workloads</h2>
-<p>Workload is a package of one or more resources that can have pre-defined parameters.</p>
-<p>let's see the <code>x86-npb-is-size-s-run</code> workload.</p>
+<p>A workload is a package of one or more resources that can have pre-defined parameters.</p>
+<p>Let's see the <code>x86-npb-is-size-s-run</code> workload.</p>
 <p>This workload runs the NPB IS benchmark in SE mode.</p>
 <p>You can see the JSON of the workloads in the <a href="https://resources.gem5.org/resources/x86-npb-is-size-s-run/raw?database=gem5-resources&amp;version=1.0.0">raw</a> tab on the resources website.</p>
 </section>
@@ -184,8 +184,8 @@ gem5 01-hello-example.py
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="17">
 <h2 id="suites">Suites</h2>
-<p>Suites are a collection of workloads, that can be run in parallel using multiprocessing (this will be shown later).</p>
-<p>All workloads in the suite have something called <code>input_groups</code> that can be used to filter the suite.</p>
+<p>Suites are a collection of workloads that can be run in parallel using multiprocessing (this will be shown later).</p>
+<p>All workloads in a suite have something called <code>input_groups</code> that can be used to filter the suite.</p>
 <p>Let's do an example where we will:</p>
 <ul>
 <li>Print all the workloads in the suite</li>
@@ -196,7 +196,7 @@ gem5 01-hello-example.py
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="10" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="17">
 <h2 id="printing-all-the-workloads-in-a-suite">Printing all the workloads in a suite</h2>
 <p>The <code>SuiteResource</code> class acts as a generator so we can iterate through the workloads.</p>
-<p>Let's print some worklaod information from  the <code>x86-getting-started-benchmark-suite</code> suite.</p>
+<p>Let's print some workload information from  the <code>x86-getting-started-benchmark-suite</code> suite.</p>
 <p>Let's modify <a href="../../materials/02-Using-gem5/02-gem5-resources/02-suite-workload-example.py">02-suite-workload-example.py</a>. Below, we get the resource and iterate through the suite, printing the <code>id</code> and <code>version</code> of each workload. Add this to the bottom of the script:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">getting_started_suite = obtain_resource(<span class="hljs-string">&quot;x86-getting-started-benchmark-suite&quot;</span>)
 <span class="hljs-keyword">for</span> workload <span class="hljs-keyword">in</span> getting_started_suite:
@@ -234,12 +234,12 @@ simulator.run()
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="17">
 <h2 id="local-resources">Local resources</h2>
 <p>You can also use resources that you have created locally in gem5.</p>
-<p>You can create a local JSON file to use as a data source by setting the:</p>
+<p>You can create a local JSON file to use as a data source, then set the:</p>
 <ul>
 <li><code>GEM5_RESOURCE_JSON</code> environment variable to point to the JSON, if you want to just use the resources in the JSON.</li>
 <li><code>GEM5_RESOURCE_JSON_APPEND</code> environment variable to point to the JSON, if you want to use local resources along with gem5 resources.</li>
 </ul>
-<p>For more details on how to use local resources, read <a href="https://www.gem5.org/documentation/gem5-stdlib/using-local-resources">local resources documentation</a></p>
+<p>For more details on how to use local resources, read the <a href="https://www.gem5.org/documentation/gem5-stdlib/using-local-resources">local resources documentation</a></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="17">
 <h2 id="why-use-local-resources">Why use local resources</h2>
@@ -258,7 +258,7 @@ simulator.run()
 </ul>
 </li>
 </ul>
-<p>Let's do an example that creates a local binary and runs that binary on gem5.</p>
+<p>Let's do an example that creates a local binary and runs that binary in gem5.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="17">
 <h2 id="lets-create-a-binary">Let's create a binary</h2>

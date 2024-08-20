@@ -148,7 +148,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="10" style="" data-marpit-pagination-total="37" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="11" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="37">
 <h2 id="gem5s-goals-1">gem5's goals</h2>
-<h3 id="anyone-including-non-architect-can-download-and-use-gem5">Anyone (including non-architect) can download and use gem5</h3>
+<h3 id="anyone-including-non-architects-can-download-and-use-gem5">Anyone (including non-architects) can download and use gem5</h3>
 <h3 id="used-for-cross-stack-research">Used for cross-stack research:</h3>
 <ul>
 <li>Change kernel, change runtime, change hardware, all in concert</li>
@@ -386,7 +386,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 <li>Not the exact same cycle-by-cycle as the ASIC, but similar timing</li>
 </ul>
 </li>
-<li>Easily parameterizeable
+<li>Easily parameterizable
 <ul>
 <li>No need for a full hardware design</li>
 </ul>
@@ -414,7 +414,7 @@ Typically this "required" baseline CSS is added by `makestuff.js` during build.
 In SimObject declaration file</p>
 <h3 id="instance-or-configuration">Instance or Configuration</h3>
 <p>A particular choice for the parameters<br />
-In standard library, your extension, or python runscript</p>
+In standard library, your extension, or Python runscript</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="31" style="--paginate:true;--theme:gem5;--marpit-advanced-background-split:50%;" data-marpit-pagination-total="37" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./01-simulation-background-imgs/Sunny_cove_block_diagram.png&quot;);background-size:contain;"><figcaption>Picture of Sunny Cove architecture from wikichip</figcaption></figure></div></section></foreignObject><foreignObject width="50%" height="720"><section id="31" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="31" style="--paginate:true;--theme:gem5;--marpit-advanced-background-split:50%;" data-marpit-pagination-total="37" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <h2 id="model-vs-parameter">Model vs parameter</h2>
@@ -424,8 +424,8 @@ In standard library, your extension, or python runscript</p>
 <li>Generic</li>
 </ul>
 </li>
-<li>Expose <strong>parameters</strong> to python</li>
-<li>Set <strong>parameters</strong> and connections in python</li>
+<li>Expose <strong>parameters</strong> to Python</li>
+<li>Set <strong>parameters</strong> and connections in Python</li>
 </ul>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="31" style="" data-marpit-pagination-total="37" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="32" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="37">
@@ -490,21 +490,21 @@ Can call functions instead of scheduling events, but they occur <em>in the same 
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="35" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="37">
 <h2 id="discrete-event-simulation">Discrete event simulation</h2>
-<p>&quot;Time&quot; needs a unit<br />
-In gem5, we use a unit called &quot;Tick&quot;</p>
+<p>&quot;Time&quot; needs a unit.<br />
+In gem5, we use a unit called a &quot;Tick&quot;.</p>
 <p>Need to convert a simulation &quot;tick&quot; to user-understandable time<br />
-E.g., seconds</p>
-<p>This is the global simulation tick rate<br />
+E.g., seconds.</p>
+<p>This is the global simulation tick rate.<br />
 Usually this is 1 ps per tick or <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="4.05ex" height="2.005ex" role="img" focusable="false" viewBox="0 -864 1790.1 886"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path></g><g data-mml-node="TeXAtom" transform="translate(1033,393.1) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" transform="translate(500,0)"></path></g></g></g></g></g></svg></mjx-container> ticks per second</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-class="center-image" data-theme="gem5" lang="en-US" class="center-image" data-marpit-pagination="36" style="--paginate:true;--class:center-image;--theme:gem5;" data-marpit-pagination-total="37">
 <h2 id="gem5s-main-abstractions-memory">gem5's main abstractions: Memory</h2>
 <h3 id="memory-requests">Memory requests</h3>
 <ul>
-<li><strong>Ports</strong> allow you to send requests and receive responses</li>
-<li>Ports are unidirectional (two types, request/response)</li>
-<li>Anything* with a Request port can be connected to any Response port</li>
-<li>More on this in <a href="../03-Developing-gem5-models/04-ports.md">Ports and memory-based SimObjects</a></li>
+<li><strong>Ports</strong> allow you to send requests and receive responses.</li>
+<li>Ports are unidirectional (two types, request/response).</li>
+<li>Anything* with a Request port can be connected to any Response port.</li>
+<li>More on this in <a href="../03-Developing-gem5-models/04-ports.md">Ports and memory-based SimObjects</a>.</li>
 </ul>
 <p><img src="./01-simulation-background-imgs/abstractions-1.drawio.svg" alt="CPU talking to caches with ports" /></p>
 </section>
@@ -515,7 +515,7 @@ Usually this is 1 ps per tick or <mjx-container class="MathJax" jax="SVG"><svg 
 <li>ISAs and CPU models are orthogonal.</li>
 <li>Any ISA should work with any CPU model.</li>
 <li>&quot;Execution Context&quot; is the interface.</li>
-<li>More on this in <a href="../03-Developing-gem5-models/05-modeling-cores.md">modeling cores</a></li>
+<li>More on this in <a href="../03-Developing-gem5-models/05-modeling-cores.md">modeling cores</a>.</li>
 </ul>
 <p><img src="./01-simulation-background-imgs/abstractions-2.drawio.svg" alt="ISA-CPU interactions and CPU talking to caches with ports" /></p>
 </section>
