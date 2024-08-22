@@ -1188,7 +1188,7 @@ InspectorGadget::InspectorGadgetStats::<span class="hljs-built_in">InspectorGadg
 {}
 </code></pre>
 <p>Few things to note:</p>
-<p>1- Initialize our stat object by adding <code>stats(this)</code> to the initialization list in the constructor <code>InspectorGdaget</code>.<br />
+<p>1- <strong>Important:</strong> initialize our stat object by adding <code>stats(this)</code> to the initialization list in the constructor <code>InspectorGdaget</code>.<br />
 2- <code>statistics::Group::Group</code> takes a pointer to an object of <code>statistics::Group</code> that will be its parent. Class <code>SimObject</code> inherits from <code>statistics::Group</code> so we can use a pointer to <code>InspectorGadget</code> as that input.<br />
 3- The macro <code>ADD_STAT</code> registers and initializes our statistics that we have defined under the struct. The order of arguments are <code>name</code>, <code>unit</code>, <code>description</code>. To rid yourself of any headache, make sure the order of <code>ADD_STAT</code> macros match that of statistic declaration.</p>
 </section>
@@ -1205,7 +1205,7 @@ InspectorGadget::InspectorGadgetStats::<span class="hljs-built_in">InspectorGadg
 }
 
 <span class="hljs-function"><span class="hljs-type">void</span>
-<span class="hljs-title">InspectorGadget::processNextReqSendEvent</span><span class="hljs-params">()</span>
+<span class="hljs-title">InspectorGadget::processNextRespSendEvent</span><span class="hljs-params">()</span>
 </span>{
     <span class="hljs-comment">// ...</span>
     stats.numResponsesFwded++;
@@ -1234,7 +1234,7 @@ InspectorGadget::InspectorGadgetStats::<span class="hljs-built_in">InspectorGadg
 }
 
 <span class="hljs-function"><span class="hljs-type">void</span>
-<span class="hljs-title">InspectorGadget::processNextReqSendEvent</span><span class="hljs-params">()</span>
+<span class="hljs-title">InspectorGadget::processNextRespSendEvent</span><span class="hljs-params">()</span>
 </span>{
     <span class="hljs-comment">// ...</span>
     stats.numResponsesFwded++;
@@ -1276,10 +1276,11 @@ system.memory.inspectors1.numResponsesFwded           18                       <
 <p><code>CPUSidePort.recvTimingReq-&gt;InspectorGadget.recvTimingReq-&gt;[inspection]-&gt;InspectorGadget.processNextReqSendEvent-&gt;MemSidePort.sendPacket</code></p>
 <p>Again, we need to model latency. Therefore, we need to declare a new event that moves the time for the process of <em>inspection</em>. In addition, we will need to add a <code>TimedQueue</code> called the <code>outputBuffer</code> to hold the <code>Packets</code> that are <em>inspected</em> and are not sent yet. We also need to add a parameter to limit the number of entries in <code>outputBuffer</code>, let's call that <code>output_buffer_entries</code>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="83" data-paginate="true" data-theme="gem5" lang="en-US" data-marpit-pagination="83" style="--paginate:true;--theme:gem5;" data-marpit-pagination-total="109">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="83" data-paginate="true" data-class="code-80-percent" data-theme="gem5" lang="en-US" class="code-80-percent" data-marpit-pagination="83" style="--paginate:true;--class:code-80-percent;--theme:gem5;" data-marpit-pagination-total="109">
 <h2 id="adding-inspection-header-file">Adding Inspection: Header File</h2>
 <p>To declare <code>nextInspectionEvent</code>, add the following lines under the <code>private</code> scope of <code>InspectorGadget</code> in <code>src/bootcamp/inspector-gadget/inspcetor_gadget.hh</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-cpp">  <span class="hljs-keyword">private</span>:
+    <span class="hljs-type">int</span> output_buffer_entries;
     TimedQueue&lt;PacketPtr&gt; outputBuffer;
 
     EventFunctionWrapper nextInspectionEvent;
@@ -1360,7 +1361,7 @@ system.memory.inspectors1.numResponsesFwded           18                       <
     {
         <span class="hljs-type">uint64_t</span> sequenceNumber;
         <span class="hljs-built_in">SequenceNumberTag</span>(<span class="hljs-type">uint64_t</span> sequenceNumber):
-            <span class="hljs-built_in">SenderState</span>(), (sequenceNumber)
+            <span class="hljs-built_in">SenderState</span>(), <span class="hljs-built_in">sequenceNumber</span>(sequenceNumber)
         {}
     };
 </code></pre>
@@ -1461,7 +1462,7 @@ system.memory.inspectors1.numResponsesFwded           18                       <
     <span class="hljs-type">bool</span> have_items = !outputBuffer.<span class="hljs-built_in">empty</span>();
 
     <span class="hljs-keyword">if</span> (port_avail &amp;&amp; have_items &amp;&amp; !nextReqSendEvent.<span class="hljs-built_in">scheduled</span>()) {
-        Tick schedule_time = <span class="hljs-built_in">align</span>(std::<span class="hljs-built_in">max</span>(when, inspectionBuffer.<span class="hljs-built_in">firstReadyTime</span>()));
+        Tick schedule_time = <span class="hljs-built_in">align</span>(std::<span class="hljs-built_in">max</span>(when, outputBuffer.<span class="hljs-built_in">firstReadyTime</span>()));
         <span class="hljs-built_in">schedule</span>(nextReqSendEvent, schedule_time);
     }
 }
@@ -1497,7 +1498,7 @@ system.memory.inspectors1.numResponsesFwded           18                       <
 <span class="hljs-title">InspectorGadget::processNextReqSendEvent</span><span class="hljs-params">()</span>
 </span>{
     <span class="hljs-built_in">panic_if</span>(memSidePort.<span class="hljs-built_in">blocked</span>(), <span class="hljs-string">&quot;Should never try to send if blocked!&quot;</span>);
-    <span class="hljs-built_in">panic_if</span>(!inspectionBuffer.<span class="hljs-built_in">hasReady</span>(<span class="hljs-built_in">curTick</span>()), <span class="hljs-string">&quot;Should never try to send if no ready packets!&quot;</span>);
+    <span class="hljs-built_in">panic_if</span>(!outputBuffer.<span class="hljs-built_in">hasReady</span>(<span class="hljs-built_in">curTick</span>()), <span class="hljs-string">&quot;Should never try to send if no ready packets!&quot;</span>);
 
     stats.numRequestsFwded++;
     PacketPtr pkt = outputBuffer.<span class="hljs-built_in">front</span>();
@@ -1671,7 +1672,7 @@ system.memory.inspectors1.numReqRespDisplacements            6                  
 
     <span class="hljs-keyword">if</span> (have_packet &amp;&amp; have_entry &amp;&amp; !nextInspectionEvent.<span class="hljs-built_in">scheduled</span>()) {
         Tick first_avail_insp_unit_time = \
-            std::<span class="hljs-built_in">min_element</span>(
+            *std::<span class="hljs-built_in">min_element</span>(
                             inspectionUnitAvailableTimes.<span class="hljs-built_in">begin</span>(),
                             inspectionUnitAvailableTimes.<span class="hljs-built_in">end</span>()
                             );
@@ -1709,7 +1710,7 @@ system.memory.inspectors1.numReqRespDisplacements            6                  
         stats.totalInspectionBufferLatency += <span class="hljs-built_in">curTick</span>() - inspectionBuffer.<span class="hljs-built_in">frontTime</span>();
         PacketPtr pkt = inspectionBuffer.<span class="hljs-built_in">front</span>();
         <span class="hljs-built_in">inspectRequest</span>(pkt);
-        outputBuffer.<span class="hljs-built_in">push</span>(pkt, <span class="hljs-built_in">curTick</span>());
+        outputBuffer.<span class="hljs-built_in">push</span>(pkt, <span class="hljs-built_in">clockEdge</span>(totalInspectionLatency));
         inspectionBuffer.<span class="hljs-built_in">pop</span>();
         inspectionUnitAvailableTimes[i] = <span class="hljs-built_in">clockEdge</span>(totalInspectionLatency);
         insp_window_left--;
