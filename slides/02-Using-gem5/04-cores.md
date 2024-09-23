@@ -16,9 +16,9 @@ title: Modeling CPU cores in gem5
 - **Learn about CPU models in gem5​**
   - AtomicSimpleCPU, TimingSimpleCPU, O3CPU, MinorCPU, KvmCPU​
 - Using the CPU models​
-  - Set-up a simple system with two cache sizes and three CPU models​
+  - Set up a simple system with two cache sizes and three CPU models​
 - Look at the gem5 generated statistics​
-  - To understand differences among CPU models
+  - To understand the differences between CPU models
 - Create a custom processor
   - Change parameters of a processor based on O3CPU
 
@@ -40,7 +40,7 @@ title: Modeling CPU cores in gem5
 
 ### Atomic
 
-Sequency of nested calls
+Sequence of nested calls
 Use: Warming up, fast-forwarding
 
 ### Functional
@@ -74,6 +74,8 @@ resource contention
   - Models the timing of memory accesses in detail
 
 ---
+
+<!-- _class: center-image -->
 
 ## O3CPU (Out of Order CPU Model)
 
@@ -154,10 +156,10 @@ We will do this soon.
 
 ## Outline
 
-- CPU models in gem5​
+- Learn about CPU models in gem5
   - AtomicSimpleCPU, TimingSimpleCPU, O3CPU, MinorCPU, KvmCPU​
 - **Using the CPU models​**
-  - Set-up a simple system with two cache sizes and three CPU models​
+  - Set up a simple system with two cache sizes and three CPU models​
 - Look at the gem5 generated statistics​
   - To understand differences among CPU models
 - Create a custom processor
@@ -173,9 +175,9 @@ We will do this soon.
 
 ## Material to use
 
-### Start by opening the following file.
+### Start by opening the following file
 
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores.py)
+[materials/02-Using-gem5/04-cores/cores.py](../../materials/02-Using-gem5/04-cores/cores.py)
 
 ### Steps
 
@@ -184,29 +186,28 @@ We will do this soon.
 3. Reduce the cache size
 4. Change the CPU type back to Atomic
 
-We will be running a program (workload) called **matrix-multiply** on our board.
+We will be running a workload called matrix-multiply on **different CPU types and cache sizes**.
 
 ---
 
 ## Let's configure a simple system with Atomic CPU
 
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores.py)
+[materials/02-Using-gem5/04-cores/cores.py](../../materials/02-Using-gem5/04-cores/cores.py)
 
 ```python
-from gem5.resources.resource import obtain_resource
-from gem5.simulate.simulator import Simulator
 from gem5.components.boards.simple_board import SimpleBoard
 from gem5.components.cachehierarchies.classic.private_l1_cache_hierarchy import PrivateL1CacheHierarchy
 from gem5.components.memory.single_channel import SingleChannelDDR3_1600
-from gem5.components.processors.simple_processor import SimpleProcessor
 from gem5.components.processors.cpu_types import CPUTypes
+from gem5.components.processors.simple_processor import SimpleProcessor
 from gem5.isas import ISA
+from gem5.resources.resource import obtain_resource
+from gem5.simulate.simulator import Simulator
 
 
 # A simple script to test with different CPU models
-# We will run a simple application (matrix-multiply) with AtomicSimpleCPU, TimingSimpleCPU,
-# and O3CPU using two different cache sizes
-
+# We will run a simple application (matrix-multiply) with AtomicSimpleCPU and TimingSimpleCPU
+# using two different cache sizes
 ...
 ```
 
@@ -217,15 +218,17 @@ from gem5.isas import ISA
 `cpu_type` in cores.py should already be set to Atomic.
 
 ```python
-# Comment out the cpu_types you don't want to use and
-# Uncomment the one you do want to use
+# By default, use Atomic CPU
 cpu_type = CPUTypes.ATOMIC
+
+# Uncomment for steps 2 and 3
 # cpu_type = CPUTypes.TIMING
 ```
 
 Let's run it!
 
 ```sh
+cd /workspaces/2024/materials/02-Using-gem5/04-cores
 gem5 --outdir=atomic-normal-cache cores.py
 ```
 
@@ -238,9 +241,10 @@ Make sure the out directory is set to **atomic-normal-cache**.
 Change `cpu_type` in cores.py to Timing.
 
 ```python
-# Comment out the cpu_types you don't want to use and
-# Uncomment the one you do want to use
+# By default, use Atomic CPU
 # cpu_type = CPUTypes.ATOMIC
+
+# Uncomment for steps 2 and 3
 cpu_type = CPUTypes.TIMING
 ```
 
@@ -271,7 +275,7 @@ cache_hierarchy = PrivateL1CacheHierarchy(l1d_size="1KiB", l1i_size="1KiB")
 Let's run it!
 
 ```sh
-gem5 --outdir=timing-small-cache cores.py
+gem5 --outdir=timing-small-cache ./materials/02-Using-gem5/04-cores/cores.py
 ```
 
 Make sure the out directory is set to **timing-small-cache**.
@@ -283,9 +287,10 @@ Make sure the out directory is set to **timing-small-cache**.
 Set `cpu_type` in cores.py to Atomic.
 
 ```python
-# Comment out the cpu_types you don't want to use and
-# Uncomment the one you do want to use
+# By default, use Atomic CPU
 cpu_type = CPUTypes.ATOMIC
+
+# Uncomment for steps 2 and 3
 # cpu_type = CPUTypes.TIMING
 ```
 
@@ -301,7 +306,7 @@ Make sure the out directory is set to **atomic-small-cache**.
 
 ## Outline
 
-- CPU models in gem5​
+- Learn about CPU models in gem5
   - AtomicSimpleCPU, TimingSimpleCPU, O3CPU, MinorCPU, KvmCPU
 - Using the CPU models​
   - Set-up a simple system with two cache sizes and three CPU models​
@@ -335,6 +340,9 @@ timing-normal-cache/stats.txt:simOps                                       33954
 timing-small-cache/stats.txt:simOps                                        33954560
 ```
 
+> "Ops" may be different from "Instructions" because gem5 breaks instructions down into "micro-ops."
+> x86 is highly microcoded, all ISAs have some microcoded instructions in gem5.
+
 ---
 
 ## Look at the Number of Execution Cycles
@@ -362,22 +370,24 @@ This is because Atomic CPU ignores memory access latency.
 
 ## Extra Notes about gem5 Statistics
 
-When you specify the out-directory for the stats file (when you use the flag `--outdir=<outdir-name>`), go to **\<outdir-name>/stats.txt** to look at the entire statistics file.
+When you specify the out-directory for the stats file (when you use the flag `--outdir=<outdir-name>`), go to **`<outdir-name>/stats.txt`** to look at the entire statistics file.
 
-For example, to look at the statistics file for the Atomic CPU with a small cache, go to **atomic-small-cache/stats.txt**.
+For example, to look at the statistics file for the Atomic CPU with a small cache, go to **`atomic-small-cache/stats.txt`**.
 
-In general, if you don't specify the out-directory, it will be **m5out/stats.txt**.
+In general, if you don't specify the out-directory, it will be **`m5out/stats.txt`**.
 
 ### Other statistics to look at
 
+- Simulated time (time simulated by gem5)
+  - `simSeconds`
 - Host time (time taken by gem5 to run your simulation)
-  - _hostSeconds_
+  - `hostSeconds`
 
 ---
 
 ## Outline
 
-- CPU models in gem5​
+- Learn about CPU models in gem5
   - AtomicSimpleCPU, TimingSimpleCPU, O3CPU, MinorCPU, KvmCPU​
 - Using the CPU models​
   - Set-up a simple system with two cache sizes and three CPU models​
@@ -396,18 +406,18 @@ In general, if you don't specify the out-directory, it will be **m5out/stats.txt
 
 ## Material to use
 
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores-complex.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores-complex.py)
+[materials/02-Using-gem5/04-cores/cores-complex.py](../../materials/02-Using-gem5/04-cores/cores-complex.py)
 
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/components/processors.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/components/processors.py)
+[materials/02-Using-gem5/04-cores/components/processors.py](../../materials/02-Using-gem5/04-cores/components/processors.py)
 
 ### Steps
 
-1. Update class big(O3CPU) and Little(O3CPU)
-2. Run with big processor
+1. Update class Big(O3CPU) and Little(O3CPU)
+2. Run with Big processor
 3. Run with Little processor
 4. Compare statistics
 
-We will be running the same workload (**matrix-multiply**) on our board.
+We will be running the same workload (matrix-multiply) on **two custom processors**.
 
 ---
 
@@ -418,13 +428,13 @@ We will make one fast processor (**_Big_**) and one slow processor (**_Little_**
 To do this, we will change **4** parameters in each processor.
 
 - **width**
-  - width of fetch, decode, raname, issue, wb, and commit stages
+  - Width of fetch, decode, rename, issue, wb, and commit stages
 - **rob_size**
-  - the number of entries in the reorder buffer
+  - The number of entries in the reorder buffer
 - **num_int_regs**
-  - the number of physical integer registers
+  - The number of physical integer registers
 - **num_fp_regs**
-  - the number of physical vector/floating point registers
+  - The number of physical vector/floating point registers
 
 ---
 
@@ -432,15 +442,17 @@ To do this, we will change **4** parameters in each processor.
 
 ## Configuring Big
 
-Open the following file.
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/components/processors.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/components/processors.py)
+Open the following file:
+[materials/02-Using-gem5/04-cores/components/processors.py](../../materials/02-Using-gem5/04-cores/components/processors.py)
 
-In class big, set
+On the right, you'll see what `class Big` currently looks like.
 
-- width=**10**
-- rob_size=**40**
-- num_int_regs=**50**
-- num_fp_regs=**50**
+Change the parameter values so that they are as follows:
+
+- `width=10`
+- `rob_size=40`
+- `num_int_regs=50`
+- `num_fp_regs=50`
 
 ###
 
@@ -461,15 +473,14 @@ class Big(O3CPU):
 
 ## Configuring Little
 
-Keep working in the following file.
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/components/processors.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/components/processors.py)
+Now, on the right, you'll see what `class Little` currently looks like.
 
-In class Little, set
+Change the parameter values so that they are as follows:
 
-- width=**2**
-- rob_size=**30**
-- num_int_regs=**40**
-- num_fp_regs=**40**
+- `width=2`
+- `rob_size=30`
+- `num_int_regs=40`
+- `num_fp_regs=40`
 
 ###
 
@@ -486,37 +497,34 @@ class Little(O3CPU):
 
 ---
 
-## Run with big processor
+## Run with Big processor
 
-Open the following file.
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores-complex.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores-complex.py)
+We will be running the following file.
+[materials/02-Using-gem5/04-cores/cores-complex.py](../../materials/02-Using-gem5/04-cores/cores-complex.py)
 
-First, we will run matrix-multiply with our big processor.
+First, we will run matrix-multiply with our `Big` processor.
 
-Run with the following command.
+Run with the following command:
 
 ```sh
 gem5 --outdir=big-proc cores-complex.py -p big
 ```
 
-Make sure the out directory is set to **big-proc**.
+Make sure the out directory is set to **`big-proc`**.
 
 ---
 
 ## Run with Little processor
 
-Keep the following file open.
-[materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores-complex.py](../../materials/02-Developing-gem5-model/05-modeling-cores/04-cores/cores-complex.py)
+Next, we will run matrix-multiply with our `Little` processor.
 
-Next, we will run matrix-multiply with our Little processor.
-
-Run with the following command.
+Run with the following command:
 
 ```sh
 gem5 --outdir=little-proc cores-complex.py -p little
 ```
 
-Make sure the out directory is set to **little-proc**.
+Make sure the out directory is set to **`little-proc`**.
 
 ---
 
@@ -537,7 +545,7 @@ big-proc/stats.txt:board.processor.cores.core.numCycles                 56247195
 little-proc/stats.txt:board.processor.cores.core.numCycles              73430220
 ```
 
-Our little processor takes more time and more cycles than out big processor.
+Our `Little` processor takes more time and more cycles than our `Big` processor.
 
 <!-- This is likely mostly because our Little processor has to access the cache more times since it has less physical registers to work with
 

@@ -50,6 +50,9 @@ Here are some of the available layouts:
 - `title`: Title slide
 - `two-col`: Two columns. To split the slide into two columns, use `###` (heading 3) to create a new column.
 - `center-image`: Centers images horizontally
+- `code-XX-percent`: Reduces font-size in code blocks. Valid values for `XX` are any of `[50, 60, 70, 80]`.
+- `no-logo`: Removes the bottom logo.
+- `logo-left`: Positions the bottom logo further to the left. Useful when using `bg right` images that cover the logo.
 
 ## Adding diagrams
 
@@ -69,7 +72,114 @@ In this case, you cannot have a description of the image, unfortunately.
 
 ## Improvement to make
 
-- [ ] Fix `[bg left]` `[bg right]` in the slides so that the gem5 logo at the bottom doesn't move
+- [x] Fix `[bg left]` `[bg right]` in the slides so that the gem5 logo at the bottom doesn't move
 - [ ] Extend marp to support [asciinema](https://github.com/asciinema/asciinema-player/releases/tag/v3.8.0)
   - We could [embed an SVG](https://docs.asciinema.org/manual/server/embedding/#preview-image-link).
 - [ ] Can we possibly make it so that there's a button to copy the code examples?
+
+## To do for bootcamp 2024
+
+- 01 Introduction
+  - 00: Introduction to bootcamp: (Jason)
+    - Slides :white_check_mark:
+  - 01: Simulation background: (Jason)
+    - Slides :white_check_mark:
+  - 02: Getting started: (Jason)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 03: Python background: (Bobby)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+- 02 Using gem5
+  - 01: stdlib: (Bobby)
+    - Slides :white_check_mark:
+    - Materials
+      - Need to be tested :exclamation:
+  - 02: gem5 resources: (Harshil)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 03: running: (Zhantong)
+    - Slides
+      - (WIP) Mahyar to take editing pass :exclamation:
+      - Zhantong did a quick editing pass :white_check_mark:
+    - Materials :white_check_mark:
+  - 04: cores: (Jason)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 05: cache hierarchy: (Jason) :
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 06: memory: (William)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 07: Full system: Mostly done (Harshil)
+    - Slides :white_checkmark:
+    - Materials :white_check_mark:
+  - 08: Acceleration: (Zhantong)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 09: Sampling: (Zhantong)
+    - Slides: :white_check_mark:
+    - Materials: :white_check_mark:
+  - 10: Modeling power: (Jason) :heavy_exclamation_mark:
+    - Slides
+      - Need to be started :heavy_exclamation_mark:
+    - Materials
+      - Need to be written :heavy_exclamation_mark:
+      - Someone needs to go through and test :exclamation:
+  - 11: Multisim: Someone needs to go through (Bobby)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+- 03 Developing
+  - 01: Sim Objects:  (Mahyar)
+    - Slides
+      - Need to have extra slides added :exclamation:
+      - Needs an editing pass :white_check_mark:
+    - Materials :white_check_mark:
+  - 02: Debugging:  (Mahyar)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 03: Events:  (Mahyar)
+    - Slides ✅
+    - Materials :white_check_mark:
+  - 04: Ports: (Mahyar)
+    - Slides
+      - (WIP) Not done yet :heavy_exclamation_mark:
+      - Needs editing pass :exclamation:
+    - Materials
+      - Being created :heavy_exclamation_mark:
+      - Need to be tested :exclamation:
+  - 05: Modeling cores: (Bobby)
+    - Slides
+      - Needs an editing pass :exclamation:
+    - Materials :white_check_mark:
+  - 06: Modeling cache coherence:
+    - Slides
+      - Needs an editing pass :exclamation:
+    - Materials :white_check_mark:
+  - 07: CHI: (Jason)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 08: Modeling networks (Jason)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 09: Extending gem5: (Zhantong) :exclamation:
+    - Slides
+      - Needs an editing pass :exclamation:
+    - Materials
+      - Someone needs to go through and test :exclamation:
+- 04 GPU
+- 05 Other simulators :heavy_exclamation_mark:
+- 06 Contributing
+  - 01: Contributing: (Bobby)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+  - 02: Testing (Bobby)
+    - Slides :white_check_mark:
+    - Materials :white_check_mark:
+
+## To print
+
+```bash
+find . -name "*.md" -exec pandoc {} -o {}.html --self-contained -c ../themes/print-style.css \;
+```

@@ -16,6 +16,10 @@
     --gem5-background: #F6F8FA;
     --gem5-light: #c8eaf3;
     --gem5-dark: #00627a;
+    --gem5-gray: #77787b;
+
+    --code-line-height: 2rem;
+    --code-font-size: 1.4rem;
 }
 
 section {
@@ -25,7 +29,7 @@ section {
     line-height: 2rem;
     padding: 70px;
     background-color: var(--gem5-background);
-    background-image: url("../themes/gem5Long.png");
+    background-image: url("../themes/gem5ColorLong.svg");
     background-repeat: no-repeat;
     background-position-x: center;
     background-size: 220px;
@@ -92,8 +96,9 @@ footer img {
 /* For the page number */
 section::after {
     right: -50px;
-    bottom: -50px;
+    bottom: -55px;
     font-size: 80%;
+    color: var(--gem5-light);
 }
 
 a {
@@ -145,10 +150,10 @@ section.title h2 {
 
 /* gem5 logo on the right */
 section.title {
-    background-image: url("../../slides/themes/gem5ColorVert.png");
+    background-image: url("../../slides/themes/gem5ColorVert.svg");
     background-repeat: no-repeat;
-    background-position: right;
-    background-size: contain;
+    background-position: 86% 50%;
+    background-size: 440px;
 }
 
 /* title on the left */
@@ -180,6 +185,19 @@ section.center-image img {
     margin: auto;
 }
 
+/* For adding a border to images */
+section.border-image img {
+    border: 1px solid var(--gem5-dark);
+}
+
+/* For altering logo position/appearance */
+section.logo-left {
+    background-position-x: 21%;
+}
+section.no-logo {
+    background-image: none;
+}
+
 /****************************************************/
 /* For title cards at the beginning of a section, e.g. Intro to ..., etc.
    Has a blue gradient. From Erin and Mysore
@@ -194,10 +212,83 @@ section.start h2 {
     font-size: 4rem;
     font-weight: bold;
     line-height: 75px;
-    background: linear-gradient(to right,rgb(67,124,205), rgb(69,214,202));
+    background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Remove the triangle */
+section.start h2::before {
+    border: none;
+}
+
+/****************************************************/
+/* For 5 column/full outline */
+
+section.outline h2 {
+    column-span: all;
+}
+
+section.outline {
+    column-count: 5;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+}
+
+section.outline ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+section.outline li {
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+section.outline ul ul {
+    list-style-type: "- ";
+    padding-left: 20px;
+}
+
+section.outline ul ul ul {
+    display: none;
+}
+
+section.outline h3 {
+    break-before: column;
+}
+
+/****************************************************/
+/* For reducing size of code blocks */
+section.code-50-percent pre {
+    line-height: calc(var(--code-line-height) * 0.33);
+}
+section.code-50-percent pre code {
+    font-size: calc(var(--code-font-size) * 0.5);
+}
+
+section.code-60-percent pre {
+    line-height: calc(var(--code-line-height) * 0.48);
+}
+section.code-60-percent pre code {
+    font-size: calc(var(--code-font-size) * 0.6);
+}
+
+section.code-70-percent pre {
+    line-height: calc(var(--code-line-height) * 0.65);
+}
+section.code-70-percent pre code {
+    font-size: calc(var(--code-font-size) * 0.7);
+}
+
+section.code-80-percent pre {
+    line-height: calc(var(--code-line-height) * 0.8);
+}
+section.code-80-percent pre code {
+    font-size: calc(var(--code-font-size) * 0.8);
 }
 
 /****************************************************/
@@ -206,13 +297,34 @@ section.start h2 {
 pre {
     padding: 10px;
     border-radius: 5px;
+    line-height: var(--code-line-height);
     background-color: #ffffff;
+    box-shadow: 1px 2px 4px var(--gem5-gray);
 }
 
 code {
     font-family: "Roboto Mono", monospace;
-    font-size: 1.4rem;
     background-color: #ffffff;
+    font-size: var(--code-font-size);
+}
+
+/* Forces inherited height for code in headers */
+:is(h1, h2, h3, h4, h5, h6) code {
+    font-size: inherit !important;
+}
+
+/* Targets only inline code */
+:not(pre) > code {
+    font-size: calc(var(--code-font-size) * 0.9);
+    padding: 2px 6px;
+    border: 1px solid var(--gem5-gray);
+    border-radius: 5px;
+}
+
+/* Targets hyperlinks that contain code */
+a:has(code) {
+    /* Removes underlines */
+    text-decoration: none;
 }
 
 /*!
